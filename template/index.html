@@ -1,0 +1,54 @@
+$def with (builds)
+
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://twitter.github.com/bootstrap/examples/starter-template.html -->
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Branch Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="container">
+<form class="well form-inline" method="post" action ="add">
+	<input type="text" name="repos" placeholder="Repository URL"/>
+	<input type="text" name="branch" placeholder="Branch" />
+	<input type="text" name="version" placeholder="Mapped Version" />
+	<input type="text" name="author" placeholder="Author" />
+	<button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<table class="table table-condensed">
+<thead>
+	<tr>
+	<td>Branch</td>
+	<td>Version</td>
+	<td>Latest Build</td>
+	<td>Repository</td>
+	<td>Author</td>
+	<td>Actions</td>
+	</tr>
+</thead>
+<tbody>
+$for build in builds:
+	<tr id="t$build.task_id">
+	<td>$build.branch</td>
+	<td>$build.version</td>
+	<td>$build.last_build_date</td>
+	<td>$build.repos</td>
+	<td>$build.author</td>
+	<td>
+	<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Rebuild</a>
+	<a class="btn" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
+	</tr>
+</tbody>
+</table>
+</div>
+
+    <script src="./static/bootstrap/js/bootstrap.min.js"></script>
+</body></html>
