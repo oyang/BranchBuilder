@@ -2,7 +2,7 @@ Have to install following python packages:
 
 Python packages:
 --webpy: easy_install web.py
---jenkins: pip install jenkins
+--jenkins: pip install python-jenkins
 --jinja2: pip install jinja2
 
 Server:
