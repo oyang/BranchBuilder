@@ -63,7 +63,21 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>dir</command>
+      <command>
+rm -rf /dev/shm/sugarbuild-$version
+
+mkdir /dev/shm/sugarbuild-$version
+cp -r sugarcrm /dev/shm/sugarbuild-$version/
+cp -r build /dev/shm/sugarbuild-$version/
+cp -r sugarportal /dev/shm/sugarbuild-$version/
+
+cd /home/build/sugarsvn/Mango/build_clean
+./build_sugar_30.php --version $version --branch $branch --latin 1 --deploy --packages ent
+
+
+rm -rf /dev/shm/sugarbuild-$version
+
+      </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
