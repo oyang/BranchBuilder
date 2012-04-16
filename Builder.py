@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import web
 from jinja2 import Template
 from jenkins import Jenkins
