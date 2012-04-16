@@ -1,0 +1,14 @@
+Have to install following python packages:
+
+Python packages:
+--webpy: easy_install
+--jenkins: pip install jenkins
+--jinja2: pip install jinja2
+
+Server:
+--Jenkins
+--Apache
+
+Runtime:
+--python
+--Java
