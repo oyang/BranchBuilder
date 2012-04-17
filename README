@@ -1,13 +1,28 @@
 Have to install following python packages:
 
 Python packages:
---webpy: easy_install web.py
+--webpy: easy_install web.py or pip install web.py
 --jenkins: pip install python-jenkins
 --jinja2: pip install jinja2
 
 Server:
 --Jenkins
+----java -jar jenkins.war &
 --Apache
+----     
+        Alias  /static "/var/www/BranchBuilder/static"
+        <Directory "/var/www/BranchBuilder/staic">
+                Options +Indexes
+                Order allow,deny
+                Allow from all
+        </Directory>
+        ScriptAlias /BranchBuilder/  "/var/www/BranchBuilder/Builder.py/"
+        <Directory "/var/www/BranchBuilder">
+                Options +ExecCGI +FollowSymLinks
+                Order allow,deny
+                Allow from all
+        </Directory>
+----
 
 Runtime:
 --python
