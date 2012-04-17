@@ -15,29 +15,34 @@ $def with (builds)
 </head>
 <body>
 <div id="container" class="container">
-<form class="well form-inline" method="post" action ="add">
-	<input type="text" name="repos" placeholder="Repository URL"/>
-	<input type="text" name="branch" placeholder="Branch" />
-	<input type="text" name="version" placeholder="Mapped Version" />
-	<input type="text" name="author" placeholder="Author" />
+<form class="well form-inline" method="post" action ="add" id="addBuildForm">
+	<input type="text" class="required" name="repos" placeholder="Repository URL"/>
+	<input type="text" class="required" name="branch" placeholder="Branch" />
+	<input type="text" class="required" name="version" placeholder="Mapped Version" />
+	<input type="text" class="required" name="author" placeholder="Author" />
 	<button type="submit" class="btn btn-primary">Add</button>
 </form>
+<div class="row">
+	<div class="span3 offset10">
+		<a href="http://honey-g:8080">Jobs on Jenkins</a>
+	</div>
+</div>
 
 <table class="table table-condensed">
 <thead>
 	<tr>
-	<td>Branch</td>
-	<td>Version</td>
-	<td>Latest Build</td>
-	<td>Repository</td>
-	<td>Author</td>
-	<td>Actions</td>
+	<th>Branch</th>
+	<th>Version</th>
+	<th>Latest Build</th>
+	<th>Repository URL</th>
+	<th>Author</th>
+	<th>Actions</th>
 	</tr>
 </thead>
 <tbody>
 $for build in builds:
 	<tr id="t$build.task_id">
-	<td>$build.branch</td>
+	<td><a href="../build${build.branch}">$build.branch</a></td>
 	<td>$build.version</td>
 	<td>$build.last_build_date</td>
 	<td>$build.repos</td>
@@ -50,5 +55,8 @@ $for build in builds:
 </table>
 </div>
 
+    <script src="/static/bootstrap/js/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="/static/bootstrap/js/validate.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 </body></html>
