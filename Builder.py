@@ -9,7 +9,7 @@ urls = (
 	'/', 'index',
 	'/add', 'add',
 	'/build', 'build',
-	'/remove', 'remove'
+	'/remove', 'remove',
 )
 
 app = web.application(urls, globals())
@@ -17,7 +17,7 @@ db = web.database(dbn='sqlite', db='branchBuilder')
 
 class index:
 	def GET(self):
-		builds = db.select('builds')
+		builds = db.select('builds', order="last_build_date DESC")
 		return render.index(builds)
 
 class add:
@@ -48,8 +48,14 @@ class remove:
 
 class build:
 	def GET(self):
+		from datetime import datetime
+
 		i = web.input()
 		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
+
+		date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		if selectedBuilds:
+			db.update('builds', where="task_id=" + i.task_id, last_build_date=date)			
 
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
