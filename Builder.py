@@ -3,12 +3,14 @@
 import web
 from jinja2 import Template
 from jenkins import Jenkins
+import json
 
 render = web.template.render('template/')
 urls = (
 	'/', 'index',
 	'/add', 'add',
 	'/build', 'build',
+	'/getbuild', 'getbuild',
 	'/remove', 'remove',
 )
 
@@ -17,7 +19,7 @@ db = web.database(dbn='sqlite', db='branchBuilder')
 
 class index:
 	def GET(self):
-		builds = db.select('builds', order="last_build_date DESC")
+		builds = db.select('builds', order="last_build_date DESC", where="repos is not null")
 		return render.index(builds)
 
 class add:
@@ -63,6 +65,18 @@ class build:
 			taskBuilder.add_build( repos=x.repos, branch=x.branch, version=x.version)
 
 		raise web.seeother('/')
+
+class getbuild:
+	def GET(self):
+		from datetime import datetime
+
+		i = web.input()
+		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
+
+		if selectedBuilds:
+			for x in  selectedBuilds:
+				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author})
+			return buildString
 
 class TaskBuilder:
 
