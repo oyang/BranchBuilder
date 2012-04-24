@@ -42,44 +42,47 @@ $def with (builds)
 	<tbody>
 	$for build in builds:
 		<tr id="t$build.task_id">
-		<td><a href="../build${build.branch}">$build.branch</a></td>
-		<td>$build.version</td>
-		<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-		<td>$build.repos</td>
-		<td>$build.author</td>
-		<td>
-		<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Build</a>
-		<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
-		<a data-toggle="modal" name="duplicate" class="btn" data-target="#duplicateJob" id="dupList-$build.task_id" >Duplicate</a>
-		</td>
+			<td><a href="../build${build.branch}">$build.branch</a></td>
+			<td>$build.version</td>
+			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
+			<td>$build.repos</td>
+			<td>$build.author</td>
+			<td>
+			<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Build</a>
+			<a data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" >Edit</a>
+			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
+			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
+			</td>
 		</tr>
 	</tbody>
 	</table>
 </div>
-	<div class="modal hide fade" id="duplicateJob" >
+	<div class="modal hide fade" id="popupViewBuild" >
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal" >x</a>
-			<h3>Duplicate an existing build</h3>
+			<h3 id="popView-title">Duplicate an existing build</h3>
+			<input type="hidden" id="popView-selectAction" value="" />
+			<input type="hidden" id="popView-selectBuildID" value="" />
 		</div>
 		<div class="modal-body">
 			<form class="well form-horizontal" method="post" action ="add" id="addBuildForm">
 				<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="dupView-repos">Repository URL:</label>
+					<label class="control-label" for="popView-repos">Repository URL:</label>
 					<div class="controls">
-						<input type="text" class="required" id="dupView-repos" name="repos" />
+						<input type="text" class="required" id="popView-repos" name="repos" />
 					</div>
-					<label class="control-label" for="dupView-branch">Branch:</label>
+					<label class="control-label" for="popView-branch">Branch:</label>
 					<div class="controls">
-						<input type="text" id="dupView-branch"  class="required" name="branch" />
+						<input type="text" id="popView-branch"  class="required" name="branch" />
 					</div>
-					<label class="control-label" for="dupView-version">Mapped Version:</label>
+					<label class="control-label" for="popView-version">Mapped Version:</label>
 					<div class="controls">
-						<input type="text" id="dupView-version" class="required" name="version" />
+						<input type="text" id="popView-version" class="required" name="version" />
 					</div>
-					<label class="control-label" for="dupView-author">Author:</label>
+					<label class="control-label" for="popView-author">Author:</label>
 					<div class="controls">
-						<input type="text" id="dupView-author" class="required" name="author" />
+						<input type="text" id="popView-author" class="required" name="author" />
 					</div>
 				</div>
 				</fieldset>
@@ -87,7 +90,7 @@ $def with (builds)
 		</div>
 		<div class="modal-footer">
 			<a class="btn" href="#" data-dismiss="modal">Close</a>
-			<a class="btn btn-primary" id="dupView-Save" href="#">Save</a>
+			<a class="btn btn-primary" id="popView-Save" href="#">Save</a>
 		</div>
 	</div>		
     <script src="/static/bootstrap/js/jquery.min.js"></script>

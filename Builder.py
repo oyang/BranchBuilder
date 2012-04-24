@@ -7,22 +7,23 @@ import json
 
 render = web.template.render('template/')
 urls = (
-	'/', 'index',
-	'/add', 'add',
-	'/build', 'build',
-	'/getbuild', 'getbuild',
-	'/remove', 'remove',
+	'/', 'Index',
+	'/add', 'Add',
+	'/build', 'Build',
+	'/getbuild', 'GetBuild',
+	'/updatebuild', 'UpdateBuild',
+	'/remove', 'Remove',
 )
 
 app = web.application(urls, globals())
 db = web.database(dbn='sqlite', db='branchBuilder')
 
-class index:
+class Index:
 	def GET(self):
 		builds = db.select('builds', order="last_build_date DESC", where="repos is not null")
 		return render.index(builds)
 
-class add:
+class Add:
 	def POST(self):
 		i = web.input()
 
@@ -42,13 +43,13 @@ class add:
 
 			raise web.seeother('/')
 
-class remove:
+class Remove:
 	def GET(self):
 		i = web.input()
 		n = db.delete('builds', where="task_id =" +  i.task_id)
 		raise web.seeother('/')
 
-class build:
+class Build:
 	def GET(self):
 		from datetime import datetime
 
@@ -66,7 +67,17 @@ class build:
 
 		raise web.seeother('/')
 
-class getbuild:
+class UpdateBuild:
+	def POST(self):
+		i = web.input()
+		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
+
+		if selectedBuilds:
+			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author)
+
+		raise web.seeother('/')
+
+class GetBuild:
 	def GET(self):
 		from datetime import datetime
 
