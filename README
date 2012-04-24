@@ -1,4 +1,4 @@
-Have to install following python packages:
+1. Have to install following python packages:
 
 Python packages:
 --webpy: easy_install web.py or pip install web.py
@@ -27,3 +27,6 @@ Server:
 Runtime:
 --python
 --Java
+
+2. Ignore the permission for git
+git config core.filemode false
