@@ -24,7 +24,12 @@ $def with (builds)
 	</form>
 	<div class="row">
 		<div class="span3 offset10">
-			<a href="http://honey-g:8080" target="_blank">Jobs on Jenkins</a>
+			<strong>Jobs Server: </strong><a href="http://honey-g:8080" target="_blank">Jenkins</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3 offset10">
+			<strong>Mantainer: </strong><a href="mailto:oyang@sugarcrm.com" target="_blank">Oliver Yang</a>
 		</div>
 	</div>
 
@@ -34,6 +39,7 @@ $def with (builds)
 		<th>Branch</th>
 		<th>Version</th>
 		<th>Latest Build</th>
+		<th>Status</th>
 		<th>Repository URL</th>
 		<th>Author</th>
 		<th>Actions</th>
@@ -45,6 +51,7 @@ $def with (builds)
 			<td><a href="../build${build.branch}">$build.branch</a></td>
 			<td>$build.version</td>
 			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
+			<td>$build.status</td>
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
@@ -67,30 +74,36 @@ $def with (builds)
 		<div class="modal-body">
 			<form class="well form-horizontal" method="post" action ="add" id="addBuildForm">
 				<fieldset>
-				<div class="control-group">
-					<label class="control-label" for="popView-repos">Repository URL:</label>
-					<div class="controls">
-						<input type="text" class="required" id="popView-repos" name="repos" />
+					<div class="control-group">
+						<label class="control-label" for="popView-repos">Repository URL:</label>
+						<div class="controls">
+							<input type="text" class="required" id="popView-repos" name="repos" />
+						</div>
 					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="popView-branch">Branch:</label>
-					<div class="controls">
-						<input type="text" id="popView-branch"  class="required" name="branch" />
+					<div class="control-group">
+						<label class="control-label" for="popView-branch">Branch:</label>
+						<div class="controls">
+							<input type="text" id="popView-branch"  class="required" name="branch" />
+						</div>
 					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="popView-version">Mapped Version:</label>
-					<div class="controls">
-						<input type="text" id="popView-version" class="required" name="version" />
+					<div class="control-group">
+						<label class="control-label" for="popView-version">Mapped Version:</label>
+						<div class="controls">
+							<input type="text" id="popView-version" class="required" name="version" />
+						</div>
 					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="popView-author">Author:</label>
-					<div class="controls">
-						<input type="text" id="popView-author" class="required" name="author" />
+					<div class="control-group">
+						<label class="control-label" for="popView-package_list">Packages:</label>
+						<div class="controls">
+							<input type="text" id="popView-package_list" class="required" name="package_list" />
+						</div>
 					</div>
-				</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-author">Author:</label>
+						<div class="controls">
+							<input type="text" id="popView-author" class="required" name="author" />
+						</div>
+					</div>
 				</fieldset>
 			</form>
 		</div>

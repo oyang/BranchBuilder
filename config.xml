@@ -16,6 +16,11 @@
           <description></description>
           <defaultValue>master</defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>package_list</name>
+          <description></description>
+          <defaultValue>ent</defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>

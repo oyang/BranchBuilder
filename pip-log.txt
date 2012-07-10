@@ -1,0 +1,571 @@
+Downloading/unpacking jenkinsapi
+  Getting page http://pypi.python.org/simple/jenkinsapi
+  URLs to search for versions for jenkinsapi:
+  * http://pypi.python.org/simple/jenkinsapi
+  Getting page https://github.com/salimfadhley/jenkinsapi
+  Analyzing links from page http://pypi.python.org/simple/jenkinsapi/
+    Skipping link http://pypi.python.org/packages/2.7/j/jenkinsapi/jenkinsapi-0.1.7-py2.7.egg#md5=2d6eba78d275aaf2e6dceb86e833bf88 (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.1.8.tar.gz#md5=efac96689fe5f8914163cbcdf2cb3af6 (from http://pypi.python.org/simple/jenkinsapi/), version: 0.1.8
+    Skipping link http://pypi.python.org/packages/2.7/j/jenkinsapi/jenkinsapi-0.1.8-py2.7.egg#md5=666926514706eec968d9388220123adb (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.1.6.tar.gz#md5=def101a7d33ddf5b0acbb9eacfb08359 (from http://pypi.python.org/simple/jenkinsapi/), version: 0.1.6
+    Found link http://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.1.7.tar.gz#md5=2c75a607f8f4956d7591e7b6a8e9e8ed (from http://pypi.python.org/simple/jenkinsapi/), version: 0.1.7
+    Found link http://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.1.9.tar.gz#md5=f34ae870a4c38b1c59fd29b611951a25 (from http://pypi.python.org/simple/jenkinsapi/), version: 0.1.9
+    Skipping link http://pypi.python.org/packages/2.7/j/jenkinsapi/jenkinsapi-0.1.9-py2.7.egg#md5=c14a211ae4017ba1f2b9fecea063fae1 (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .egg
+    Skipping link https://github.com/salimfadhley/jenkinsapi (from http://pypi.python.org/simple/jenkinsapi/); not a file
+    Skipping link mailto:sal@stodge.org (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .org
+    Skipping link mailto:ruslan.lutcenko@gmail.com (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .com
+    Skipping link http://packages.python.org/jenkinsapi/ (from http://pypi.python.org/simple/jenkinsapi/); not a file
+    Skipping link mailto:ramon@vanalteren.nl (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .nl
+    Skipping link mailto:jollychang@douban.com (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .com
+    Skipping link mailto:cleber@simplesconsultoria.com.br (from http://pypi.python.org/simple/jenkinsapi/); unknown archive format: .br
+  Analyzing links from page https://github.com/salimfadhley/jenkinsapi
+    Skipping link https://github.com/opensearch.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/fluidicon.png (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .png
+    Skipping link https://github.com/favicon.ico (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .ico
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github-96afeb00a635c71bd8d8349b1e78b4df6e10b551.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github2-abb1ff53e1e45f192dcab3e295f2e2ee5eb90995.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master.atom (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .atom
+    Skipping link https://github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/plans (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/explore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/features (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/blog (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/login?return_to=%2Fsalimfadhley%2Fjenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/watchers (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/network (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/pulls (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/graphs (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/languages/Python (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#readme (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pypi.python.org/pypi/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/zipball/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link git://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link https://github.com/salimfadhley/jenkinsapi/dismiss-tree-finder-help (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tags (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/downloads (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link javascript:; (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/gh-pages (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/jenkinsapi-0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/branches (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues/32 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/doc (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/d67765acf7bf530502dc77ad84b3eec4ce769b29 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/examples (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/5c7f0515f4263cec7057932d83896a9f51c1f7ba (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi_tests (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/bcfb0878e07a598aa4335b70d739c997a8f9d3d2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/.gitignore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/9af8f265593c768542ba2fcbf681724fa2f39929 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/jollychang (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/README.rst (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .rst
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/f12ef56713c3c06a6c6d833f653cb3ada304bdef (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/TODO (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/2ae5a0901b21d716b9bc2ea7e6f2129d10022946 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.properties (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .properties
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/344cb3b5cc8e1a51f1f907863a109ceae302c241 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/87091043ed3909b2c8a07ccf517b2c8230c2a3c3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/setup.py (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .py
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/a90d9dc4bb9f89c82eb877de6bee36920c3c215c (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id1 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#about-this-library (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#important-links (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#installation (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#project-authors (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://packages.python.org/jenkinsapi/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id4 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id5 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link mailto:sal%40stodge.org (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .org
+    Skipping link mailto:ramon%40vanalteren.nl (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .nl
+    Skipping link mailto:ruslan.lutcenko%40gmail.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link mailto:cleber%40simplesconsultoria.com.br (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .br
+    Skipping link mailto:jollychang%40douban.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link https://github.com/about (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/contact (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/training (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://enterprise.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://status.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://get.gaug.es/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://speakerdeck.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://gist.github.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mac.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://windows.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mobile.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://jobs.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://shop.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://octodex.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://help.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://developer.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://github.github.com/github-flavored-markdown/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pages.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/terms (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/privacy (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/security (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com%20 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspacecloud.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+  Analyzing links from page https://github.com/salimfadhley/jenkinsapi
+    Skipping link https://github.com/opensearch.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/fluidicon.png (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .png
+    Skipping link https://github.com/favicon.ico (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .ico
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github-96afeb00a635c71bd8d8349b1e78b4df6e10b551.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github2-abb1ff53e1e45f192dcab3e295f2e2ee5eb90995.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master.atom (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .atom
+    Skipping link https://github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/plans (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/explore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/features (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/blog (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/login?return_to=%2Fsalimfadhley%2Fjenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/watchers (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/network (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/pulls (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/graphs (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/languages/Python (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#readme (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pypi.python.org/pypi/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/zipball/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link git://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link https://github.com/salimfadhley/jenkinsapi/dismiss-tree-finder-help (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tags (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/downloads (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link javascript:; (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/gh-pages (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/jenkinsapi-0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/branches (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues/32 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/doc (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/d67765acf7bf530502dc77ad84b3eec4ce769b29 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/examples (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/5c7f0515f4263cec7057932d83896a9f51c1f7ba (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi_tests (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/bcfb0878e07a598aa4335b70d739c997a8f9d3d2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/.gitignore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/9af8f265593c768542ba2fcbf681724fa2f39929 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/jollychang (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/README.rst (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .rst
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/f12ef56713c3c06a6c6d833f653cb3ada304bdef (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/TODO (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/2ae5a0901b21d716b9bc2ea7e6f2129d10022946 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.properties (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .properties
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/344cb3b5cc8e1a51f1f907863a109ceae302c241 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/87091043ed3909b2c8a07ccf517b2c8230c2a3c3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/setup.py (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .py
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/a90d9dc4bb9f89c82eb877de6bee36920c3c215c (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id1 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#about-this-library (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#important-links (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#installation (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#project-authors (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://packages.python.org/jenkinsapi/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id4 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id5 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link mailto:sal%40stodge.org (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .org
+    Skipping link mailto:ramon%40vanalteren.nl (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .nl
+    Skipping link mailto:ruslan.lutcenko%40gmail.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link mailto:cleber%40simplesconsultoria.com.br (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .br
+    Skipping link mailto:jollychang%40douban.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link https://github.com/about (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/contact (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/training (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://enterprise.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://status.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://get.gaug.es/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://speakerdeck.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://gist.github.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mac.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://windows.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mobile.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://jobs.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://shop.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://octodex.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://help.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://developer.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://github.github.com/github-flavored-markdown/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pages.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/terms (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/privacy (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/security (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com%20 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspacecloud.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+  Analyzing links from page https://github.com/salimfadhley/jenkinsapi
+    Skipping link https://github.com/opensearch.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/fluidicon.png (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .png
+    Skipping link https://github.com/favicon.ico (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .ico
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github-96afeb00a635c71bd8d8349b1e78b4df6e10b551.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github2-abb1ff53e1e45f192dcab3e295f2e2ee5eb90995.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master.atom (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .atom
+    Skipping link https://github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/plans (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/explore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/features (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/blog (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/login?return_to=%2Fsalimfadhley%2Fjenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/watchers (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/network (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/pulls (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/graphs (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/languages/Python (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#readme (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pypi.python.org/pypi/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/zipball/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link git://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link https://github.com/salimfadhley/jenkinsapi/dismiss-tree-finder-help (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tags (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/downloads (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link javascript:; (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/gh-pages (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/jenkinsapi-0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/branches (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues/32 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/doc (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/d67765acf7bf530502dc77ad84b3eec4ce769b29 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/examples (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/5c7f0515f4263cec7057932d83896a9f51c1f7ba (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi_tests (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/bcfb0878e07a598aa4335b70d739c997a8f9d3d2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/.gitignore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/9af8f265593c768542ba2fcbf681724fa2f39929 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/jollychang (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/README.rst (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .rst
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/f12ef56713c3c06a6c6d833f653cb3ada304bdef (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/TODO (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/2ae5a0901b21d716b9bc2ea7e6f2129d10022946 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.properties (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .properties
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/344cb3b5cc8e1a51f1f907863a109ceae302c241 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/87091043ed3909b2c8a07ccf517b2c8230c2a3c3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/setup.py (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .py
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/a90d9dc4bb9f89c82eb877de6bee36920c3c215c (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id1 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#about-this-library (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#important-links (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#installation (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#project-authors (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://packages.python.org/jenkinsapi/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id4 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id5 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link mailto:sal%40stodge.org (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .org
+    Skipping link mailto:ramon%40vanalteren.nl (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .nl
+    Skipping link mailto:ruslan.lutcenko%40gmail.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link mailto:cleber%40simplesconsultoria.com.br (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .br
+    Skipping link mailto:jollychang%40douban.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link https://github.com/about (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/contact (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/training (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://enterprise.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://status.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://get.gaug.es/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://speakerdeck.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://gist.github.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mac.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://windows.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mobile.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://jobs.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://shop.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://octodex.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://help.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://developer.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://github.github.com/github-flavored-markdown/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pages.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/terms (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/privacy (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/security (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com%20 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspacecloud.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+  Analyzing links from page https://github.com/salimfadhley/jenkinsapi
+    Skipping link https://github.com/opensearch.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/fluidicon.png (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .png
+    Skipping link https://github.com/favicon.ico (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .ico
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github-96afeb00a635c71bd8d8349b1e78b4df6e10b551.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://a248.e.akamai.net/assets.github.com/stylesheets/bundles/github2-abb1ff53e1e45f192dcab3e295f2e2ee5eb90995.css (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .css
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master.atom (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .atom
+    Skipping link https://github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/plans (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/explore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/features (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/blog (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/login?return_to=%2Fsalimfadhley%2Fjenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/watchers (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/network (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/pulls (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/graphs (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/languages/Python (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#readme (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pypi.python.org/pypi/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/zipball/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link git://github.com/salimfadhley/jenkinsapi.git (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .git
+    Skipping link https://github.com/salimfadhley/jenkinsapi/dismiss-tree-finder-help (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tags (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/downloads (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link javascript:; (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/gh-pages (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/jenkinsapi-0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/0.1 (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .1
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/branches (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/issues/32 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commits/master/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/doc (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/d67765acf7bf530502dc77ad84b3eec4ce769b29 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/examples (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/5c7f0515f4263cec7057932d83896a9f51c1f7ba (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/ramonvanalteren (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/tree/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/jenkinsapi_tests (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/bcfb0878e07a598aa4335b70d739c997a8f9d3d2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/.gitignore (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/9af8f265593c768542ba2fcbf681724fa2f39929 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/jollychang (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/README.rst (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .rst
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/f12ef56713c3c06a6c6d833f653cb3ada304bdef (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/TODO (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/2ae5a0901b21d716b9bc2ea7e6f2129d10022946 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.properties (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .properties
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/344cb3b5cc8e1a51f1f907863a109ceae302c241 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/build.xml (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .xml
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/87091043ed3909b2c8a07ccf517b2c8230c2a3c3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi/blob/e17bcea195a7f8b08b186c35c0a6d25bd7acfd71/setup.py (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .py
+    Skipping link https://github.com/salimfadhley/jenkinsapi/commit/a90d9dc4bb9f89c82eb877de6bee36920c3c215c (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#jenkinsapi (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id1 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#about-this-library (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#important-links (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#installation (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#project-authors (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id2 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id3 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://packages.python.org/jenkinsapi/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id4 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/salimfadhley/jenkinsapi#id5 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link mailto:sal%40stodge.org (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .org
+    Skipping link mailto:ramon%40vanalteren.nl (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .nl
+    Skipping link mailto:ruslan.lutcenko%40gmail.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link mailto:cleber%40simplesconsultoria.com.br (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .br
+    Skipping link mailto:jollychang%40douban.com (from https://github.com/salimfadhley/jenkinsapi); unknown archive format: .com
+    Skipping link https://github.com/about (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/contact (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/training (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://enterprise.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://status.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://get.gaug.es/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://speakerdeck.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://gist.github.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mac.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://windows.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://mobile.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://jobs.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://shop.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://octodex.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://help.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://developer.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://github.github.com/github-flavored-markdown/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://pages.github.com/ (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/terms (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/site/privacy (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link https://github.com/security (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspace.com%20 (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Skipping link http://www.rackspacecloud.com (from https://github.com/salimfadhley/jenkinsapi); not a file
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/GitHub_Logos.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+    Could not parse version from link: http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi)
+    Skipping link http://github-media-downloads.s3.amazonaws.com/Octocats.zip (from https://github.com/salimfadhley/jenkinsapi); wrong project name (not jenkinsapi)
+  Using version 0.1.9 (newest of versions: 0.1.9, 0.1.8, 0.1.7, 0.1.6)
+  Downloading jenkinsapi-0.1.9.tar.gz
+  Downloading from URL http://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.1.9.tar.gz#md5=f34ae870a4c38b1c59fd29b611951a25 (from http://pypi.python.org/simple/jenkinsapi/)
+  Running setup.py egg_info for package jenkinsapi
+    running egg_info
+    creating pip-egg-info/jenkinsapi.egg-info
+    writing pip-egg-info/jenkinsapi.egg-info/PKG-INFO
+    writing top-level names to pip-egg-info/jenkinsapi.egg-info/top_level.txt
+    writing dependency_links to pip-egg-info/jenkinsapi.egg-info/dependency_links.txt
+    writing entry points to pip-egg-info/jenkinsapi.egg-info/entry_points.txt
+    writing manifest file 'pip-egg-info/jenkinsapi.egg-info/SOURCES.txt'
+    warning: manifest_maker: standard file '-c' not found
+    reading manifest file 'pip-egg-info/jenkinsapi.egg-info/SOURCES.txt'
+    writing manifest file 'pip-egg-info/jenkinsapi.egg-info/SOURCES.txt'
+  Source in ./build/jenkinsapi has version 0.1.9, which satisfies requirement jenkinsapi
+Installing collected packages: jenkinsapi
+  Running setup.py install for jenkinsapi
+    Running command /usr/bin/python -c "import setuptools; __file__='/var/www/BranchBuilder/build/jenkinsapi/setup.py'; execfile('/var/www/BranchBuilder/build/jenkinsapi/setup.py')" install --single-version-externally-managed --record /tmp/pip-IRjsyj-record/install-record.txt --install-headers /var/www/BranchBuilder/lib/include
+    running install
+    running build
+    running build_py
+    creating build
+    creating build/lib.linux-i686-2.6
+    creating build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/constants.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/node.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/job.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/view.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/fingerprint.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/config.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/result.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/api.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/jenkinsbase.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/jenkins.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/exceptions.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/result_set.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/artifact.py -> build/lib.linux-i686-2.6/jenkinsapi
+    copying jenkinsapi/build.py -> build/lib.linux-i686-2.6/jenkinsapi
+    creating build/lib.linux-i686-2.6/jenkinsapi/utils
+    copying jenkinsapi/utils/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+    copying jenkinsapi/utils/retry.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+    copying jenkinsapi/utils/urlopener.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+    creating build/lib.linux-i686-2.6/jenkinsapi/command_line
+    copying jenkinsapi/command_line/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi/command_line
+    copying jenkinsapi/command_line/jenkins_invoke.py -> build/lib.linux-i686-2.6/jenkinsapi/command_line
+    running install_lib
+    creating /usr/local/lib/python2.6/dist-packages/jenkinsapi
+    error: could not create '/usr/local/lib/python2.6/dist-packages/jenkinsapi': Permission denied
+    Complete output from command /usr/bin/python -c "import setuptools; __file__='/var/www/BranchBuilder/build/jenkinsapi/setup.py'; execfile('/var/www/BranchBuilder/build/jenkinsapi/setup.py')" install --single-version-externally-managed --record /tmp/pip-IRjsyj-record/install-record.txt --install-headers /var/www/BranchBuilder/lib/include:
+    running install
+
+running build
+
+running build_py
+
+creating build
+
+creating build/lib.linux-i686-2.6
+
+creating build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/constants.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/node.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/job.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/view.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/fingerprint.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/config.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/result.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/api.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/jenkinsbase.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/jenkins.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/exceptions.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/result_set.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/artifact.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+copying jenkinsapi/build.py -> build/lib.linux-i686-2.6/jenkinsapi
+
+creating build/lib.linux-i686-2.6/jenkinsapi/utils
+
+copying jenkinsapi/utils/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+
+copying jenkinsapi/utils/retry.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+
+copying jenkinsapi/utils/urlopener.py -> build/lib.linux-i686-2.6/jenkinsapi/utils
+
+creating build/lib.linux-i686-2.6/jenkinsapi/command_line
+
+copying jenkinsapi/command_line/__init__.py -> build/lib.linux-i686-2.6/jenkinsapi/command_line
+
+copying jenkinsapi/command_line/jenkins_invoke.py -> build/lib.linux-i686-2.6/jenkinsapi/command_line
+
+running install_lib
+
+creating /usr/local/lib/python2.6/dist-packages/jenkinsapi
+
+error: could not create '/usr/local/lib/python2.6/dist-packages/jenkinsapi': Permission denied
+
+----------------------------------------
+Command /usr/bin/python -c "import setuptools; __file__='/var/www/BranchBuilder/build/jenkinsapi/setup.py'; execfile('/var/www/BranchBuilder/build/jenkinsapi/setup.py')" install --single-version-externally-managed --record /tmp/pip-IRjsyj-record/install-record.txt --install-headers /var/www/BranchBuilder/lib/include failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 252, in main
+    self.run(options, args)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 410, in run
+    requirement_set.install(install_options)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 2017, in install
+    requirement.install(install_options)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 1515, in install
+    cwd=self.source_dir, filter_stdout=self._filter_install, show_stdout=False)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 3543, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command /usr/bin/python -c "import setuptools; __file__='/var/www/BranchBuilder/build/jenkinsapi/setup.py'; execfile('/var/www/BranchBuilder/build/jenkinsapi/setup.py')" install --single-version-externally-managed --record /tmp/pip-IRjsyj-record/install-record.txt --install-headers /var/www/BranchBuilder/lib/include failed with error code 1

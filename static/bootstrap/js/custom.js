@@ -10,12 +10,13 @@ $(document).ready(function(){
 						$('#popView-branch').val(buildObj['branch']); 
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
+						$('#popView-package_list').val(buildObj['package_list']);
 
 						//Set selectAction as editBuild
 						$('#popView-selectAction').val('duplicateBuild');
 
 						//Update the popup view title and build ID
-						$('#popView-title').text('Duplicate an existing build');
+						$('#popView-title').text('Duplicate build -- Task ID ' + task_id[1]);
 						$('#popView-selectBuildID').val(task_id[1]);
 					}
 				);
@@ -33,12 +34,13 @@ $(document).ready(function(){
 						$('#popView-branch').val(buildObj['branch']); 
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
+						$('#popView-package_list').val(buildObj['package_list']);
 						
 						//Set selectAction as editBuild
 						$('#popView-selectAction').val('editBuild');
 
 						//Update the popup view title and build ID
-						$('#popView-title').text('Edit an existing build');
+						$('#popView-title').text('Edit build -- Task ID ' + task_id[1]);
 						$('#popView-selectBuildID').val(task_id[1]);
 					}
 				);
@@ -53,6 +55,7 @@ $(document).ready(function(){
 					 "repos": $('#popView-repos').val(),
 					 "branch": $('#popView-branch').val(), 
 					 "version": $('#popView-version').val(), 
+					 "package_list": $('#popView-package_list').val(),
 					 "author": $('#popView-author').val()
 					 },
 
@@ -69,6 +72,7 @@ $(document).ready(function(){
 					 "repos": $('#popView-repos').val(),
 					 "branch": $('#popView-branch').val(), 
 					 "version": $('#popView-version').val(), 
+					 "package_list": $('#popView-package_list').val(),
 					 "author": $('#popView-author').val()
 					 },
 
