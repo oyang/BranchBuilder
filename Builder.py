@@ -90,7 +90,7 @@ class Build:
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
 		for build in  selectedBuilds:
-			taskBuilder.add_build( repos=build.repos, branch=build.branch, version=build.version)
+			taskBuilder.add_build( repos=build.repos, branch=build.branch, version=build.version, package_list=build.package_list)
 			
 
 			#TODO
@@ -158,7 +158,7 @@ class TaskBuilder:
 		self.set_new_config(**params)
 
 		self.j.enable_job(self.jobName)
-		self.j.build_job(self.jobName, {'branch': params['branch'], 'version': params['version'], 'packages': params['pacakge_list']})
+		self.j.build_job(self.jobName, {'branch': params['branch'], 'version': params['version'], 'package_list': params['package_list']})
 	
 	def set_job_name(self,**params):
 		buildUtil = BuildUtil()
