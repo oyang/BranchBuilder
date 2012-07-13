@@ -1,4 +1,5 @@
 $(document).ready(function(){
 		$("#addBuildForm").validate();
-	$('#duplicateJob').modal({keyboard: true, show: false});
-		});
+		$("#actionBuildForm").validate();
+		$("#sendMailForm").validate();
+	});

@@ -16,9 +16,18 @@ urls = (
 	'/getbuild', 'GetBuild',
 	'/updatebuild', 'UpdateBuild',
 	'/remove', 'Remove',
+	'/sendmail', 'SendMailToAdmin',
 )
 
+web.config.smtp_server = 'localhost'
+web.config.smtp_port = 25
+#web.config.smtp_username = 'oliver.sugar@gmail.com'
+#web.config.smtp_password = 'sugarcrm'
+#web.config.smtp_starttls = True
+
 app = web.application(urls, globals())
+
+
 db = web.database(dbn='sqlite', db='branchBuilder')
 
 class Index:
@@ -189,5 +198,11 @@ class BuildUtil:
 	def get_job_name(self, **params):
 		return 'Build' + '_' + self.get_md5(params['repos'])
 		
+class SendMailToAdmin:
+	def POST(self):
+		i = web.input()
+		web.sendmail(i.from_address, 'oyang@sugarcrm.com', i.subject, i.message)
+
+
 if __name__ == '__main__':
 	app.run()

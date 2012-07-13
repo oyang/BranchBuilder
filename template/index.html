@@ -29,7 +29,7 @@ $def with (builds)
 	</div>
 	<div class="row">
 		<div class="span3 offset10">
-			<strong>Mantainer: </strong><a href="mailto:oyang@sugarcrm.com" target="_blank">Oliver Yang</a>
+			<strong>Contact Admin: </strong><a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Oliver Yang</a>
 		</div>
 	</div>
 
@@ -72,7 +72,7 @@ $def with (builds)
 			<input type="hidden" id="popView-selectBuildID" value="" />
 		</div>
 		<div class="modal-body">
-			<form class="well form-horizontal" method="post" action ="add" id="addBuildForm">
+			<form class="well form-horizontal" method="post" action ="add" id="actionBuildForm">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="popView-repos">Repository URL:</label>
@@ -112,6 +112,48 @@ $def with (builds)
 			<a class="btn btn-primary" id="popView-Save" href="#">Save</a>
 		</div>
 	</div>		
+	<div class="modal hide fade" id="popupViewMail" >
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal" >x</a>
+			<h3 id="popView-title">Send email to admin!</h3>
+			<input type="hidden" id="popView-selectAction" value="" />
+			<input type="hidden" id="popView-selectBuildID" value="" />
+		</div>
+		<div class="modal-body">
+			<form class="well form-horizontal" method="post" action ="sendmail" id="sendMailForm">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailFrom">From: </label>
+						<div class="controls">
+							<input type="text" class="required email" id="popView-MailFrom" name="from_address" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailTo">To: </label>
+						<div class="controls">
+							<input readonly="readonly" type="text" class="required" id="popView-MailTo" name="to" value="oyang@sugarcrm.com" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailSubject">Subject: </label>
+						<div class="controls">
+							<input type="text" id="popView-MailSubject"  class="required" name="subject" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailMessage">Message: </label>
+						<div class="controls">
+							<textarea id="popView-MailMessage" rows="9" cols="30"  class="required input-xlarge" name="message" ></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a class="btn" href="#" data-dismiss="modal">Cancel</a>
+			<a class="btn btn-primary" id="popView-Send" href="#">Send</a>
+		</div>
+	</div>
     <script src="/static/bootstrap/js/jquery.min.js"></script>
     <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
     <script src="/static/bootstrap/js/validate.js"></script>
