@@ -1,4 +1,6 @@
 $(document).ready(function(){
+		$('#package-help-info').popover({'title': 'Package info', 'content': 'Package can be "ult,ent,corp,pro,com"'});
+
 		$('a[name="duplicateBuild"]').each(function(i, domEle){
 			$(domEle).click(function(){
 				var task_id = $(domEle).attr("id").split("-");
@@ -11,6 +13,9 @@ $(document).ready(function(){
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
 						$('#popView-package_list').val(buildObj['package_list']);
+						
+						//Hide status input textfield
+						$('#popView-control-status').hide();
 
 						//Set selectAction as editBuild
 						$('#popView-selectAction').val('duplicateBuild');
@@ -36,6 +41,13 @@ $(document).ready(function(){
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
 						$('#popView-package_list').val(buildObj['package_list']);
+
+						//User can update status by entering password
+						//Show status input textfield
+						$('#popView-control-status').show();
+						$('#popView-status').val(buildObj['status']);
+						$('#popView-status').attr('readonly', 'readonly');
+						$('#popView-edit-status').text('edit');
 						
 						//Set selectAction as editBuild
 						$('#popView-selectAction').val('editBuild');
@@ -50,7 +62,7 @@ $(document).ready(function(){
 	
 		$('#popView-Save').click(function(){
 			//Check form validate firstly
-			if (! $('#actionBuildForm').valid()){
+			if (! $('#popView-actionBuildForm').valid()){
 				return false;
 			}
 
@@ -79,7 +91,8 @@ $(document).ready(function(){
 					 "branch": $('#popView-branch').val(), 
 					 "version": $('#popView-version').val(), 
 					 "package_list": $('#popView-package_list').val(),
-					 "author": $('#popView-author').val()
+					 "author": $('#popView-author').val(),
+					 "status": $('#popView-status').val()
 					 },
 
 					 function(data){
@@ -88,6 +101,16 @@ $(document).ready(function(){
 						location.reload();
 					 }
 				);
+			}
+		});
+
+		$('#popView-edit-status').click(function(){
+			if ($(this).text() == 'edit') {
+				$('#popView-status').removeAttr('readonly');
+				$('#popView-edit-status').text('cancel');
+			} else if ($(this).text() == 'cancel'){
+				$('#popView-status').attr('readonly', 'readonly');
+				$('#popView-edit-status').text('edit');
 			}
 		});
 
@@ -112,5 +135,31 @@ $(document).ready(function(){
 				);
 			}
 		});
+	
+		setInterval(function(){
+			$.get(
+				'cron',
+				function(data){
+					var data = jQuery.parseJSON(data);
+
+					if (data){
+						for (x in data) {
+							if (typeof x.task_id != 'undefined'){
+								console.log(x.status);
+								$('#build_status_' + x.task_id.toString()).text(x.status)
+								$('#build_status_' + x.task_id.toString()).attr("class", x.status)
+							}
+						}
+					} else {
+						$('td[name="list_status"]').each( function(domE){
+							$(domE).text('Available');						
+							$(domE).removeAttr('class');						
+						});
+					}
+					
+				}
+			);
+
+		}, 5000);
 		
 	});

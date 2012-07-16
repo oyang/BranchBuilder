@@ -1,5 +1,5 @@
 $(document).ready(function(){
 		$("#addBuildForm").validate();
-		$("#actionBuildForm").validate();
-		$("#sendMailForm").validate();
+		$("#popView-actionBuildForm").validate();
+		$("#popView-sendMailForm").validate();
 	});

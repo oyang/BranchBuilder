@@ -12,6 +12,7 @@ $def with (builds)
 
     <!-- Le styles -->
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/custom.css" rel="stylesheet">
 </head>
 <body>
 <div id="container" class="container">
@@ -51,7 +52,7 @@ $def with (builds)
 			<td><a href="../build${build.branch}">$build.branch</a></td>
 			<td>$build.version</td>
 			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-			<td>$build.status</td>
+			<td name="list_status" id="build_status_${build.task_id}">$build.status</td>
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
@@ -72,7 +73,7 @@ $def with (builds)
 			<input type="hidden" id="popView-selectBuildID" value="" />
 		</div>
 		<div class="modal-body">
-			<form class="well form-horizontal" method="post" action ="add" id="actionBuildForm">
+			<form class="well form-horizontal" method="post" action ="add" id="popView-actionBuildForm">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="popView-repos">Repository URL:</label>
@@ -95,13 +96,19 @@ $def with (builds)
 					<div class="control-group">
 						<label class="control-label" for="popView-package_list">Packages:</label>
 						<div class="controls">
-							<input type="text" id="popView-package_list" class="required" name="package_list" />
+							<input type="text" id="popView-package_list" class="required" name="package_list" /><a href="#" id="package-help-info"><i class="icon-info-sign"></i></a>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="popView-author">Author:</label>
 						<div class="controls">
 							<input type="text" id="popView-author" class="required" name="author" />
+						</div>
+					</div>
+					<div class="control-group" id="popView-control-status">
+						<label class="control-label" for="popView-status">Status:</label>
+						<div class="controls">
+							<input type="text" readonly="readonly" id="popView-status" class="required" name="author" /><a id="popView-edit-status" href="#">edit</a>
 						</div>
 					</div>
 				</fieldset>
@@ -120,18 +127,18 @@ $def with (builds)
 			<input type="hidden" id="popView-selectBuildID" value="" />
 		</div>
 		<div class="modal-body">
-			<form class="well form-horizontal" method="post" action ="sendmail" id="sendMailForm">
+			<form class="well form-horizontal" method="post" action ="sendmail" id="popView-sendMailForm">
 				<fieldset>
-					<div class="control-group">
-						<label class="control-label" for="popView-MailFrom">From: </label>
-						<div class="controls">
-							<input type="text" class="required email" id="popView-MailFrom" name="from_address" />
-						</div>
-					</div>
 					<div class="control-group">
 						<label class="control-label" for="popView-MailTo">To: </label>
 						<div class="controls">
 							<input readonly="readonly" type="text" class="required" id="popView-MailTo" name="to" value="oyang@sugarcrm.com" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailFrom">From: </label>
+						<div class="controls">
+							<input type="text" class="required email" id="popView-MailFrom" name="from_address" />
 						</div>
 					</div>
 					<div class="control-group">
@@ -158,5 +165,7 @@ $def with (builds)
     <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
     <script src="/static/bootstrap/js/validate.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
     <script src="/static/bootstrap/js/custom.js"></script>
 </body></html>
