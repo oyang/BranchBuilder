@@ -19,6 +19,8 @@ urls = (
 	'/remove', 'Remove',
 	'/sendmail', 'SendMailToAdmin',
 	'/cron', 'BuildCron',
+	'/fullview', 'FullView',
+	'/logger', 'Logger',
 )
 
 web.config.smtp_server = 'localhost'
@@ -68,11 +70,24 @@ class Add:
 						status="Available", 
 						package_list="ent")
 
+			date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+			f = open("logger", "a")
+			f.write(date_now + " [Add Action:]"  +  "," + i.repos + "," + i.branch + "," + i.version + "," + i.author + "," + "ent" + "," + "Available" + "\n")
+			f.close()
+
 			raise web.seeother('/')
 
 class Remove:
 	def GET(self):
 		i = web.input()
+		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+		f = open("logger", "a")
+		for m in db.select('builds', where="task_id =" +  i.task_id):
+			f.write(date_now + " [Delete Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + m.status + "\n")
+		f.close()
+
 		n = db.delete('builds', where="task_id =" +  i.task_id)
 		raise web.seeother('/')
 
@@ -123,10 +138,25 @@ class Build:
 class UpdateBuild:
 	def POST(self):
 		i = web.input()
+		#m = db.select('builds', where="task_id =" +  i.task_id)
+		#m = [{"task_id": k.task_id, "repos": k.repos, "branch": k.branch, "version": k.version, "author": k.author, "package_list": k.package_list, "status": k.status }]
+		
+		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		#Before update
+		f = open("logger", "w+")
+		for m in db.select('builds', where="task_id =" +  i.task_id):
+			f.write(date_now + " [Before Update Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + m.status + "\n")
+		
 		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
-
 		if selectedBuilds:
 			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author, package_list=i.package_list, status=i.status)
+
+			#After update
+			for k in db.select('builds', where="task_id =" +  i.task_id):
+				f.write(date_now + " [After Update Action:]" + str(k.task_id) + "," + k.repos + "," + k.branch + "," + k.version + "," + k.author + "," + k.package_list + "," + k.status + "\n")
+
+		f.close()
+		#End logger
 
 		raise web.seeother('/')
 
@@ -185,7 +215,6 @@ class BuildCron:
 				if self.check_building_job():
 					pass
 					#print 'hello'
-					#print 'hello ' , self.check_building_job()
 				else:
 					#update build_status and remove the running flag
 					db.delete('builds_status', where='task_id=' + str(lowest_build["task_id"]))
@@ -194,10 +223,9 @@ class BuildCron:
 					db.update('builds', where='task_id=' + str(lowest_build["task_id"]), status='Available')
 			elif lowest_build["status"] == 'InQueue':
 				#Assume Jenkins is avaliable for building
+				RunBuild().run(lowest_build["task_id"])
 				db.update('builds_status', where='task_id=' + str(lowest_build["task_id"]), status='Running')
 
-				#app.request('/runbuild', method="GET", task_id= str(lowest_build.task_id ))
-				RunBuild().run(lowest_build["task_id"])
 			else:
 				#print 'false with invalid status'
 				pass
@@ -222,11 +250,32 @@ class BuildCron:
 			return json.JSONEncoder().encode(job_list)
 		else:
 			return '{}'
+class FullView:
+	def POST(self):
+		i = web.input()
+		builds = db.select('builds', where="task_id =" +  i.task_id)
+
+		return render.view(builds)
+
+
+	def GET(self):
+		i = web.input()
+		builds = db.select('builds', where="task_id =" +  i.task_id)
+
+		return render.view(builds)
 
 class SendMailToAdmin:
 	def POST(self):
 		i = web.input()
 		web.sendmail(i.from_address, 'oyang@sugarcrm.com', 'BranchBuilder - ' + i.subject, i.message)
+
+class Logger:
+	def GET(self):
+		web.header('Content-type', 'text/plain')
+		f = open("logger", "r")
+		return f.read()
+		
+		
 
 
 if __name__ == '__main__':

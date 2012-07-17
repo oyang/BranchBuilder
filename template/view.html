@@ -23,12 +23,6 @@ $def with (builds)
 		<li class="active">
 			<a href="/" >Home</a>
 		</li>
-		<li >
-			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
-		</li>
-		<li >
-			<a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Contact admin</a>
-		</li>
 	</ul>
     </div>
   </div>
@@ -41,37 +35,64 @@ $def with (builds)
 		<input type="text" id="add-author" class="required" name="author" placeholder="Author" />
 		<button type="submit" class="btn btn-primary">Add</button>
 	</form>
+	<div class="row">
+		<div class="span3 offset10">
+			<strong>Jobs Server: </strong><a href="http://honey-g:8080" target="_blank">Jenkins</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3 offset10">
+			<strong>Contact Admin: </strong><a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Oliver Yang</a>
+		</div>
+	</div>
+	<form class="well form-horizontal" method="post" action="update">
+			<fieldset>
+				$for build in builds:
+					<div class="control-group">
+						<label class="control-label" for="popView-repos">Repository URL:</label>
+						<div class="controls">
+							<input type="text" class="required" id="popView-repos" name="repos" value=$build.repos />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-branch">Branch:</label>
+						<div class="controls">
+							<input type="text" id="popView-branch"  class="required" name="branch" value=$build.branch />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-version">Mapped Version:</label>
+						<div class="controls">
+							<input type="text" id="popView-version" class="required" name="version" value=$build.version />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-package_list">Packages:</label>
+						<div class="controls">
+							<input type="text" id="popView-package_list" class="required" name="package_list" value=$build.package_list /><a href="#" id="package-help-info"><i class="icon-info-sign"></i></a>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-author">Author:</label>
+						<div class="controls">
+							<input type="text" id="popView-author" class="required" name="author" value=$build.author />
+						</div>
+					</div>
+					<div class="control-group" id="popView-control-status">
+						<label class="control-label" for="popView-status">Status:</label>
+						<div class="controls">
+							<input type="text" readonly="readonly" id="popView-status" class="required" name="author" value=$build.status /><a id="popView-edit-status" href="#">edit</a>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-author">Build options:</label>
+						<div class="controls">
+							<textarea type="text" id="popView-author" class="required" name="author" ></textarea>
+						</div>
+					</div>
+		</fieldset>
+	</form>
 
-	<table class="table table-condensed">
-	<thead>
-		<tr>
-		<th>Branch</th>
-		<th>Version</th>
-		<th>Latest Build</th>
-		<th>Status</th>
-		<th>Repository URL</th>
-		<th>Author</th>
-		<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-	$for build in builds:
-		<tr id="t$build.task_id">
-			<td><a href="../build${build.branch}">$build.branch</a></td>
-			<td>$build.version</td>
-			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-			<td name="list_status" id="build_status_${build.task_id}">$build.status</td>
-			<td>$build.repos</td>
-			<td>$build.author</td>
-			<td>
-			<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Build</a>
-			<a data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" >Edit</a>
-			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
-			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
-			</td>
-		</tr>
-	</tbody>
-	</table>
 </div>
 	<div class="modal hide fade" id="popupViewBuild" >
 		<div class="modal-header">
