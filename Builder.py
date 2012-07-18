@@ -21,6 +21,7 @@ urls = (
 	'/cron', 'BuildCron',
 	'/fullview', 'FullView',
 	'/logger', 'Logger',
+	'/buildconfig', 'Build.app_BuildConfig',
 )
 
 web.config.smtp_server = 'localhost'
