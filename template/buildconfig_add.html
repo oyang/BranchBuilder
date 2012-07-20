@@ -1,0 +1,131 @@
+$def with (build_config)
+
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://twitter.github.com/bootstrap/examples/starter-template.html -->
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Branch Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/codemirror/lib/codemirror.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/custom.css" rel="stylesheet">
+</head>
+<body style="padding: 50px">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+	<a class="brand" href="/" >BranchBuilder</a>
+	<ul class="nav" >
+		<li class="active">
+			<a href="/" >Home</a>
+		</li>
+		<li >
+			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">Build config</a>
+        </li>
+        <li>
+          <a id="upgrade_confi" href="#">Upgrade config</a>
+        </li>
+      </ul>
+		</li>
+	</ul>
+	<ul class="nav pull-right">
+		<li class="divider-vertical" ></li>
+		<li >
+			<a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Contact admin</a>
+		</li>
+	</ul>
+    </div>
+  </div>
+</div>
+<div class="row"></div>
+<div id="container" class="container">
+        <form method="post" action="buildconfigupdate" id="buildconfig_update_form">
+		<textarea id="code_area"  name="code_mirror" >${build_config["build_config_content"]}</textarea>
+		<!--textarea id="code_area"  name="code_mirror" ></textarea-->
+		<button id="buildconfig_update_cancel"  class="btn pull-right">Cancel</button>
+		<button id="buildconfig_update_add"  type="submit" class="btn btn-primary pull-right">Add</button>
+		<input type="text" id="add-author" class="required pull-right" name="author" placeholder="Author" />
+		<input type="text" id="add-version" class="required pull-right" name="version" placeholder="Mapped Version" />
+	</form>
+</div>
+	<div class="modal hide fade" id="popupViewMail" >
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal" >x</a>
+			<h3 id="popView-title">Send email to admin!</h3>
+			<input type="hidden" id="popView-selectAction" value="" />
+			<input type="hidden" id="popView-selectBuildID" value="" />
+		</div>
+		<div class="modal-body">
+			<form class="well form-horizontal" method="post" action ="sendmail" id="popView-sendMailForm">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailTo">To: </label>
+						<div class="controls">
+							<input readonly="readonly" type="text" class="required" id="popView-MailTo" name="to" value="oyang@sugarcrm.com" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailFrom">From: </label>
+						<div class="controls">
+							<input type="text" class="required email" id="popView-MailFrom" name="from_address" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailSubject">Subject: </label>
+						<div class="controls">
+							<input type="text" id="popView-MailSubject"  class="required" name="subject" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-MailMessage">Message: </label>
+						<div class="controls">
+							<textarea id="popView-MailMessage" rows="9" cols="30"  class="required input-xlarge" name="message" ></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a class="btn" href="#" data-dismiss="modal">Cancel</a>
+			<a class="btn btn-primary" id="popView-Send" href="#">Send</a>
+		</div>
+	</div>
+    <script src="/static/bootstrap/js/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="/static/bootstrap/js/validate.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+     <script src="/static/codemirror/lib/codemirror.js"></script>
+    <script src="/static/codemirror/mode/xml/xml.js"></script>
+    <script src="/static/codemirror/mode/javascript/javascript.js"></script>
+    <script src="/static/codemirror/mode/clike/clike.js"></script>
+    <script src="/static/codemirror/mode/css/css.js"></script>
+    <script src="/static/codemirror/mode/php/php.js"></script>
+   <script type="text/javascript">
+      window.onload = function(){
+        var editor = CodeMirror.fromTextArea(document.getElementById("code_area"), {
+            mode:"text/x-php",
+            indentUnit: 2,
+            lineNumbers: true,
+            matchBrackets: true,
+	    lineWrapping: true
+          });
+      }
+    </script>
+
+    <!--
+    <script src="/static/bootstrap/js/custom.js"></script>
+    -->
+</body></html>

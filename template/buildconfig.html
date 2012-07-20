@@ -1,4 +1,4 @@
-$def with (builds)
+$def with (build_configs)
 
 <!DOCTYPE html>
 <!-- saved from url=(0066)http://twitter.github.com/bootstrap/examples/starter-template.html -->
@@ -14,7 +14,7 @@ $def with (builds)
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/static/bootstrap/css/custom.css" rel="stylesheet">
 </head>
-<body style="padding: 50px">
+<body data-offset="50" style="padding: 50px">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -27,15 +27,15 @@ $def with (builds)
 			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
 		</li>
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="#">Build config</a>
-				</li>
-				<li>
-					<a id="upgrade_config" href="buildconfig">Upgrade config</a>
-				</li>
-			</ul>
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
+		<ul class="dropdown-menu">
+		<li>
+		<a href="#">Build config</a>
+		</li>
+		<li>
+		<a id="upgrade_config" href="/">Upgrade config</a>
+		</li>
+		</ul>
 		</li>
 	</ul>
 	<ul class="nav pull-right">
@@ -47,46 +47,42 @@ $def with (builds)
     </div>
   </div>
 </div>
+<div class="row" ></div>
 <div id="container" class="container">
-	<form class="well form-inline" method="post" action ="add" id="addBuildForm">
-		<input type="text" id="add-repos" class="required" name="repos" placeholder="Repository URL"/>
-		<input type="text" id="add-branch" class="required" name="branch" placeholder="Branch" />
+	<form class="well form-inline" method="post" action ="buildconfig_add" id="addBuildForm">
 		<input type="text" id="add-version" class="required" name="version" placeholder="Mapped Version" />
 		<input type="text" id="add-author" class="required" name="author" placeholder="Author" />
-		<button type="submit" class="btn btn-primary">Add</button>
+		<!--
+		    <textarea id="code_area" name="code_mirror" ></textarea>
+		    -->
+		<button id="footer_save "  type="submit" class="btn btn-primary">Add</button>
 	</form>
 
 	<table class="table table-condensed">
 	<thead>
 		<tr>
-		<th>Branch</th>
 		<th>Version</th>
-		<th>Latest Build</th>
-		<th>Status</th>
-		<th>Repository URL</th>
 		<th>Author</th>
 		<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
-	$for build in builds:
-		<tr id="t$build.task_id">
-			<td><a href="../build${build.branch}">$build.branch</a></td>
-			<td>$build.version</td>
-			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-			<td name="list_status" id="build_status_${build.task_id}">$build.status</td>
-			<td>$build.repos</td>
-			<td>$build.author</td>
+	$for build_config in build_configs:
+		<tr id="t$build_config.id">
+			<td><a href="./buildconfig_update?id=$build_config.id">$build_config.version</td>
+			<td>$build_config.author</td>
 			<td>
-			<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Build</a>
-			<a data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" >Edit</a>
-			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
-			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
+			<a data-toggle="modal" name="editBuildConfig" class="btn" data-target="#popupViewBuild" id="editList-$build_config.id" >Edit</a>
+			<a data-toggle="modal" name="duplicateBuildConfig" class="btn" data-target="#popupViewBuild" id="dupList-$build_config.id" >Duplicate</a>
+			<a class="btn btn-danger" name="remove" href="./buildconfig_remove?id=$build_config.id">Remove</a>
 			</td>
 		</tr>
 	</tbody>
 	</table>
+
 </div>
+
+
 	<div class="modal hide fade" id="popupViewBuild" >
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal" >x</a>
@@ -95,20 +91,8 @@ $def with (builds)
 			<input type="hidden" id="popView-selectBuildID" value="" />
 		</div>
 		<div class="modal-body">
-			<form class="well form-horizontal" method="post" action ="add" id="popView-actionBuildForm">
+			<form class="well form-horizontal" method="post" action ="add" id="popView-actionBuildConfigForm">
 				<fieldset>
-					<div class="control-group">
-						<label class="control-label" for="popView-repos">Repository URL:</label>
-						<div class="controls">
-							<input type="text" class="required" id="popView-repos" name="repos" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="popView-branch">Branch:</label>
-						<div class="controls">
-							<input type="text" id="popView-branch"  class="required" name="branch" />
-						</div>
-					</div>
 					<div class="control-group">
 						<label class="control-label" for="popView-version">Mapped Version:</label>
 						<div class="controls">
@@ -116,21 +100,9 @@ $def with (builds)
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="popView-package_list">Packages:</label>
-						<div class="controls">
-							<input type="text" id="popView-package_list" class="required" name="package_list" /><a href="#" id="package-help-info"><i class="icon-info-sign"></i></a>
-						</div>
-					</div>
-					<div class="control-group">
 						<label class="control-label" for="popView-author">Author:</label>
 						<div class="controls">
 							<input type="text" id="popView-author" class="required" name="author" />
-						</div>
-					</div>
-					<div class="control-group" id="popView-control-status">
-						<label class="control-label" for="popView-status">Status:</label>
-						<div class="controls">
-							<input type="text" readonly="readonly" id="popView-status" class="required" name="author" /><a id="popView-edit-status" href="#">edit</a>
 						</div>
 					</div>
 				</fieldset>
@@ -189,5 +161,6 @@ $def with (builds)
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
     <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="/static/bootstrap/js/custom.js"></script>
+
+    <!--script src="/static/bootstrap/js/custom.js"></script-->
 </body></html>
