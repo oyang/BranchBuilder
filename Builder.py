@@ -7,6 +7,7 @@ import json, urllib2, re
 from datetime import datetime
 
 from  buildutil import *
+import BuildConfig
 
 render = web.template.render('template/')
 urls = (
@@ -21,7 +22,7 @@ urls = (
 	'/cron', 'BuildCron',
 	'/fullview', 'FullView',
 	'/logger', 'Logger',
-	'/buildconfig', 'Build.app_BuildConfig',
+	'/buildconfig', BuildConfig.app_BuildConfig,
 )
 
 web.config.smtp_server = 'localhost'

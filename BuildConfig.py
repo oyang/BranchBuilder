@@ -1,8 +1,10 @@
 import web
+import os
 
 render = web.template.render('template/')
 urls = (
 	'/', 'BuildConfigIndex',
+	'', 'BuildConfigIndex',
 	'/buildconfig_add', 'BuildConfigAdd',
 	'/buildconfig_update', 'BuildConfigUpdate',
 	'/buildconfig_remove', 'BuildConfigRemove',
