@@ -4,7 +4,7 @@ $(document).ready(function(){
 		$('a[name="duplicateBuild"]').each(function(i, domEle){
 			$(domEle).click(function(){
 				var task_id = $(domEle).attr("id").split("-");
-				$.get('getbuild',
+				$.get('/BranchBuilder/getbuild',
 					{"task_id": task_id[1]},
 					function(data){
 						buildObj = $.parseJSON(data);
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		$('a[name="editBuild"]').each(function(i, domEle){
 			$(domEle).click(function(){
 				var task_id = $(domEle).attr("id").split("-");
-				$.get('getbuild',
+				$.get('/BranchBuilder/getbuild',
 					{"task_id": task_id[1]},
 					function(data){
 						buildObj = $.parseJSON(data);
@@ -67,7 +67,7 @@ $(document).ready(function(){
 			}
 
 			if ($('#popView-selectAction').val() == 'duplicateBuild') {
-				$.post('add', 
+				$.post('/BranchBuilder/add', 
 
 					{
 					 "repos": $('#popView-repos').val(),
@@ -83,7 +83,7 @@ $(document).ready(function(){
 					 }
 				);
 			} else if ($('#popView-selectAction').val() == 'editBuild'){
-				$.post('updatebuild', 
+				$.post('/BranchBuilder/updatebuild', 
 
 					{
 					 "task_id": $('#popView-selectBuildID').val(), 
@@ -122,7 +122,7 @@ $(document).ready(function(){
 
 		$('#popView-Send').click( function(){
 			if ($('#popView-sendMailForm').valid()) {
-				$.post('sendmail',
+				$.post('/BranchBuilder/sendmail',
 					{
 						"from_address": $('#popView-MailFrom').val(),
 						"to": $('#popView-MailTo').val(),
@@ -138,19 +138,18 @@ $(document).ready(function(){
 	
 		setInterval(function(){
 			$.get(
-				'cron',
+				'/BranchBuilder/cron',
 				function(data){
-					var data = jQuery.parseJSON(data);
-
 					if (data){
-						for (x in data) {
-							if (typeof x.task_id != 'undefined'){
-								console.log(x.status);
-								$('#build_status_' + x.task_id.toString()).text(x.status)
-								$('#build_status_' + x.task_id.toString()).attr("class", x.status)
+						console.log('1');
+						for (var x=0; x < data.length; x++) {
+							if (data[x].task_id){
+								$('#build_status_' + data[x].task_id.toString()).text(data[x].status)
+								$('#build_status_' + data[x].task_id.toString()).attr("class", data[x].status)
 							}
 						}
 					} else {
+						console.log('0');
 						$('td[name="list_status"]').each( function(domE){
 							$(domE).text('Available');						
 							$(domE).removeAttr('class');						

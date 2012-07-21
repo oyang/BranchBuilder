@@ -20,17 +20,17 @@ $def with (build_configs)
     <div class="container">
 	<a class="brand" href="/" >BranchBuilder</a>
 	<ul class="nav" >
-		<li class="active">
+		<li >
 			<a href="/" >Home</a>
 		</li>
 		<li >
 			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
 		</li>
-		<li class="dropdown">
+		<li class="active dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
 		<ul class="dropdown-menu">
 		<li>
-		<a href="#">Build config</a>
+		<a href="#">Build config(To do)</a>
 		</li>
 		<li>
 		<a id="upgrade_config" href="/">Upgrade config</a>
@@ -49,7 +49,7 @@ $def with (build_configs)
 </div>
 <div class="row" ></div>
 <div id="container" class="container">
-	<form class="well form-inline" method="post" action ="buildconfig_add" id="addBuildForm">
+	<form class="well form-inline" method="post" action ="./buildconfig_add" id="addBuildForm">
 		<input type="text" id="add-version" class="required" name="version" placeholder="Mapped Version" />
 		<input type="text" id="add-author" class="required" name="author" placeholder="Author" />
 		<!--
@@ -72,8 +72,10 @@ $def with (build_configs)
 			<td><a href="./buildconfig_update?id=$build_config.id">$build_config.version</td>
 			<td>$build_config.author</td>
 			<td>
+			<!--
 			<a data-toggle="modal" name="editBuildConfig" class="btn" data-target="#popupViewBuild" id="editList-$build_config.id" >Edit</a>
 			<a data-toggle="modal" name="duplicateBuildConfig" class="btn" data-target="#popupViewBuild" id="dupList-$build_config.id" >Duplicate</a>
+			-->
 			<a class="btn btn-danger" name="remove" href="./buildconfig_remove?id=$build_config.id">Remove</a>
 			</td>
 		</tr>

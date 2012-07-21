@@ -77,26 +77,33 @@ $DEV_DIR        = "SugarDevEdition-Full-$VER_SUFFIX_TMP_3";
 /*No developer patch yet*/
 //$DEV_PATCH    = "SugarDevEdition-Patch-$VER_SUFFIX";
 
+$OLD_VER_SUFFIX_1 = "6.4.x";
+$OLD_VER_SUFFIX_1_PACKAGE = "6.4.0";
+$OLD_CE_ZIP_1     = "/home/public/sugar_release_archive/ce/SugarCE-" . $OLD_VER_SUFFIX_1_PACKAGE . ".zip";
+//$OLD_EXP_ZIP_1     = "/home/public/sugar_release_archive/express/SugarExpress-". $OLD_VER_SUFFIX_1 . ".zip";
+$OLD_PRO_ZIP_1    = "/home/public/sugar_release_archive/pro/SugarPro-"  . $OLD_VER_SUFFIX_1_PACKAGE . ".zip";
+$OLD_ENT_ZIP_1    = "/home/public/sugar_release_archive/ent/SugarEnt-"  . $OLD_VER_SUFFIX_1_PACKAGE . ".zip";
+$OLD_ULT_ZIP_1    = "/home/public/sugar_release_archive/ult/SugarUlt-"  . $OLD_VER_SUFFIX_1_PACKAGE . ".zip";
+$OLD_CORP_ZIP_1    = "/home/public/sugar_release_archive/corp/SugarCorp-"  . $OLD_VER_SUFFIX_1_PACKAGE . ".zip";
 
-$OLD_VER_SUFFIX_1 = "5.5.1";
-$OLD_CE_ZIP_1     = "/home/public/sugar_release_archive/ce/SugarCE-" . $OLD_VER_SUFFIX_1 . ".zip";
-$OLD_EXP_ZIP_1     = "/home/public/sugar_release_archive/express/SugarExpress-". $OLD_VER_SUFFIX_1 . ".zip";
-$OLD_PRO_ZIP_1    = "/home/public/sugar_release_archive/pro/SugarPro-"  . $OLD_VER_SUFFIX_1 . ".zip";
-$OLD_ENT_ZIP_1    = "/home/public/sugar_release_archive/ent/SugarEnt-"  . $OLD_VER_SUFFIX_1 . ".zip";
-
-$OLD_VER_SUFFIX_2 = "6.0.x";
-$OLD_VER_SUFFIX_2_PACKAGE = "6.0.0";
+$OLD_VER_SUFFIX_2 = "6.5.0beta1";
+$OLD_VER_SUFFIX_2_PACKAGE = "6.5.0beta1";
 $OLD_CE_ZIP_2     = "/home/public/sugar_release_archive/ce/SugarCE-" . $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
-$OLD_EXP_ZIP_2     = "/home/public/sugar_release_archive/express/SugarExpress-".  $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
+//$OLD_EXP_ZIP_2     = "/home/public/sugar_release_archive/express/SugarExpress-".  $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
 $OLD_PRO_ZIP_2    = "/home/public/sugar_release_archive/pro/SugarPro-"  . $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
 $OLD_ENT_ZIP_2    = "/home/public/sugar_release_archive/ent/SugarEnt-"  . $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
+$OLD_ULT_ZIP_2    = "/home/public/sugar_release_archive/ult/SugarUlt-"  . $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
+$OLD_CORP_ZIP_2    = "/home/public/sugar_release_archive/corp/SugarCorp-"  . $OLD_VER_SUFFIX_2_PACKAGE . ".zip";
 
-$OLD_VER_SUFFIX_3 = "6.1.x";
-$OLD_VER_SUFFIX_3_PACKAGE = "6.1.0RC1";
+
+$OLD_VER_SUFFIX_3 = "6.3.x";
+$OLD_VER_SUFFIX_3_PACKAGE = "6.3.0";
 $OLD_CE_ZIP_3     = "/home/public/sugar_release_archive/ce/SugarCE-" . $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
-$OLD_EXP_ZIP_3     = "/home/public/sugar_release_archive/express/SugarExpress-".  $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
+//$OLD_EXP_ZIP_3     = "/home/public/sugar_release_archive/express/SugarExpress-".  $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
 $OLD_PRO_ZIP_3    = "/home/public/sugar_release_archive/pro/SugarPro-"  . $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
 $OLD_ENT_ZIP_3    = "/home/public/sugar_release_archive/ent/SugarEnt-"  . $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
+$OLD_ULT_ZIP_3    = "/home/public/sugar_release_archive/ult/SugarUlt-"  . $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
+$OLD_CORP_ZIP_3    = "/home/public/sugar_release_archive/corp/SugarCorp-"  . $OLD_VER_SUFFIX_3_PACKAGE . ".zip";
 
 $GA_VER_SUFFIX = $VER_SUFFIX;
 $GA_CE_ZIP     = "/home/public/sugar_release_archive/ce/SugarCE-" . $GA_VER_SUFFIX . ".zip";

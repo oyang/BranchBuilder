@@ -21,20 +21,20 @@ $def with (build_config)
     <div class="container">
 	<a class="brand" href="/" >BranchBuilder</a>
 	<ul class="nav" >
-		<li class="active">
+		<li>
 			<a href="/" >Home</a>
 		</li>
 		<li >
 			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
 		</li>
-		<li class="dropdown">
+		<li class="active dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
       <ul class="dropdown-menu">
         <li>
-          <a href="#">Build config</a>
+          <a href="#">Build config (To do)</a>
         </li>
         <li>
-          <a id="upgrade_confi" href="#">Upgrade config</a>
+          <a id="upgrade_confi" href="./">Upgrade config</a>
         </li>
       </ul>
 		</li>
@@ -51,7 +51,7 @@ $def with (build_config)
 <div id="container" class="container">
 	<textarea id="code_area"  name="code_mirror" >${build_config["build_config_content"]}</textarea>
 	<div class="well inline-form">
-		<a id="buildconfig_cancel"  class="btn pull-right" href="/">Cancel</a>
+		<a id="buildconfig_cancel"  class="btn pull-right" href="./">Cancel</a>
 		<button id="buildconfig_update"  class="btn btn-primary pull-right">Edit</button>
 		<input type="hidden" id="buildconfig_id" class="required pull-right" name="id" value=${build_config["id"]} />
 		<input readonly="readonly" type="text" id="buildconfig_author" class="required pull-right" name="author" placeholder="Author" value=${build_config["author"]} />
@@ -114,7 +114,5 @@ $def with (build_config)
     <script src="/static/codemirror/mode/php/php.js"></script>
     <script src="/static/buildconfig/buildconfig_update.js"></script>
 
-    <!--
     <script src="/static/bootstrap/js/custom.js"></script>
-    -->
 </body></html>
