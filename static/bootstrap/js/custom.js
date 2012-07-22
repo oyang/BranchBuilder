@@ -140,7 +140,7 @@ $(document).ready(function(){
 			$.get(
 				'/BranchBuilder/cron',
 				function(data){
-					if (data){
+					if (data.length > 0){
 						console.log('1');
 						for (var x=0; x < data.length; x++) {
 							if (data[x].task_id){
