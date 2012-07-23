@@ -74,7 +74,7 @@ $def with (builds)
 			<td><a href="../build${build.branch}">$build.branch</a></td>
 			<td>$build.version</td>
 			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-			<td name="list_status" id="build_status_${build.task_id}">$build.status</td>
+			<td name="list_status" class="${build.status}" id="build_status_${build.task_id}">$build.status</td>
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
