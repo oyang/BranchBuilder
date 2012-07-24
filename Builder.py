@@ -14,7 +14,6 @@ urls = (
 	'/', 'Index',
 	'/add', 'Add',
 	'/build', 'Build',
-	#'/runbuild', 'RunBuild',
 	'/getbuild', 'GetBuild',
 	'/updatebuild', 'UpdateBuild',
 	'/remove', 'Remove',
@@ -70,12 +69,13 @@ class Add:
 						last_build_date="", 
 						start_time="", 
 						status="Available", 
-						package_list="ent")
+						package_list="ent",
+						upgrade_package =i.upgrade_package)
 
 			date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 			f = open("logger", "a")
-			f.write(date_now + " [Add Action:]"  +  "," + i.repos + "," + i.branch + "," + i.version + "," + i.author + "," + "ent" + "," + "Available" + "\n")
+			f.write(date_now + " [Add Action:]"  +  "," + i.repos + "," + i.branch + "," + i.version + "," + i.author + "," + "ent" + "," + "Available" + "," + i.upgrade_package + "\n")
 			f.close()
 
 			raise web.seeother('/')
@@ -106,7 +106,7 @@ class RunBuild:
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
 		for build in  selectedBuilds:
-			taskBuilder.add_build( repos=build.repos, branch=build.branch, version=build.version, package_list=build.package_list)
+			taskBuilder.add_build( repos=build.repos, branch=build.branch, version=build.version, package_list=build.package_list, upgrade_package=build.upgrade_package)
 
 		#raise web.seeother('/')
 
@@ -151,7 +151,7 @@ class UpdateBuild:
 		
 		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
 		if selectedBuilds:
-			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author, package_list=i.package_list, status=i.status)
+			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author, package_list=i.package_list, status=i.status, upgrade_package=i.upgrade_package)
 
 			#After update
 			for k in db.select('builds', where="task_id =" +  i.task_id):
@@ -164,14 +164,14 @@ class UpdateBuild:
 
 class GetBuild:
 	def GET(self):
-		from datetime import datetime
-
 		i = web.input()
+		buildString = ""
 		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
 
 		if selectedBuilds:
 			for x in  selectedBuilds:
-				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author, "package_list": x.package_list, "status": x.status})
+				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author, "package_list": x.package_list, "status": x.status,"upgrade_package": x.upgrade_package})
+			web.header('Content-type', 'text/plain')
 			return buildString
 
 class BuildCron:
@@ -249,9 +249,8 @@ class BuildCron:
 			for build_status in new_builds_status:
 				job_list.append({"task_id": build_status.task_id, "status": build_status.status})
 
-			return json.JSONEncoder().encode(job_list)
-		else:
-			return '{}'
+		return json.JSONEncoder().encode(job_list)
+
 class FullView:
 	def POST(self):
 		i = web.input()

@@ -52,7 +52,7 @@ class BuildConfigUtil:
     def getVersionFile(self, version):
       if self.checkVersionFile(version):
         shortver = self.getShortVersion(version)
-	f = open("builds/config/" + shortver + "/common2.php", "r")
+	f = open("builds/config/template/build_config.php", "r")
 	a_buildconfig = f.read()
 	f.close()
         return a_buildconfig
@@ -73,9 +73,13 @@ class BuildConfigUtil:
 class BuildConfigGet:
     def GET(self):
       i = web.input()
-
-      #buildConfigUtil = BuildConfigUtil()
-      build_config = db.select("build_configs", where="id=" + i.id)
+      try:
+        i.id
+      except Exception:
+        build_config = db.select("build_configs", where="version=$version", vars={'version': i.version})
+      else:
+        build_config = db.select("build_configs", where="id=" + i.id)
+      web.header("Content-type", "text/plain")
 
       return build_config[0].build_config_content
 

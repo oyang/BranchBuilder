@@ -13,6 +13,7 @@ $(document).ready(function(){
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
 						$('#popView-package_list').val(buildObj['package_list']);
+						$('#popView-upgrade_package').attr("checked", buildObj['upgrade_package'] ? true : false);
 						
 						//Hide status input textfield
 						$('#popView-control-status').hide();
@@ -35,12 +36,13 @@ $(document).ready(function(){
 				$.get('/BranchBuilder/getbuild',
 					{"task_id": task_id[1]},
 					function(data){
-						buildObj = $.parseJSON(data);
+						var buildObj = $.parseJSON(data);
 						$('#popView-repos').val(buildObj['repos']);
 						$('#popView-branch').val(buildObj['branch']); 
 						$('#popView-version').val(buildObj['version']); 
 						$('#popView-author').val(buildObj['author']);
 						$('#popView-package_list').val(buildObj['package_list']);
+						$('#popView-upgrade_package').attr("checked", buildObj['upgrade_package'] ? true : false);
 
 						//User can update status by entering password
 						//Show status input textfield
@@ -66,6 +68,7 @@ $(document).ready(function(){
 				return false;
 			}
 
+			var upgrade_package = $('#popView-upgrade_package').attr('checked') ? 1 : 0;
 			if ($('#popView-selectAction').val() == 'duplicateBuild') {
 				$.post('/BranchBuilder/add', 
 
@@ -74,7 +77,8 @@ $(document).ready(function(){
 					 "branch": $('#popView-branch').val(), 
 					 "version": $('#popView-version').val(), 
 					 "package_list": $('#popView-package_list').val(),
-					 "author": $('#popView-author').val()
+					 "author": $('#popView-author').val(),
+					 "upgrade_package": upgrade_package
 					 },
 
 					 function(data){
@@ -92,7 +96,8 @@ $(document).ready(function(){
 					 "version": $('#popView-version').val(), 
 					 "package_list": $('#popView-package_list').val(),
 					 "author": $('#popView-author').val(),
-					 "status": $('#popView-status').val()
+					 "status": $('#popView-status').val(),
+					 "upgrade_package": upgrade_package
 					 },
 
 					 function(data){
@@ -150,9 +155,9 @@ $(document).ready(function(){
 						}
 					} else {
 						console.log('0');
-						$('td[name="list_status"]').each( function(domE){
+						$('td[name="list_status"]').each( function(i, domE){
 							$(domE).text('Available');						
-							$(domE).removeAttr('class');						
+							$(domE).attr('class', 'Available');						
 						});
 					}
 					
