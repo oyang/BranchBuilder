@@ -64,18 +64,22 @@ class Add:
 			pass
 		#else add a new build
 		else:
+			if (hasattr(i, 'upgrade_package')):
+				upgrade_package = 1
+			else:
+				upgrade_package = 0
 			n = db.insert('builds',  repos=i.repos, branch=i.branch, version=i.version, author=i.author,
 						last_build_number=1000, 
 						last_build_date="", 
 						start_time="", 
 						status="Available", 
 						package_list="ent",
-						upgrade_package =i.upgrade_package)
+						upgrade_package = upgrade_package)
 
 			date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 			f = open("logger", "a")
-			f.write(date_now + " [Add Action:]"  +  "," + i.repos + "," + i.branch + "," + i.version + "," + i.author + "," + "ent" + "," + "Available" + "," + i.upgrade_package + "\n")
+			f.write(date_now + " [Add Action:]"  +  "," + i.repos + "," + i.branch + "," + i.version + "," + i.author + "," + "ent" + "," + "Available" + "," + str(upgrade_package) + "\n")
 			f.close()
 
 			raise web.seeother('/')
@@ -97,11 +101,11 @@ class RunBuild:
 	def run(self, task_id):
 		#i = web.input()
 		i = {"task_id": task_id}
-		selectedBuilds = db.select('builds', where="task_id=" + i["task_id"])
+		selectedBuilds = db.select('builds', where="task_id=" + str(i["task_id"]))
 
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		if selectedBuilds:
-			db.update('builds', where="task_id=" + i["task_id"], last_build_date=date_now, status="Running")			
+			db.update('builds', where="task_id=" + str(i["task_id"]), last_build_date=date_now, status="Running")			
 
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
@@ -145,7 +149,7 @@ class UpdateBuild:
 		
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		#Before update
-		f = open("logger", "w+")
+		f = open("logger", "a")
 		for m in db.select('builds', where="task_id =" +  i.task_id):
 			f.write(date_now + " [Before Update Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + m.status + "\n")
 		
@@ -189,11 +193,15 @@ class BuildCron:
 
 		j = self.taskBuilder.j
 		job_list = j.get_jobs()
+		job_queue_list = j.get_queue_info()
 		running_job = []
 
 		for job in job_list:
 			if re.search('anime', job['color']):
 				running_job.append(job)
+
+		for job in job_queue_list:
+			running_job.append(job)
 
 		return running_job
 

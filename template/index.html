@@ -78,7 +78,7 @@ $def with (builds)
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
-			<a class="btn btn-success" name="rebuild" href="./build?task_id=$build.task_id">Build</a>
+			<input type="button" class="btn btn-success" name="rebuild" id="buildList-$build.task_id" href="./build?task_id=$build.task_id" value="Build" >
 			<a data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" >Edit</a>
 			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
 			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>

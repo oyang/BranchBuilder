@@ -54,8 +54,8 @@ $def with (build_config)
 		<a id="buildconfig_cancel"  class="btn pull-right" href="./">Cancel</a>
 		<button id="buildconfig_update"  class="btn btn-primary pull-right">Edit</button>
 		<input type="hidden" id="buildconfig_id" class="required pull-right" name="id" value=${build_config["id"]} />
-		<input readonly="readonly" type="text" id="buildconfig_author" class="required pull-right" name="author" placeholder="Author" value=${build_config["author"]} />
-		<input readonly="readonly" type="text" id="buildconfig_version" class="required pull-right" name="version" placeholder="Mapped Version" value=${build_config["version"]} />
+		<input readonly="readonly" type="text" id="buildconfig_author" class="required pull-right" name="author" placeholder="Author" value='${build_config["author"]}' />
+		<input readonly="readonly" type="text" id="buildconfig_version" class="required pull-right" name="version" placeholder="Mapped Version" value='${build_config["version"]}' />
 	</div>
 </div>
 	<div class="modal hide fade" id="popupViewMail" >

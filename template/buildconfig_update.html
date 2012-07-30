@@ -53,8 +53,8 @@ $def with (build_config)
 	<form class="well inline-form" method="post" action ="add" id="addBuildForm">
 		<button id="footer_save "  type="submit" class="btn btn-primary pull-right">Save</button>
 		<input type="hidden" id="add-id" class="required pull-right" name="id" value=${build_config["id"]} />
-		<input type="text" id="add-author" class="required pull-right" name="author" placeholder="Author" value=${build_config["author"]} />
-		<input type="text" id="add-version" class="required pull-right" name="version" placeholder="Mapped Version" value=${build_config["version"]} />
+		<input type="text" id="add-author" class="required pull-right" name="author" placeholder="Author" value="${build_config['author']}" />
+		<input type="text" id="add-version" class="required pull-right" name="version" placeholder="Mapped Version" value='${build_config["version"]}' />
 	</form>
 </div>
 	<div class="modal hide fade" id="popupViewBuild" >

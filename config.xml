@@ -21,6 +21,11 @@
           <description></description>
           <defaultValue>ent</defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>upgrade_package</name>
+          <description></description>
+          <defaultValue>0</defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -77,10 +82,12 @@ cp -r build /dev/shm/sugarbuild-$version/
 cp -r sugarportal /dev/shm/sugarbuild-$version/
 
 cd /home/build/sugarsvn/Mango/build_clean
-./build_sugar_30.php --version $version --branch $branch --latin 1 --deploy --packages ent
-
-
-rm -rf /dev/shm/sugarbuild-$version
+svn revert build_config.php
+if [ &quot;$upgrade_package&quot; = &quot;1&quot; ]; then
+  wget http://honey-g/BranchBuilder/buildconfig/buildconfig_get?version=$version -O build_config.php
+  chmod 777 build_config.php
+fi
+./build_sugar_30.php --version $version --branch $branch --latin 1 --deploy --packages $package_list --upgrades $upgrade_package
 
       </command>
     </hudson.tasks.Shell>
