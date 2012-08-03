@@ -1,5 +1,11 @@
 $(document).ready(function(){
 		$('#package-help-info').popover({'title': 'Package info', 'content': 'Package can be "ult,ent,corp,pro,com"'});
+		$('td[name="list_status"]').each(function (i, domEle){
+			if ($(domEle).text() != "Available"){
+				var task_id = $(domEle).attr("id").split("_");
+				$("#buildList-" + task_id[2]).attr("disabled", "disabled");
+			}
+		});
 		$('input[name="rebuild"]').each(function(i, domEle){
 			$(domEle).click(function(){
 				var task_id = $(domEle).attr("id").split("-");
@@ -157,6 +163,7 @@ $(document).ready(function(){
 			$.get(
 				'/BranchBuilder/cron',
 				function(data){
+					/*
 					if (data.length > 0){
 						for (var x=0; x < data.length; x++) {
 							$('#buildList-' + data[x].task_id.toString()).attr("disabled", "disabled");
@@ -172,7 +179,25 @@ $(document).ready(function(){
 							$(domEle).attr('class', 'Available');						
 						});
 					}
-					
+					*/
+
+					var task_id_list = [];
+					for (var x=0; x < data.length; x++) {
+						task_id_list.push(data[x].task_id.toString());
+					}
+					$('input[name="rebuild"]').each(function(i, domEle){
+						var task_id =$(domEle).attr("id").split("-")[1]; 
+						if (task_id_list.indexOf(task_id) != -1){
+							$('#buildList-' + task_id).attr("disabled", "disabled");
+							$('#build_status_' + task_id).text(data[x].status);
+							$('#build_status_' + task_id).attr("class", data[x].status);
+							
+						}else{
+							$(domEle).removeAttr('disabled');						
+							$('#build_status_' + task_id).text('Available');						
+							$('#build_status_' + task_id).attr('class', 'Available');						
+						}
+					});
 				}
 			);
 
