@@ -37,9 +37,14 @@ db = web.database(dbn='sqlite', db='branchBuilder')
 
 class Index:
 	def GET(self):
-		self.update_status()
-		builds = db.select('builds', order="last_build_date DESC", where="repos is not null")
-		
+		#self.update_status()
+		#builds = db.select('builds', order="last_build_date DESC", where="repos is not null")
+		builds = db.query("select a.task_id, a.branch, a.repos, a.version, a.author, a.last_build_date, b.status \
+					from builds as a \
+					left join  builds_status as b \
+					on a.task_id=b.task_id \
+					order by a.last_build_date desc") 
+
 		return render.index(builds)
 
 	def update_status(self):
@@ -68,7 +73,7 @@ class Add:
 				upgrade_package = 1
 			else:
 				upgrade_package = 0
-			n = db.insert('builds',  repos=i.repos, branch=i.branch, version=i.version, author=i.author,
+			n = db.insert('builds',  repos=i.repos.strip(), branch=i.branch.strip(), version=i.version.strip(), author=i.author.strip(),
 						last_build_number=1000, 
 						last_build_date="", 
 						start_time="", 
@@ -91,7 +96,7 @@ class Remove:
 
 		f = open("logger", "a")
 		for m in db.select('builds', where="task_id =" +  i.task_id):
-			f.write(date_now + " [Delete Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + m.status + "\n")
+			f.write(date_now + " [Delete Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + "\n")
 		f.close()
 
 		n = db.delete('builds', where="task_id =" +  i.task_id)
@@ -104,8 +109,6 @@ class RunBuild:
 		selectedBuilds = db.select('builds', where="task_id=" + str(i["task_id"]))
 
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		if selectedBuilds:
-			db.update('builds', where="task_id=" + str(i["task_id"]), last_build_date=date_now, status="Running")			
 
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
@@ -125,41 +128,38 @@ class Build:
 			builds_status = db.select('builds_status')
 
 			if builds_status:
-				db.update('builds', where="task_id=" + i.task_id, last_build_date=date_now, status="InQueue")			
 				max_priority_records = db.query('select max(priority) as priority from builds_status')
 				new_max_priority = max_priority_records[0].priority + 1
 					
 				db.insert('builds_status', task_id=int(i.task_id), priority=new_max_priority, status="InQueue")
+				statusString = json.JSONEncoder().encode({"task_id": i.task_id, "status": "InQueue" })
 			else:
-				db.update('builds', where="task_id=" + i.task_id, last_build_date=date_now, status="Running")			
 				db.insert('builds_status',  
 							task_id=int(i.task_id), 
 							status="Running", 
 							priority=1)
 				RunBuild().run(i.task_id)
-				#app.request('/runbuild', method="GET", task_id=i.task_id )
-			
-		raise web.seeother('/')
+				statusString = json.JSONEncoder().encode({"task_id": i.task_id, "status": "Running" })
+
+			return statusString
 
 class UpdateBuild:
 	def POST(self):
 		i = web.input()
-		#m = db.select('builds', where="task_id =" +  i.task_id)
-		#m = [{"task_id": k.task_id, "repos": k.repos, "branch": k.branch, "version": k.version, "author": k.author, "package_list": k.package_list, "status": k.status }]
 		
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		#Before update
 		f = open("logger", "a")
 		for m in db.select('builds', where="task_id =" +  i.task_id):
-			f.write(date_now + " [Before Update Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + m.status + "\n")
+			f.write(date_now + " [Before Update Action:]" + str(m.task_id) + "," + m.repos + "," + m.branch + "," + m.version + "," + m.author + "," + m.package_list + "," + "\n")
 		
 		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
 		if selectedBuilds:
-			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author, package_list=i.package_list, status=i.status, upgrade_package=i.upgrade_package)
+			db.update('builds', where="task_id=" + i.task_id, repos=i.repos, branch=i.branch, version=i.version, author=i.author, package_list=i.package_list, upgrade_package=i.upgrade_package)
 
 			#After update
 			for k in db.select('builds', where="task_id =" +  i.task_id):
-				f.write(date_now + " [After Update Action:]" + str(k.task_id) + "," + k.repos + "," + k.branch + "," + k.version + "," + k.author + "," + k.package_list + "," + k.status + "\n")
+				f.write(date_now + " [After Update Action:]" + str(k.task_id) + "," + k.repos + "," + k.branch + "," + k.version + "," + k.author + "," + k.package_list  + "\n")
 
 		f.close()
 		#End logger
@@ -174,7 +174,7 @@ class GetBuild:
 
 		if selectedBuilds:
 			for x in  selectedBuilds:
-				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author, "package_list": x.package_list, "status": x.status,"upgrade_package": x.upgrade_package})
+				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author, "package_list": x.package_list, "upgrade_package": x.upgrade_package})
 			web.header('Content-type', 'text/plain')
 			return buildString
 
@@ -224,13 +224,10 @@ class BuildCron:
 			if lowest_build["status"] == 'Running':
 				if self.check_building_job():
 					pass
-					#print 'hello'
 				else:
 					#update build_status and remove the running flag
 					db.delete('builds_status', where='task_id=' + str(lowest_build["task_id"]))
 
-					#update builds table
-					db.update('builds', where='task_id=' + str(lowest_build["task_id"]), status='Available')
 			elif lowest_build["status"] == 'InQueue':
 				#Assume Jenkins is avaliable for building
 				RunBuild().run(lowest_build["task_id"])

@@ -74,12 +74,15 @@ $def with (builds)
 			<td><a href="../build${build.branch}">$build.branch</a></td>
 			<td>$build.version</td>
 			<td><a href="../public/builds/${build.branch}/latest">$build.last_build_date</a></td>
-			<td name="list_status" class="${build.status}" id="build_status_${build.task_id}">$build.status</td>
+			$if build.status:
+				<td name="list_status" class="${build.status}" id="build_status_${build.task_id}">$build.status</td>
+			$else:
+				<td name="list_status" class="Available" id="build_status_${build.task_id}">Available</td>
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
 			<input type="button" class="btn btn-success" name="rebuild" id="buildList-$build.task_id" href="./build?task_id=$build.task_id" value="Build" >
-			<a data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" >Edit</a>
+			<input type="button" data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" value="Edit" >
 			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
 			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
 			</td>
@@ -131,12 +134,6 @@ $def with (builds)
 						<label class="control-label" for="popView-author">Author:</label>
 						<div class="controls">
 							<input type="text" id="popView-author" class="required" name="author" />
-						</div>
-					</div>
-					<div class="control-group" id="popView-control-status">
-						<label class="control-label" for="popView-status">Status:</label>
-						<div class="controls">
-							<input type="text" readonly="readonly" id="popView-status" class="required" name="author" /><a id="popView-edit-status" href="#">edit</a>
 						</div>
 					</div>
 				</fieldset>

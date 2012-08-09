@@ -75,6 +75,8 @@
     <hudson.tasks.Shell>
       <command>
 rm -rf /dev/shm/sugarbuild-$version
+git submodule init
+git submodule update
 
 mkdir /dev/shm/sugarbuild-$version
 cp -r sugarcrm /dev/shm/sugarbuild-$version/
