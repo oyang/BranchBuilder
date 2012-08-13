@@ -43,7 +43,7 @@ class Index:
 					from builds as a \
 					left join  builds_status as b \
 					on a.task_id=b.task_id \
-					order by a.last_build_date desc") 
+					order by b.status desc,a.last_build_date desc") 
 
 		return render.index(builds)
 
@@ -109,6 +109,8 @@ class RunBuild:
 		selectedBuilds = db.select('builds', where="task_id=" + str(i["task_id"]))
 
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		if selectedBuilds:
+			db.update('builds', where="task_id=" + i["task_id"], last_build_date=date_now)
 
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
