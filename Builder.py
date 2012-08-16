@@ -123,9 +123,8 @@ class Build:
 	def GET(self):
 
 		i = web.input()
-		selectedBuilds = db.select('builds', where="task_id=" + i.task_id)
+		selectedBuilds = db.select('builds', where="task_id=" + i.task_id, what="task_id")
 
-		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		if selectedBuilds:
 			builds_status = db.select('builds_status')
 
