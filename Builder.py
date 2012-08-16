@@ -36,7 +36,8 @@ class Index:
 	def GET(self):
 		#self.update_status()
 		#builds = db.select('builds', order="last_build_date DESC", where="repos is not null")
-		builds = db.query("select a.task_id, a.branch, a.repos, a.version, a.author, a.last_build_date, b.status \
+		builds = db.query("select a.task_id, a.branch, a.repos, a.version, a.author, a.last_build_date, \
+						ifnull(b.status, \"Available\") as status \
 					from builds as a \
 					left join  builds_status as b \
 					on a.task_id=b.task_id \
@@ -279,8 +280,5 @@ class Logger:
 		f = open("logger", "r")
 		return f.read()
 		
-		
-
-
 if __name__ == '__main__':
 	app.run()
