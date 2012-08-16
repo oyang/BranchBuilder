@@ -26,9 +26,6 @@ urls = (
 
 web.config.smtp_server = 'localhost'
 web.config.smtp_port = 25
-#web.config.smtp_username = 'oliver.sugar@gmail.com'
-#web.config.smtp_password = 'sugarcrm'
-#web.config.smtp_starttls = True
 web.config.debug = True
 app = web.application(urls, globals())
 
