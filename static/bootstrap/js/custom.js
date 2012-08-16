@@ -4,6 +4,7 @@ $(document).ready(function(){
 			if ($(domEle).text() != "Available"){
 				var task_id = $(domEle).attr("id").split("_");
 				$("#buildList-" + task_id[2]).attr("disabled", "disabled");
+				$('#editList-' + task_id[2]).attr("disabled", "disabled");
 			}
 		});
 		$('input[name="rebuild"]').each(function(i, domEle){
