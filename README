@@ -29,4 +29,8 @@ Runtime:
 --Java
 
 2. Ignore the permission for git
-git config core.filemode false
+git config --global core.filemode false
+or
+Edit .git/config as
+[core]
+	filemode=false
