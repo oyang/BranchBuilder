@@ -108,7 +108,7 @@ class RunBuild:
 
 		date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		if selectedBuilds:
-			db.update('builds', where="task_id=" + i["task_id"], last_build_date=date_now)
+			db.update('builds', where="task_id=" + str(i["task_id"]), last_build_date=date_now)
 
 		taskBuilder =TaskBuilder('http://localhost:8080')
 
