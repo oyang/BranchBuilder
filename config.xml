@@ -91,6 +91,8 @@ if [ &quot;$upgrade_package&quot; = &quot;1&quot; ]; then
 fi
 ./build_sugar_30.php --version $version --branch $branch --latin 1 --deploy --packages $package_list --upgrades $upgrade_package
 
+rm -rf /dev/shm/sugarbuild-$version
+
       </command>
     </hudson.tasks.Shell>
   </builders>
