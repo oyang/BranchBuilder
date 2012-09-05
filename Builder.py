@@ -68,7 +68,7 @@ class Add:
 		#else add a new build
 		else:
 			if (hasattr(i, 'upgrade_package')):
-				upgrade_package = 1
+				upgrade_package = i.upgrade_package 
 			else:
 				upgrade_package = 0
 			n = db.insert('builds',  repos=i.repos.strip(), branch=i.branch.strip(), version=i.version.strip(), author=i.author.strip(),

@@ -77,8 +77,11 @@ class BuildConfigGet:
         i.id
       except Exception:
         build_config = db.select("build_configs", where="version=$version", vars={'version': i.version})
-      else:
+      except Exception:
         build_config = db.select("build_configs", where="id=" + i.id)
+      else:
+	#Non-exist parameter
+	return False
       web.header("Content-type", "text/plain")
 
       return build_config[0].build_config_content
