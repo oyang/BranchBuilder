@@ -18,6 +18,7 @@ $(document).ready(function(){
 					{"task_id": task_id[1]},
 					function(data){
 						$('#build_status_' + data.task_id).text(data.status);
+						window.location.reload(true);
 					}
 				);
 			});
