@@ -1,56 +1,5 @@
 $def with (builds)
-
-<!DOCTYPE html>
-<!-- saved from url=(0066)http://twitter.github.com/bootstrap/examples/starter-template.html -->
-<html lang="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Branch Builder</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/bootstrap/css/custom.css" rel="stylesheet">
-</head>
-<body style="padding: 50px">
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-	<a class="brand" href="/" >BranchBuilder</a>
-	<ul class="nav" >
-		<li class="active">
-			<a href="/" >Home</a>
-		</li>
-		<li >
-			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
-		</li>
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="#">Build config(To do)</a>
-				</li>
-				<li>
-					<a id="upgrade_config" href="./buildconfig/">Upgrade config</a>
-				</li>
-			</ul>
-		</li>
-		<li >
-			<a href="/phpmyadmin" target="_blank" >DBM</a>
-		</li>
-	</ul>
-	<ul class="nav pull-right">
-		<li class="divider-vertical" ></li>
-		<li >
-			<a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Contact admin</a>
-		</li>
-	</ul>
-    </div>
-  </div>
-</div>
-<div id="container" class="container">
+$var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 	<form class="well form-inline" method="post" action ="add" id="addBuildForm">
 		<input type="text" id="add-repos" class="required" name="repos" placeholder="Repository URL"/>
 		<input type="text" id="add-branch" class="required" name="branch" placeholder="Branch" />
@@ -193,4 +142,3 @@ $def with (builds)
     <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
     <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
     <script src="/static/bootstrap/js/custom.js"></script>
-</body></html>

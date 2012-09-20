@@ -1,0 +1,56 @@
+$def with (content)
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Branch Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+$if content.cssfiles:
+	$for f in content.cssfiles.split():
+	    <link rel="stylesheet" href="$f" type="text/css" media="screen" charset="utf-8"/>
+</head>
+<body style="padding: 50px">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+	<a class="brand" href="/" >BranchBuilder</a>
+	<ul class="nav" >
+		<li class="active">
+			<a href="/" >Home</a>
+		</li>
+		<li >
+			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="#">Build config(To do)</a>
+				</li>
+				<li>
+					<a id="upgrade_config" href="./buildconfig/">Upgrade config</a>
+				</li>
+			</ul>
+		</li>
+		<li >
+			<a href="/phpmyadmin" target="_blank" >DBM</a>
+		</li>
+	</ul>
+	<ul class="nav pull-right">
+		<li class="divider-vertical" ></li>
+		<li >
+			<a data-toggle="modal" href="#popupViewMail" name="mailToAdmin" id="mailToAdmin">Contact admin</a>
+		</li>
+	</ul>
+    </div>
+  </div>
+</div>
+<div id="container" class="container">
+$:content
+</div>
+</body></html>

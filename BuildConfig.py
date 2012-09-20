@@ -1,7 +1,7 @@
 import web
 import os
 
-render = web.template.render('template/')
+render = web.template.render('template/', base='layout')
 urls = (
 	'/', 'BuildConfigIndex',
 	'', 'BuildConfigIndex',
