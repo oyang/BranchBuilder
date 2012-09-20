@@ -60,3 +60,12 @@
 2012-09-05 10:30:05 [Delete Action:]23,git@github.com:yurikuzn/Mango.git,toffee_editview_recurrence,6.6.2,Yuriah Welcome,ent,
 2012-09-05 10:43:05 [Add Action:],git@github.com:yurikuzn/Mango.git,toffee_editview_recurrence,6.6.3,Yuriah Welcome,ent,Available,0
 2012-09-05 10:43:11 [Delete Action:]23,git@github.com:yurikuzn/Mango.git,toffee_editview_recurrence,6.6.3,Yuriah Welcome,ent,
+2012-09-07 17:17:17 [Delete Action:]10,git@github.com:smalyshev/Mango.git,file_loads,6.6.0,Stas Malyshev,ent,
+2012-09-07 17:17:43 [Add Action:],git@github.com:sugarcrm/Mango.git,file_loads,6.6.0,Stas Malyshev,ent,Available,0
+2012-09-13 13:49:19 [Delete Action:]5,git@github.com:sugarcrm/Mango.git,caramel_bootstrap,6.5.0,Eric Yang,ent,
+2012-09-13 13:49:24 [Delete Action:]4,git@github.com:sugarcrm/Mango.git,users_query_64,6.4.5,Oliver Yang,ent,
+2012-09-13 13:49:31 [Delete Action:]6,git@github.com:smalyshev/Mango.git,ibm_perf_fixes,6.4.5,Stas Malyshev,ent,
+2012-09-13 13:49:34 [Delete Action:]11,git@github.com:yurikuzn/Mango.git,toffee_editview_recurrence,6.6.0,Yuriah Welcome,ent,
+2012-09-17 14:48:41 [Add Action:],git@github.com:sugarcrm/Mango.git,661_fake,6.6.1,Stas Malyshev,ent,Available,0
+2012-09-18 17:36:35 [Add Action:],git@github.com:smalyshev/Mango.git,dce_be_gone_67,6.7.0,Stas Malyshev,ent,Available,0
+2012-09-19 13:08:27 [Add Action:],git@github.com:sugarcrm/Mango.git,toffee_shared_team,7.0.0,Randy Li,ent,Available,0
