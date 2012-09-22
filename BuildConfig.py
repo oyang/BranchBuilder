@@ -1,6 +1,8 @@
 import web
 import os
 
+import appconfig
+
 render = web.template.render('template/', base='layout')
 urls = (
 	'/', 'BuildConfigIndex',
@@ -27,14 +29,14 @@ class BuildConfigIndex:
     def GET(self):
       build_configs = db.select('build_configs', what="id,version,author", where="id is not null")
 
-      return render.buildconfig(build_configs)
+      return render.buildconfig(build_configs, appconfig.site_url)
 
 class BuildConfigUpdate:
     def GET(self):
       i = web.input()
       build_config = db.select('build_configs', where="id=" + i.id)[0]
 
-      return render.buildconfig_detail(build_config)
+      return render.buildconfig_detail(build_config, appconfig.site_url)
 
     def POST(self):
       i = web.input()
@@ -46,7 +48,7 @@ class BuildConfigUpdate:
       else:
         db.update('build_configs', where="id=" + i.id, version=i.version, author=i.author, build_config_content=i.build_config_content)
         build_config = db.select('build_configs', where="id=" + i.id)[0]
-	return render.buildconfig_detail(build_config)
+	return render.buildconfig_detail(build_config, appconfig.site_url)
 
 class BuildConfigUtil:
     def getVersionFile(self, version):
@@ -91,7 +93,7 @@ class BuildConfigDetail:
       i = web.input()
       build_config = db.select("build_configs", where="id=" + i.id)[0]
 
-      return render.buildconfig_detail(build_config)
+      return render.buildconfig_detail(build_config, appconfig.site_url)
 
 class BuildConfigRemove:
     def GET(self):

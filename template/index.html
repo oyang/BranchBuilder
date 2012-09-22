@@ -1,5 +1,7 @@
-$def with (builds)
+$def with (builds, site_url)
+
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
+$var site_url: $site_url
 	<form class="well form-inline" method="post" action ="add" id="addBuildForm">
 		<input type="text" id="add-repos" class="required" name="repos" placeholder="Repository URL"/>
 		<input type="text" id="add-branch" class="required" name="branch" placeholder="Branch" />

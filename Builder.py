@@ -8,6 +8,7 @@ from datetime import datetime
 
 from  buildutil import *
 import BuildConfig
+import appconfig
 
 render = web.template.render('template/', base='layout')
 urls = (
@@ -43,7 +44,7 @@ class Index:
 					on a.task_id=b.task_id \
 					order by b.status desc,a.last_build_date desc") 
 
-		return render.index(builds)
+		return render.index(builds, appconfig.site_url)
 
 	def update_status(self):
 		builds_status = db.select('builds_status')

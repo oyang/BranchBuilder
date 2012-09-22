@@ -1,5 +1,6 @@
-$def with (build_configs)
+$def with (build_configs, site_url)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
+$var site_url: $site_url
 
 	<form class="well form-inline" method="post" action ="./buildconfig_add" id="addBuildForm">
 		<input type="text" id="add-version" class="required" name="version" placeholder="Mapped Version" />
