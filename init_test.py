@@ -1,6 +1,6 @@
 from buildutil import JobBuilder
 
-with open("deployConfig.xml") as f:
+with open("./builds/config/job/deployConfig.xml") as f:
 	configString = f.read()
 
 builder = JobBuilder("http://localhost:8080")

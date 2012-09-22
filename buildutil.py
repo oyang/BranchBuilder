@@ -1,6 +1,32 @@
 from jenkins import Jenkins
 from jinja2 import Template
 
+class JobBuilder:
+
+	def __init__(self, jenkinsURL):
+		self.j = Jenkins(jenkinsURL)
+		self.jobName = ""
+
+	def add_job(self, jobName, configString):
+		self.jobName = jobName
+
+		if self.j.job_exists(jobName):
+			#Job exist in the job list
+			return False
+		else:
+			self.j.create_job(self.jobName, configString)
+
+			return True
+
+	def run_job(self, **params):
+		if self.jobName == "":
+			print "Have to add job firstly"
+			return False
+		else:
+			self.j.enable_job(self.jobName)
+			self.j.build_job(self.jobName, params)
+	
+
 class TaskBuilder:
 
 	def __init__(self, jenkinsURL):
