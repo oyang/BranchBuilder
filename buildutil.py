@@ -15,6 +15,7 @@ class JobBuilder:
 			return False
 		else:
 			self.j.create_job(self.jobName, configString)
+			self.j.enable_job(self.jobName)
 
 			return True
 
