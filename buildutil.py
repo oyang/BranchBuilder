@@ -33,7 +33,8 @@ class TaskBuilder:
 	def __init__(self, jenkinsURL):
 		self.j = Jenkins(jenkinsURL)
 		self.jobName = ""
-		with open("config.xml") as file:
+		#with open("config.xml") as file:
+		with open("./builds/config/job/deployConfig.xml") as file:
 			self.templateConfig = file.read()
 		self.template = Template(unicode(self.templateConfig))
 
