@@ -1,5 +1,6 @@
-$def with (build_config)
+$def with (build_config, site_url)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/codemirror/lib/codemirror.css /static/bootstrap/css/custom.css
+$var site_url: $site_url
 
 	<textarea id="code_area"  name="code_mirror" >${build_config["build_config_content"]}</textarea>
 	<div class="well inline-form">
