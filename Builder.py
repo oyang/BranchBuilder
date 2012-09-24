@@ -8,11 +8,8 @@ from datetime import datetime
 
 from  buildutil import *
 import BuildConfig
-<<<<<<< HEAD
 import ODDeploy
-=======
 import appconfig
->>>>>>> refs/remotes/origin/JobBuilder
 
 render = web.template.render('template/', base='layout')
 urls = (
