@@ -1,7 +1,8 @@
-$def with (od_deploys)
+$def with (od_deploys, site_url)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
+$var site_url: $site_url
 
-	<form class="well form-inline" method="post" action ="./ODDeploy_add" id="addBuildForm">
+	<form class="well form-inline" method="post" action ="./oddeploy_add" id="addBuildForm">
 		<select name="username">
 			<option value="dsafar">David Safar</option>
 			<option value="dganti">Deepthi Ganti</option>
@@ -59,7 +60,7 @@ $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.
 			$od_deploy.status
 			</td>
 			<td>
-				<a class="btn" name="Deploy" href="_Blank">Deploy</a>
+				<a class="btn" name="deploy" href="./oddeploy_deploy?id=$od_deploy.id">Deploy</a>
 				<a class="btn btn-danger" name="remove" href="./oddeploy_remove?id=$od_deploy.id">Remove</a>
 			</td>
 		</tr>

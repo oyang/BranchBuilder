@@ -1,15 +1,21 @@
 from buildutil import JobBuilder
+import appconfig
 
 with open("./builds/config/job/deployConfig.xml") as f:
 	configString = f.read()
 
-with open("./builds/config/job/deployConfigParameter.xml") as f:
+with open("./builds/config/job/od_emily.xml") as f:
 	configStringParameter = f.read()
 
-builder = JobBuilder("http://localhost:8080")
+builder = JobBuilder(appconfig.jenkins_url)
 
-builder.add_job("Oliver_noparameter_testing", configString)
-builder.run_job()
+#jobname="sfsf'sfsf"
+#builder.add_job(jobname, configString)
+#builder.run_job()
 
-builder.add_job("Oliver_parameter_testing", configStringParameter)
-builder.run_job(username="Eric Yang")
+builder.add_job("Eric_parameter_testing", configStringParameter)
+#builder.run_job(username="Eric Yang", dbname="sfsf", )
+builder.run_job(username="Eric", \
+				version="6.6.0", \
+				webroot="sfsf", \
+				deploy_config="sfsf")      
