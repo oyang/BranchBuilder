@@ -1,0 +1,74 @@
+$def with (od_deploys)
+$var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
+
+	<form class="well form-inline" method="post" action ="./ODDeploy_add" id="addBuildForm">
+		<select name="username">
+			<option value="dsafar">David Safar</option>
+			<option value="dganti">Deepthi Ganti</option>
+			<option value="egan">Emily Gan</option>
+			<option value="eyang">Eric Yang</option>
+			<option value="grelampagos">Gino Relampagos</option>
+			<option value="chenj">Jackie Chen</option>
+			<option value="jcho">Jessica Cho</option>
+			<option value="rlee">Randy Lee</option>
+		</select>
+		<select name="version">
+			<option value="6.6.0">6.6.0</option>
+		</select>
+		<select name="webroot">
+			<option value="qatest-web1.sjc.sugarcrm.pvt">qatest-web1.sjc.sugarcrm.pvt</option>
+			<option value="qatest-web2.sjc.sugarcrm.pvt">qatest-web2.sjc.sugarcrm.pvt</option>
+		</select>
+		<select name="deploy_config">
+			<option value="ent">Ent</option>
+			<option value="ce">CE</option>
+			<option value="pro">Pro</option>
+			<option value="corp">Corp</option>
+			<option value="ult">Ult</option>
+		</select>
+		<button id="footer_save "  type="submit" class="btn btn-primary">Add</button>
+	</form>
+
+	<table class="table table-condensed">
+	<thead>
+		<tr>
+		<th>Username</th>
+		<th>Version</th>
+		<th>Webroot</th>
+		<th>Flavor</th>
+		<th>Status</th>
+		<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	$for od_deploy in od_deploys:
+		<tr >
+			<td>
+			$od_deploy.username
+			</td>
+			<td>
+			$od_deploy.version
+			</td>
+			<td>
+			$od_deploy.webroot
+			</td>
+			<td>
+			$od_deploy.deploy_config
+			</td>
+			<td>
+			$od_deploy.status
+			</td>
+			<td>
+				<a class="btn" name="Deploy" href="_Blank">Deploy</a>
+				<a class="btn btn-danger" name="remove" href="./oddeploy_remove?id=$od_deploy.id">Remove</a>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+
+	    <script src="/static/bootstrap/js/jquery.min.js"></script>
+	    <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
+	    <script src="/static/bootstrap/js/validate.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>

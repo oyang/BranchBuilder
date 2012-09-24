@@ -8,6 +8,7 @@ from datetime import datetime
 
 from  buildutil import *
 import BuildConfig
+import ODDeploy
 
 render = web.template.render('template/', base='layout')
 urls = (
@@ -22,6 +23,7 @@ urls = (
 	'/fullview', 'FullView',
 	'/logger', 'Logger',
 	'/buildconfig', BuildConfig.app_BuildConfig,
+	'/ODDeploy', ODDeploy.app_ODDeploy,
 )
 
 web.config.smtp_server = 'localhost'
