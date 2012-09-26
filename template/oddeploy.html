@@ -20,13 +20,12 @@ $var site_url: $site_url
 			<option value="qatest-web1.sjc.sugarcrm.pvt">qatest-web1.sjc.sugarcrm.pvt</option>
 			<option value="qatest-web2.sjc.sugarcrm.pvt">qatest-web2.sjc.sugarcrm.pvt</option>
 		</select>
-		<select name="deploy_config">
-			<option value="ent">Ent</option>
-			<option value="ce">CE</option>
-			<option value="pro">Pro</option>
-			<option value="corp">Corp</option>
-			<option value="ult">Ult</option>
-		</select>
+		<input type="checkbox" name="flavor1" value="Ult">Ult
+		<input type="checkbox" name="flavor2" value="Ent">Ent
+		<input type="checkbox" name="flavor3" value="Corp">Corp
+		<input type="checkbox" name="flavor4" value="Pro">Pro
+		<input type="checkbox" name="flavor5" value="CE">CE
+
 		<button id="footer_save "  type="submit" class="btn btn-primary">Add</button>
 	</form>
 
@@ -44,23 +43,13 @@ $var site_url: $site_url
 	<tbody>
 	$for od_deploy in od_deploys:
 		<tr >
+			<td>$od_deploy.username</td>
+			<td>$od_deploy.version</td>
+			<td>$od_deploy.webroot</td>
+			<td>$od_deploy.deploy_config</td>
+			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>
-			$od_deploy.username
-			</td>
-			<td>
-			$od_deploy.version
-			</td>
-			<td>
-			$od_deploy.webroot
-			</td>
-			<td>
-			$od_deploy.deploy_config
-			</td>
-			<td>
-			$od_deploy.status
-			</td>
-			<td>
-				<a class="btn" name="deploy" href="./oddeploy_deploy?id=$od_deploy.id">Deploy</a>
+				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id" href="./oddeploy?id=$od_deploy.id" value="Deploy">
 				<a class="btn btn-danger" name="remove" href="./oddeploy_remove?id=$od_deploy.id">Remove</a>
 			</td>
 		</tr>
@@ -73,3 +62,4 @@ $var site_url: $site_url
 	    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 	    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
 	    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+	    <script src="/static/bootstrap/js/od_custom.js"></script>
