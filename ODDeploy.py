@@ -219,12 +219,12 @@ class ODDeployAdd:
     def POST(self):
       i = web.input()
       isDuplicate = db.select('od_deployer', where='username=\"' + i.username + '\" AND version=\"' + i.version + '\"', what="count(*) as count")[0]
-      print (isDuplicate)
+      deploy_config = []	
+
       if isDuplicate.count:
 	      web.seeother('/')
       #add a new build
       else:
-	      deploy_config = []	
 	      if hasattr(i, "flavor1"): deploy_config.append(i.flavor1)
 	      if hasattr(i, "flavor2"): deploy_config.append(i.flavor2)
 	      if hasattr(i, "flavor3"): deploy_config.append(i.flavor3)
