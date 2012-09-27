@@ -202,7 +202,6 @@ class ODCron:
 		
 		for x in db.select('deploys_status', what='task_id, status'):
 			job_list.append(x)
-		print(job_list)
 
 		return job_list
 
@@ -225,6 +224,9 @@ class ODDeployAdd:
       if hasattr(i, "flavor3"): deploy_config.append(i.flavor3)
       if hasattr(i, "flavor4"): deploy_config.append(i.flavor4)
       if hasattr(i, "flavor5"): deploy_config.append(i.flavor5)
+
+      if len(deploy_config) == 0 : deploy_config.append("Ent")
+
 
       deploy_config_new = "" ",".join(deploy_config)
 
