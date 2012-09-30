@@ -39,7 +39,20 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-	echo "hello"
+ssh eyang@qatest-web1.sjc.sugarcrm.pvt "cd ~/deployer; php ~/deployer/main.php \
+-r $webroot \
+-s qatest.sugarcrm.pvt \
+-d  /var/www/qatest/qatest.sugarcrm.pvt/www \
+-v $version \
+-f $deploy_config \
+-i ${username} \
+-h qatest-db1  \
+-u qatest  \
+-p qatest  \
+"
+if [ $? -gt 0 ] ; then
+	exit $?
+fi
       </command>
     </hudson.tasks.Shell>
   </builders>
