@@ -60,7 +60,7 @@ $var site_url: $site_url
 			$ shortver = "".join(od_deploy.version.split('.'))
 			$for flavor in od_deploy.deploy_config.split(','):
 				$ insurl = od_deploy.username + "_" + shortver + "_" + flavor.lower()
-				<a href="http://qatest.sugarcrm.pvt/$insurl">$flavor </a>
+				<a href="http://qatest.sugarcrm.pvt/$insurl" target="_blank" >${flavor} </a>
 			</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>
