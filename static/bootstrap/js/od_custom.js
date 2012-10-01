@@ -11,7 +11,7 @@ $(document).ready(function(){
 				$(this).attr("disabled", "disabled");
 				$('#deploy_status_' + task_id[1]).text("Starting...");
 				$.get(
-					'/ODDeploy/oddeploy',
+					'./oddeploy',
 					{"task_id": task_id[1]},
 					function(data){
 						$('#deploy_status_' + data.task_id).text(data.status);
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 		setInterval(function(){
 			$.get(
-				'/ODDeploy/odcron',
+				'./odcron',
 				function(data){
 					var task_id_list = [];
 					var task_status_list = [];
