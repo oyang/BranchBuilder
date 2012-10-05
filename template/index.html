@@ -32,10 +32,10 @@ $var site_url: $site_url
 			<td>$build.repos</td>
 			<td>$build.author</td>
 			<td>
-			<input type="button" class="btn btn-success" name="rebuild" id="buildList-$build.task_id" href="./build?task_id=$build.task_id" value="Build" >
+			<input type="button" class="btn btn-success" name="rebuild" id="buildList-$build.task_id"  value="Build" >
 			<input type="button" data-toggle="modal" name="editBuild" class="btn" data-target="#popupViewBuild" id="editList-$build.task_id" value="Edit" >
 			<a data-toggle="modal" name="duplicateBuild" class="btn" data-target="#popupViewBuild" id="dupList-$build.task_id" >Duplicate</a>
-			<a class="btn btn-danger" name="remove" href="./remove?task_id=$build.task_id">Remove</a>
+			<input type="button" class="btn btn-danger" name="removeBuild" id="buildListRemove-$build.task_id" value="Remove">
 			</td>
 		</tr>
 	</tbody>

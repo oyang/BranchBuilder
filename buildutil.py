@@ -80,7 +80,7 @@ class BuildUtil:
 			md5_str = hashlib.md5(string).hexdigest()
 		except Exception:
 			import md5
-			md5_str = md5(string).hexdigest()
+			md5_str = md5.md5(string).hexdigest()
 
 		return md5_str
 

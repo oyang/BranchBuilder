@@ -190,7 +190,13 @@ class BuildCron:
 
 		return j.get_queue_info()
 
-	def check_building_job(self):
+	def is_building_job(self, jobName):
+		if jobName in self.get_building_job():
+			return True
+		else:
+			return False
+
+	def get_building_job(self):
 		#Check building job
 
 		j = self.taskBuilder.j
@@ -200,23 +206,29 @@ class BuildCron:
 
 		for job in job_list:
 			if re.search('anime', job['color']):
-				running_job.append(job)
+				running_job.append(job['name'])
 
-		for job in job_queue_list:
-			running_job.append(job)
+		for queue_item in job_queue_list:
+			running_job.append(queue_item['task']['name'])
 
 		return running_job
 
 	def get_lowest_build(self):
-		min_build_priorities = db.query('select min(priority) as priority from builds_status')
-		min_build_priority = min_build_priorities[0].priority
+		min_builds = db.query('select task_id, status, priority \
+					 from builds_status \
+					 where priority=(select min(b.priority) from builds_status as b)')
+		if min_builds:
+			for min_build in min_builds:
+				return {"task_id":min_build.task_id, "status": min_build.status, "priority": min_build.priority}
 
-		if min_build_priority:
-			selectedBuildTasks = db.select('builds_status', where='priority=' + str(min_build_priority))
-			for selectBuildTask in selectedBuildTasks:
-				return {"task_id":selectBuildTask.task_id, "status": selectBuildTask.status}
-		else:
-			return False
+		#min_build_priority = min_build_priorities[0].priority
+
+		#if min_build_priority:
+		#	selectedBuildTasks = db.select('builds_status', where='priority=' + str(min_build_priority))
+		#	for selectBuildTask in selectedBuildTasks:
+		#		return {"task_id":selectBuildTask.task_id, "status": selectBuildTask.status}
+		#else:
+		#	return False
 
 	def run_cron(self):
 		lowest_build = self.get_lowest_build()
@@ -224,7 +236,10 @@ class BuildCron:
 
 		if lowest_build:
 			if lowest_build["status"] == 'Running':
-				if self.check_building_job():
+				selectRepos = db.select('builds', where='task_id=' + str(lowest_build['task_id']), what='repos')
+				buildUtil = BuildUtil()
+				jobName = buildUtil.get_job_name(repos=selectRepos[0]["repos"])
+				if self.is_building_job(jobName):
 					pass
 				else:
 					#update build_status and remove the running flag

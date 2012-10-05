@@ -75,6 +75,11 @@
     <hudson.tasks.Shell>
       <command>
 rm -rf /dev/shm/sugarbuild-$version
+
+#remove the submodule files
+git ls-files --other --exclude-standard | xargs rm -rf
+
+#initial submodule if exists
 git submodule init
 git submodule update
 
@@ -89,7 +94,7 @@ if [ &quot;$upgrade_package&quot; = &quot;1&quot; ]; then
   wget http://honey-g/BranchBuilder/buildconfig/buildconfig_get?version=$version -O build_config.php
   chmod 777 build_config.php
 fi
-./build_sugar_30.php --version $version --branch $branch --latin 1 --deploy --packages $package_list --upgrades $upgrade_package
+./build_sugar_30.php --version $version --branch $branch  --deploy --packages $package_list --upgrades $upgrade_package
 
 rm -rf /dev/shm/sugarbuild-$version
 

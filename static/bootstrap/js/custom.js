@@ -5,7 +5,21 @@ $(document).ready(function(){
 				var task_id = $(domEle).attr("id").split("_");
 				$("#buildList-" + task_id[2]).attr("disabled", "disabled");
 				$('#editList-' + task_id[2]).attr("disabled", "disabled");
+				$('#buildListRemove-' + task_id[2]).attr("disabled", "disabled");
 			}
+		});
+		$('input[name="removeBuild"]').each(function(i, domEle){
+			$(domEle).click(function(){
+				var task_id = $(domEle).attr("id").split("-");
+				$(this).attr("disabled", "disabled");
+				$.get(
+					'/BranchBuilder/remove',
+					{"task_id": task_id[1]},
+					function(data){
+						window.location.reload(true);
+					}
+				);
+			});
 		});
 		$('input[name="rebuild"]').each(function(i, domEle){
 			$(domEle).click(function(){
@@ -13,6 +27,7 @@ $(document).ready(function(){
 				$(this).attr("disabled", "disabled");
 				$('#build_status_' + task_id[1]).text("Starting...");
 				$('#editList-' + task_id[1]).attr("disabled", "disabled");
+				$('#buildListRemove-' + task_id[1]).attr("disabled", "disabled");
 				$.get(
 					'/BranchBuilder/build',
 					{"task_id": task_id[1]},
@@ -170,6 +185,9 @@ $(document).ready(function(){
 							$('#build_status_' + task_id).attr('class', 'Available');						
 							//Remove disabled attr for edit button
 							$('#editList-' + task_id).removeAttr("disabled");
+							
+							//Remove disabled attr for remove button
+							$('#buildListRemove-' + task_id).removeAttr("disabled");
 						}
 					});
 				}
