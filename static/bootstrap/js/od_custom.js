@@ -5,6 +5,7 @@ $(document).ready(function(){
 				$("#deployList-" + task_id[2]).attr("disabled", "disabled");
 			}
 		});
+
 		$('input[name="redeploy"]').each(function(i, domEle){
 			$(domEle).click(function(){
 				var task_id = $(domEle).attr("id").split("-");
@@ -20,7 +21,7 @@ $(document).ready(function(){
 				);
 			});
 		});
-
+		
 		setInterval(function(){
 			$.get(
 				'./odcron',
@@ -49,5 +50,91 @@ $(document).ready(function(){
 			);
 
 		}, 5000);
+
+		setInterval(function(){
+			$.get(
+				'./odsicron',
+				function(data){
+					if (data[0].jobName.toString() == "no_silentupgrade"){
+						$('input[name="reupgrade"]').each(function(i, domEle){
+							$(domEle).removeAttr('disabled');
+							$(domEle).val('Upgrade');
+						});
+
+					}
+				}
+			);
+		}, 5000);
+
+		$('input[name="reupgrade"]').each(function(i, domEle){
+			$(domEle).click(function(){
+				var insname = $('#insname').val();
+				var upgradetype = $('input[name="upgradetype"]').val();
+				var flavor = $('#flavorlist').find(":selected").text();
+				var dynamic = $('#dynamiclist').find(":selected").text();
+				var version = $('#versionlist').find(":selected").text();
+				$(this).attr("disabled", "disabled");
+				$(this).val("Upgrading");
+				$.get(
+					'./oddeploy_si',
+					{"insname": insname,"upgradetype": upgradetype,"flavor": flavor,"dynamic": dynamic,"version": version}
+				);
+			});
+		});
+
+		$('input[name="upgradetype"]').each(function(i, domEle){
+			$(domEle).click(function(){
+					var $flavorlist = $('#flavorlist');
+					var $dynamiclist = $('#dynamiclist');
+					
+					var flaoptions_co = {"CE":"ce","Pro":"pro","Ent":"ent","Corp":"corp"};
+					var flaoptions_up = {"CE":"ce","Pro":"pro","Ent":"ent","Corp":"corp","Ult":"ult"};
+					var dynoptions_co = {"Pro":"pro","Ent":"ent","Corp":"corp","Ult":"ult"};
+					var dynoptions_up = {"6.4.x":"6.4.x","6.5.x":"6.5.x"};
+					if ($(this).val() == "conversion"){
+						$('#flavorheader').text('Current Flavor');	
+						$('#dynamicheader').text('To Flavor');	
+						$('#versionheader').text('Version');
+						$flavorlist.empty();
+						$dynamiclist.empty();
+						$.each(flaoptions_co,function(key, value){
+							$flavorlist.append($("<option></option>").attr("value",value).text(key));
+						});
+						$.each(dynoptions_co,function(key, value){
+							$dynamiclist.append($("<option></option>").attr("value",value).text(key));
+						});
+					}else{
+						$('#flavorheader').text('Flavor');	
+						$('#dynamicheader').text('Current Version');	
+						$('#versionheader').text('To Version');
+						$flavorlist.empty();
+						$dynamiclist.empty();
+						$.each(flaoptions_up,function(key, value){
+							$flavorlist.append($("<option></option>").attr("value",value).text(key));
+						});
+						$.each(dynoptions_up,function(key, value){
+							$dynamiclist.append($("<option></option>").attr("value",value).text(key));
+						});
+						
+					}	
+				});
+			});
+
+		$('#flavorlist').each(function(i, domEle){
+			var $Uptype = $('#upgradetype1');
+			var $dynamiclist = $('#dynamiclist');
+			$(domEle).change(function(){
+				if ($Uptype.is(":checked")){
+					$dynamiclist.empty();
+					var dynoptions_co = {"Pro":"pro","Ent":"ent","Corp":"corp","Ult":"ult"};
+					if ($(this).val() == "pro"){dynoptions_co = {"Ent":"ent","Corp":"corp","Ult":"ult"}}
+					if ($(this).val() == "ent"){dynoptions_co = {"Ult":"ult"}}
+					if ($(this).val() == "corp"){dynoptions_co = {"Ent":"ent","Ult":"ult"}}
+					$.each(dynoptions_co,function(key, value){
+						$dynamiclist.append($("<option></option>").attr("value",value).text(key));
+					});
+				}
+			});
+		});
 		
 	});

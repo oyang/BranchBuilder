@@ -1,7 +1,63 @@
-$def with (od_deploys, site_url)
+$def with (od_deploys, site_url, upgradeStatus)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
-
+	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></lable>
+	<form class="well form-inline" method="post" action ="./oddeploy_si" id="silentUpgradeForm">
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+				<th>Sugar Instance</th>
+				<th>Type</th>
+				<th id="flavorheader">Current Flavor</th>
+				<th id="dynamicheader">To Flavor</th>
+				<th id="versionheader">Version</th>
+				<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<td>
+						<input type="text" id="insname" name="insname" placeholder="Sugar instance name">
+					</td>
+					<td>
+						<input type="radio" id="upgradetype1" name="upgradetype" value="conversion"  checked>Convertion
+						</br>
+						<input type="radio" id="upgradetype2" name="upgradetype" value="upgrade" >Upgrade
+					</td>
+					<td>
+						<select id="flavorlist" name="flavorlist">
+							<option value="ce">CE</option>
+							<option value="pro">Pro</option>
+							<option value="ent">Ent</option>
+							<option value="corp">Corp</option>
+						</select>
+					<td>
+						<select id="dynamiclist" name="dynamiclist">
+							<option value="pro">Pro</option>
+							<option value="ent">Ent</option>
+							<option value="corp">Corp</option>
+							<option value="ult">Ult</option>
+						</select>
+					</td>
+					<td>
+						<select id="versionlist" name="versionlist">
+							<option value="6.6.0">6.6.0</option>
+						</select>
+					</td>
+					<td>
+						$if upgradeStatus == 0:
+							<input type="hidden"  name="tester"  value="${upgradeStatus}" >
+							<input type="button" class="btn btn-success" name="reupgrade" id="reupgrade"  value="Upgrade">
+						$else:
+							<input type="hidden"  name="tester"  value="${upgradeStatus}" >
+							<input type="button" class="btn btn-success" name="reupgrade" id="reupgrade"  value="Upgrade" disabled="disabled">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<label><b><u>OnDemand Deployment Configuration</u></b></lable>
+	</br>
 	<form class="well form-inline" method="post" action ="./oddeploy_add" id="addBuildForm">
 		<select name="username">
 			<option value="dsafar">David Safar</option>
@@ -38,7 +94,7 @@ $var site_url: $site_url
 		<input type="checkbox" name="flavor4" value="Pro">Pro
 		<input type="checkbox" name="flavor5" value="CE">CE
 
-		<button id="footer_save "  type="submit" class="btn btn-primary">Add</button>
+		<button id="footer_save"  type="submit" class="btn btn-primary">Add</button>
 	</form>
 
 	<table class="table table-condensed">
@@ -64,7 +120,7 @@ $var site_url: $site_url
 			</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>
-				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id" href="./oddeploy?id=$od_deploy.id" value="Deploy">
+				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id"  value="Deploy">
 				<a class="btn btn-danger" name="remove" href="./oddeploy_remove?id=$od_deploy.id">Remove</a>
 			</td>
 		</tr>

@@ -13,6 +13,7 @@ render = web.template.render('template/', base='layout')
 urls = (
 	'/', 'ODDeployIndex',
 	'', 'ODDeployIndex',
+	'/oddeploy_si', 'ODDeploySI',
 	'/oddeploy_add', 'ODDeployAdd',
 	'/oddeploy', 'ODDeploy',
 	'/oddeploy_update', 'ODDeployUpdate',
@@ -20,6 +21,7 @@ urls = (
 	'/oddeploy_get', 'ODDeployGet',
 	'/oddeploy_detail', 'ODDeployDetail',
 	'/odcron', 'ODCron',
+	'/odsicron', 'ODSICron',
 )
 
 #web.config.smtp_server = 'localhost'
@@ -34,15 +36,46 @@ db = web.database(dbn='sqlite', db='branchBuilder')
 
 
 class ODDeployIndex:
-    def GET(self):
-      od_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, \
+
+	def is_running_job(self,jobName):
+		if unicode(jobName) in self.check_running_job():
+			return True
+		else:
+			return False
+
+	def check_running_job(self):
+		#Check Running job
+		j = Jenkins(appconfig.jenkins_url)
+		job_list = j.get_jobs()
+		job_queue_list = j.get_queue_info()
+		running_job = []
+
+		for job in job_list:
+			if re.search('anime', job['color']):
+				running_job.append(job['name'])
+
+		for job_queue in job_queue_list:
+			running_job.append(job_queue['task']['name'])
+
+		return running_job
+
+	def GET(self):
+		job_list = []
+		jobName = "od_silentupgrade"
+		
+		if self.is_running_job(jobName):
+			upgradeStatus = 1
+		else:
+			upgradeStatus = 0
+      		
+		od_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, \
 				ifnull(b.status, \"Available\") as status \
 				from od_deployer as a \
 				left join  deploys_status as b \
 				on a.id=b.task_id \
 				order by b.status desc") 
 
-      return render.oddeploy(od_deploys, appconfig.site_url)
+	        return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus)
 
 class ODDeployUpdate:
     def GET(self):
@@ -95,6 +128,26 @@ class ODDeployRemove:
 
       raise web.seeother("/")
 
+class RunUpgrade:
+    def run(self, insname, upgradetype, flavor, dynamic, version):
+      with open("./builds/config/job/upgradeConfigParameter.xml") as f:
+  		configStringParameter = f.read()
+
+      builder = JobBuilder(appconfig.jenkins_url)
+      jobName = "od_silentupgrade"
+      builder.add_job(jobName, configStringParameter)
+
+      builder.run_job(insname=insname, \
+				upgradetype=upgradetype, \
+				flavor=flavor, \
+				dynamic=dynamic, \
+				version=version)      
+
+class ODDeploySI:
+    def GET(self):
+      i = web.input()
+      RunUpgrade().run(i.insname,i.upgradetype,i.flavor,i.dynamic,i.version)
+
 class RunDeploy:
     def run(self, task_id):
       i = {"task_id": task_id}
@@ -137,6 +190,52 @@ class ODDeploy:
                                 statusString = json.JSONEncoder().encode({"task_id": i.task_id, "status": "Running" })
 
                         return statusString
+class ODSICron:
+	def __init__(self):
+		self.j = Jenkins(appconfig.jenkins_url)
+
+	def check_queue(self):
+		#Check queue jobs
+		j= self.j
+		return j.get_queue_info()
+
+	def is_upgrade_job(self,jobName):
+		if unicode(jobName) in self.check_upgrade_job():
+			return True
+		else:
+			return False
+
+	def check_upgrade_job(self):
+		#Check Running job
+
+		j = self.j
+		job_list = j.get_jobs()
+		job_queue_list = j.get_queue_info()
+		running_job = []
+
+		for job in job_list:
+			if re.search('anime', job['color']):
+				running_job.append(job['name'])
+
+		for job_queu in job_queue_list:
+			running_job.append(job_queue['task']['name'])
+
+		return running_job
+
+	def run_cron(self):
+		job_list = []
+		jobName = "od_silentupgrade"
+		if self.is_upgrade_job(jobName):
+			job_list.append({"jobName":"od_silentupgrade"})
+		else:
+			job_list.append({"jobName":"no_silentupgrade"})
+		return job_list
+
+	def GET(self):
+		job_list = []
+		job_list = self.run_cron()
+		web.header('Content-type', 'application/json')
+		return json.JSONEncoder().encode(job_list)
 
 class ODCron:
 	def __init__(self):
@@ -147,8 +246,14 @@ class ODCron:
 		j= self.j
 		return j.get_queue_info()
 
+	def id_deploying_job(self,jobName):
+		if jobName in self.check_deploying_job():
+			return True
+		else:
+			return False
+
 	def check_deploying_job(self):
-		#Check building job
+		#Check Running job
 
 		j = self.j
 		job_list = j.get_jobs()
@@ -157,10 +262,10 @@ class ODCron:
 
 		for job in job_list:
 			if re.search('anime', job['color']):
-				running_job.append(job)
+				running_job.append(job['name'])
 
-		for job in job_queue_list:
-			running_job.append(job)
+		for job_queu in job_queue_list:
+			running_job.append(job_queue['task']['name'])
 
 		return running_job
 
@@ -181,16 +286,18 @@ class ODCron:
 
 		if lowest_deploy:
 			if lowest_deploy["status"] == 'Running':
-				if self.check_deploying_job():
+			        selectedDeploys = db.select('od_deployer', where="id=" + str(lowest_deploy["task_id"]))
+			        for m in selectedDeploys:
+				   username = m.username
+			        jobName = "od_" + username
+				if self.is_deploying_job(jobName):
 					pass
 				else:
 					#update build_status and remove the running flag
 					db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
 			elif lowest_deploy["status"] == 'InQueue':
 				#Assume Jenkins is avaliable for building
-				print("before rundeploy")
 				RunDeploy().run(lowest_deploy["task_id"])
-				print("after rundeploy")
 				db.update('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]), status='Running')
 
 			else:
