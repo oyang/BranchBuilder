@@ -4,6 +4,7 @@ $var site_url: $site_url
 
 	<form class="well form-inline" method="post" action ="./oddeploy_add" id="addBuildForm">
 		<select name="username">
+			<option value="cfox">Chinghua Fox</option>
 			<option value="dsafar">David Safar</option>
 			<option value="dclunie">David Clunie</option>
 			<option value="dganti">Deepthi Ganti</option>
@@ -59,8 +60,11 @@ $var site_url: $site_url
 			<td>
 			$ shortver = "".join(od_deploy.version.split('.'))
 			$for flavor in od_deploy.deploy_config.split(','):
-				$ insurl = od_deploy.username + "_" + shortver + "_" + flavor.lower()
-				<a href="http://qatest.sugarcrm.pvt/$insurl" target="_blank" >${flavor} </a>
+				$ insurl = od_deploy.username + "_" + shortver + flavor.lower()
+				$if od_deploy.last_deploy_date:
+					<a href="http://qatest.sugarcrm.pvt/${insurl}_${od_deploy.last_deploy_date}" target="_blank" >${flavor} </a>
+				$else:
+					${flavor} 
 			</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>

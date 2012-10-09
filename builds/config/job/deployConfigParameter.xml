@@ -26,6 +26,11 @@
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>instance_name</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -40,12 +45,13 @@
     <hudson.tasks.Shell>
       <command>
 ssh eyang@qatest-web1.sjc.sugarcrm.pvt "cd ~/deployer; php ~/deployer/main.php \
+-e $username \
 -r $webroot \
 -s qatest.sugarcrm.pvt \
 -d  /var/www/qatest/qatest.sugarcrm.pvt/www \
 -v $version \
 -f $deploy_config \
--i ${username} \
+-i $instance_name \
 -h qatest-db1  \
 -u qatest  \
 -p qatest  \

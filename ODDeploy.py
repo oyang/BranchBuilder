@@ -4,6 +4,7 @@ from jinja2 import Template
 import json, urllib2, re
 import web
 import os
+from datetime import datetime
 
 import appconfig
 from buildutil import JobBuilder
@@ -35,7 +36,7 @@ db = web.database(dbn='sqlite', db='branchBuilder')
 
 class ODDeployIndex:
     def GET(self):
-      od_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, \
+      od_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, a.last_deploy_date, \
 				ifnull(b.status, \"Available\") as status \
 				from od_deployer as a \
 				left join  deploys_status as b \
@@ -107,6 +108,9 @@ class RunDeploy:
 	 version = m.version
          webroot = m.webroot
 	 deploy_config = m.deploy_config
+	 shortver = version.replace('.', '')
+	 last_deploy_date = m.last_deploy_date
+	 instance_name = username.lower() + "_" + shortver + deploy_config.lower() + "_" + last_deploy_date
 
       builder = JobBuilder(appconfig.jenkins_url)
       jobname = "od_" + username
@@ -115,7 +119,8 @@ class RunDeploy:
       builder.run_job(username=username, \
 				version=version, \
 				webroot=webroot, \
-				deploy_config=deploy_config)      
+				deploy_config=deploy_config, \
+				instance_name=instance_name)      
 
 class ODDeploy:
         def GET(self):
@@ -133,6 +138,10 @@ class ODDeploy:
                                 db.insert('deploys_status',
                                                         task_id=int(i.task_id),
                                                         status="Running")
+
+				date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+				db.update('od_deployer', where='id=' + str(i.task_id), last_deploy_date=date_now)
+
                                 RunDeploy().run(i.task_id)
                                 statusString = json.JSONEncoder().encode({"task_id": i.task_id, "status": "Running" })
 
@@ -188,10 +197,11 @@ class ODCron:
 					db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
 			elif lowest_deploy["status"] == 'InQueue':
 				#Assume Jenkins is avaliable for building
-				print("before rundeploy")
 				RunDeploy().run(lowest_deploy["task_id"])
-				print("after rundeploy")
-				db.update('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]), status='Running')
+				db.update('deploys_status', where='id=' + str(lowest_deploy["task_id"]), status='Running')
+
+				date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+				db.update('od_deployer', where='task_id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
 
 			else:
 				#print 'false with invalid status'
