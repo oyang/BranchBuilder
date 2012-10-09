@@ -267,9 +267,9 @@ class ODCron:
         job_queue_list = j.get_queue_info()
         running_job = []
 
-        for job in job_queue_list:
-            if re.match('^od_', job['task']['name']):
-                running_job.append(job['task']['name'])
+        for job in job_list:
+            if re.match('^od_', job['name']):
+                running_job.append(job['name'])
 
         for job_queue in job_queue_list:
             running_job.append(job_queue['task']['name'])
@@ -312,7 +312,7 @@ class ODCron:
                     db.update('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]), status='Running')
 		else:
 		    #Can not found this record from od_deployer
-		    pass
+                    db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
             else:
                 #print 'false with invalid status'
                 pass

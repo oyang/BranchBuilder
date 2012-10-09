@@ -1,8 +1,11 @@
 $def with (od_deploys, site_url, upgradeStatus)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
-	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></lable>
-	<form class="well form-inline" method="post" action ="./oddeploy_si" id="silentUpgradeForm">
+	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
+	<div class="alert">
+		<strong>Warning!</strong> Currently upgrade feature doesn't work, we're still working hard on it!
+	</div>
+	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_si" id="silentUpgradeForm">
 		<table class="table table-condensed">
 			<thead>
 				<tr>
@@ -56,10 +59,12 @@ $var site_url: $site_url
 			</tbody>
 		</table>
 	</form>
-	<label><b><u>OnDemand Deployment Configuration</u></b></lable>
-	</br>
-	<form class="well form-inline" method="post" action ="./oddeploy_add" id="addBuildForm">
+	<label><b><u>OnDemand Deployment Configuration</u></b></label>
+		<strong>Find deployed instances list here: </strong><a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a>.
+	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
+			<option value="betauser1">Beta User1</option>
+			<option value="betauser2">Beta User2</option>
 			<option value="cfox">Chinghua Fox</option>
 			<option value="dsafar">David Safar</option>
 			<option value="dclunie">David Clunie</option>
@@ -125,7 +130,7 @@ $var site_url: $site_url
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>
 				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id"  value="Deploy">
-				<a class="btn btn-danger" name="remove" href="./oddeploy_remove?id=$od_deploy.id">Remove</a>
+				<a class="btn btn-danger" name="remove" href="${site_url}/ODDeploy/oddeploy_remove?id=$od_deploy.id">Remove</a>
 			</td>
 		</tr>
 	</tbody>
