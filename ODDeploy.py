@@ -165,11 +165,12 @@ class ODCron:
 		running_job = []
 
 		for job in job_list:
-			if re.search('anime', job['color']):
+			if re.search('anime', job['color']) and re.match('^od_', job['name']):
 				running_job.append(job)
 
 		for job in job_queue_list:
-			running_job.append(job)
+			if re.match('^od_', job['task']['name']):
+				running_job.append(job['task']['name'])
 
 		return running_job
 
@@ -197,11 +198,12 @@ class ODCron:
 					db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
 			elif lowest_deploy["status"] == 'InQueue':
 				#Assume Jenkins is avaliable for building
+				date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+				db.update('od_deployer', where='id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
+
 				RunDeploy().run(lowest_deploy["task_id"])
 				db.update('deploys_status', where='id=' + str(lowest_deploy["task_id"]), status='Running')
 
-				date_now = datetime.now().strftime("%Y%m%d%H%M%S")
-				db.update('od_deployer', where='task_id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
 
 			else:
 				#print 'false with invalid status'
