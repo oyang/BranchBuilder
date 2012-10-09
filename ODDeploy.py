@@ -161,9 +161,7 @@ class RunDeploy:
         version = m.version
         webroot = m.webroot
         deploy_config = m.deploy_config
-        shortver = version.replace('.', '')
-        last_deploy_date = m.last_deploy_date
-        instance_name = username.lower() + "_" + shortver + deploy_config.lower() + "_" + last_deploy_date
+        deploy_timestamp = m.last_deploy_date
 
       builder = JobBuilder(appconfig.jenkins_url)
       jobname = "od_" + username
@@ -173,7 +171,7 @@ class RunDeploy:
                 version=version, \
                 webroot=webroot, \
                 deploy_config=deploy_config, \
-                instance_name=instance_name)      
+                deploy_timestamp=deploy_timestamp)      
 
 class ODDeploy:
         def GET(self):
