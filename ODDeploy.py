@@ -255,7 +255,7 @@ class ODCron:
         j= self.j
         return j.get_queue_info()
 
-    def id_deploying_job(self,jobName):
+    def is_deploying_job(self,jobName):
         if jobName in self.check_deploying_job():
             return True
         else:
@@ -306,12 +306,15 @@ class ODCron:
                     db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
             elif lowest_deploy["status"] == 'InQueue':
                 #Assume Jenkins is avaliable for building
-                date_now = datetime.now().strftime("%Y%m%d%H%M%S")
-                db.update('od_deployer', where='id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
+		if db.select('od_deployer', where='id' + str(lowest_deploy["task_id"])):
+                    date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+                    db.update('od_deployer', where='id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
 
-                RunDeploy().run(lowest_deploy["task_id"])
-                db.update('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]), status='Running')
-
+                    RunDeploy().run(lowest_deploy["task_id"])
+                    db.update('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]), status='Running')
+		else:
+		    #Can not found this record from od_deployer
+		    pass
             else:
                 #print 'false with invalid status'
                 pass
