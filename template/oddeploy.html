@@ -60,7 +60,7 @@ $var site_url: $site_url
 		</table>
 	</form>
 	<label><b><u>OnDemand Deployment Configuration</u></b></label>
-		<strong>Find deployed instances list here: </strong><a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a>.
+		<strong>Find deployed instance list here: </strong><a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a>.
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
 			<option value="betauser1">Beta User1</option>
@@ -123,7 +123,7 @@ $var site_url: $site_url
 			$for flavor in od_deploy.deploy_config.split(','):
 				$ insurl = od_deploy.username + "_" + shortver + flavor.lower()
 				$if od_deploy.last_deploy_date:
-					<a href="http://qatest.sugarcrm.pvt/${insurl}_${od_deploy.last_deploy_date}" target="_blank" >${flavor} </a>
+					<a href="http://qatest.sugarcrm.pvt/${insurl}_${od_deploy.last_deploy_date}" target="_blank" >${flavor}</a>
 				$else:
 					${flavor} 
 			</td>

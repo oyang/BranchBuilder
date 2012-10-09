@@ -268,7 +268,7 @@ class ODCron:
         running_job = []
 
         for job in job_list:
-            if re.match('^od_', job['name']):
+            if re.match('^od_', job['name']) and re.search('anime', job['color']):
                 running_job.append(job['name'])
 
         for job_queue in job_queue_list:
@@ -297,6 +297,7 @@ class ODCron:
                 for m in selectedDeploys:
                     username = m.username
                     jobName = "od_" + username
+
                 if self.is_deploying_job(jobName):
                     pass
                 else:
