@@ -1,4 +1,4 @@
-$def with (od_deploys, site_url, upgradeStatus, od_users, deployInfo)
+$def with (od_deploys, site_url, upgradeStatus, od_users, deployInfo, od_version)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
 	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
@@ -63,12 +63,14 @@ $var site_url: $site_url
 		<strong>Find deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
-		$for username in od_users:
+		$ userKey = od_users.keys()
+		$ userKey.sort()
+		$for username in userKey: 
 			<option value="$username">${od_users[username]}</option>
 		</select>
 		<select name="version">
-			<option value="6.6.0">6.6.0</option>
-			<option value="6.5.6">6.5.6</option>
+		$for version in od_version: 
+			<option value="$version">${version}</option>
 		</select>
 		<input name="webroot" type="hidden"  value="qatest-web1.sjc.sugarcrm.pvt" >
 		<!--
