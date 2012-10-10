@@ -74,7 +74,7 @@ class ODDeployIndex:
                 from od_deployer as a \
                 left join  deploys_status as b \
                 on a.id=b.task_id \
-                order by b.status desc") 
+                order by b.status desc, a.last_deploy_date desc") 
 
         return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus)
 

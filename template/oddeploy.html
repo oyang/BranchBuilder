@@ -121,10 +121,13 @@ $var site_url: $site_url
 			<td>$od_deploy.version</td>
 			<td>
 			$ shortver = "".join(od_deploy.version.split('.'))
+			$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
+			$ last_deploy_date = last_deploy_date.replace(':', '')
+			$ last_deploy_date = last_deploy_date.replace(' ', '')
 			$for flavor in od_deploy.deploy_config.split(','):
 				$ insurl = od_deploy.username + "_" + shortver + flavor.lower()
 				$if od_deploy.last_deploy_date:
-					<a href="http://qatest.sugarcrm.pvt/${insurl}_${od_deploy.last_deploy_date}" target="_blank" >${flavor}</a>
+					<a href="http://qatest.sugarcrm.pvt/${insurl}_${last_deploy_date}" target="_blank" >${flavor}</a>
 				$else:
 					${flavor} 
 			</td>
