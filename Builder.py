@@ -205,11 +205,12 @@ class BuildCron:
 		running_job = []
 
 		for job in job_list:
-			if re.search('anime', job['color']):
+			if re.search('anime', job['color']) and re.match('^Build_', job['name']):
 				running_job.append(job['name'])
 
 		for queue_item in job_queue_list:
-			running_job.append(queue_item['task']['name'])
+			if re.match('^Build_', queue_item['task']['name']):
+			    running_job.append(queue_item['task']['name'])
 
 		return running_job
 

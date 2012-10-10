@@ -179,7 +179,7 @@ class ODDeploy:
         def GET(self):
 
                 i = web.input()
-                selectedDeploys = db.select('od_deployer', where="od_deployer.id=" + i.task_id, what="od_deployer.id")
+                selectedDeploys = db.select('od_deployer', where="id=" + i.task_id, what="id")
 
                 if selectedDeploys:
                         deploys_status = db.select('deploys_status')
@@ -274,7 +274,8 @@ class ODCron:
                 running_job.append(job['name'])
 
         for job_queue in job_queue_list:
-            running_job.append(job_queue['task']['name'])
+            if re.match('^od_', job_queue['task']['name']):
+                running_job.append(job_queue['task']['name'])
 
         return running_job
 
@@ -307,7 +308,7 @@ class ODCron:
                     db.delete('deploys_status', where='task_id=' + str(lowest_deploy["task_id"]))
             elif lowest_deploy["status"] == 'InQueue':
                 #Assume Jenkins is avaliable for building
-		if db.select('od_deployer', where='id' + str(lowest_deploy["task_id"])):
+		if db.select('od_deployer', where='id=' + str(lowest_deploy["task_id"])):
                     date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     db.update('od_deployer', where='id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
 
