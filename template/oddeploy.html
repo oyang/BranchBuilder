@@ -118,7 +118,7 @@ $var site_url: $site_url
 
 			$for flavor in od_deploy.deploy_config.split(','):
 				$ insurl = od_deploy.username + "_" + shortver + flavor.lower()
-				$if od_deploy.last_deploy_date:
+				$if od_deploy.last_deploy_date and od_deploy.status == 'Available':
 					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
