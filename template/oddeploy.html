@@ -60,7 +60,7 @@ $var site_url: $site_url
 		</table>
 	</form>
 	<label><b><u>OnDemand Deployment Configuration</u></b></label>
-		<strong>Find deployed instance list here: </strong><a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a>.
+		<strong>Find deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
 			<option value="betauser1">Beta User1</option>
@@ -94,11 +94,21 @@ $var site_url: $site_url
 			<option value="qatest-web2.sjc.sugarcrm.pvt">qatest-web2.sjc.sugarcrm.pvt</option>
 		</select>
 		-->
-		<input type="checkbox" name="flavor1" value="Ult">Ult
-		<input type="checkbox" name="flavor2" value="Ent" checked>Ent
-		<input type="checkbox" name="flavor3" value="Corp">Corp
-		<input type="checkbox" name="flavor4" value="Pro">Pro
-		<input type="checkbox" name="flavor5" value="CE">CE
+		<label class="checkbox inline">
+			<input type="checkbox" name="flavor1" value="Ult">Ult
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="flavor2" value="Ent" checked>Ent
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="flavor3" value="Corp">Corp
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="flavor4" value="Pro">Pro
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="flavor5" value="CE">CE
+		</label>
 
 		<button id="footer_save"  type="submit" class="btn btn-primary">Add</button>
 	</form>
