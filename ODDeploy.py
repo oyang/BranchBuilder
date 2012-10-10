@@ -76,7 +76,7 @@ class ODDeployIndex:
                 on a.id=b.task_id \
                 order by b.status desc, a.last_deploy_date desc") 
 
-        return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus)
+        return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus, appconfig.od_users)
 
 class ODDeployUpdate:
     def GET(self):

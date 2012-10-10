@@ -1,4 +1,4 @@
-$def with (od_deploys, site_url, upgradeStatus)
+$def with (od_deploys, site_url, upgradeStatus, od_users)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
 	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
@@ -63,25 +63,8 @@ $var site_url: $site_url
 		<strong>Find deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
-			<option value="betauser1">Beta User1</option>
-			<option value="betauser2">Beta User2</option>
-			<option value="cfox">Chinghua Fox</option>
-			<option value="dsafar">David Safar</option>
-			<option value="dclunie">David Clunie</option>
-			<option value="dganti">Deepthi Ganti</option>
-			<option value="egan">Emily Gan</option>
-			<option value="eyang">Eric Yang</option>
-			<option value="franklin">Fanklin Liu</option>
-			<option value="gpatterson">Geno Patterson</option>
-			<option value="grelampagos">Gino Relampagos</option>
-			<option value="jchen">Jackie Chen</option>
-			<option value="jcho">Jessica Cho</option>
-			<option value="jxia">Jennifer Xia</option>
-			<option value="mlouis">Mazen Louis</option>
-			<option value="oyang">Oliver Yang</option>
-			<option value="rlee">Randy Lee</option>
-			<option value="rzhou">Ran Zhou</option>
-			<option value="phuang">Paul Huang</option>
+		$for username in od_users:
+			<option value="$username">${od_users[username]}</option>
 		</select>
 		<select name="version">
 			<option value="6.6.0">6.6.0</option>
@@ -127,7 +110,7 @@ $var site_url: $site_url
 	<tbody>
 	$for od_deploy in od_deploys:
 		<tr >
-			<td>$od_deploy.username</td>
+			<td>${od_users[od_deploy.username]}</td>
 			<td>$od_deploy.version</td>
 			<td>
 			$ shortver = "".join(od_deploy.version.split('.'))
