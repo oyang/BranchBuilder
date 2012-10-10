@@ -23,6 +23,7 @@ urls = (
     '/oddeploy_detail', 'ODDeployDetail',
     '/odcron', 'ODCron',
     '/odsicron', 'ODSICron',
+    '/odformat', 'ODFormat',
 )
 
 #web.config.smtp_server = 'localhost'
@@ -161,7 +162,8 @@ class RunDeploy:
         version = m.version
         webroot = m.webroot
         deploy_config = m.deploy_config
-        deploy_timestamp = m.last_deploy_date
+	timeo = datetime.strptime(m.last_deploy_date, "%Y-%m-%d %H:%M:%S")
+        deploy_timestamp = timeo.strftime("%Y%m%d%H%M%S")
 
       builder = JobBuilder(appconfig.jenkins_url)
       jobname = "od_" + username
@@ -190,7 +192,7 @@ class ODDeploy:
                                                         task_id=int(i.task_id),
                                                         status="Running")
 
-				date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+				date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 				db.update('od_deployer', where='id=' + str(i.task_id), last_deploy_date=date_now)
 
                                 RunDeploy().run(i.task_id)
@@ -306,7 +308,7 @@ class ODCron:
             elif lowest_deploy["status"] == 'InQueue':
                 #Assume Jenkins is avaliable for building
 		if db.select('od_deployer', where='id' + str(lowest_deploy["task_id"])):
-                    date_now = datetime.now().strftime("%Y%m%d%H%M%S")
+                    date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     db.update('od_deployer', where='id=' + str(lowest_deploy["task_id"]), last_deploy_date=date_now)
 
                     RunDeploy().run(lowest_deploy["task_id"])
@@ -358,6 +360,14 @@ class ODDeployAdd:
           db.insert('od_deployer', username=i.username, version=i.version, webroot=i.webroot, status='Available', deploy_config=deploy_config_new)
           raise web.seeother("/")
 
+class ODFormat:
+    def GET(self):
+      od_deploy = db.select('od_deployer', what="id, last_deploy_date")
+      for r in od_deploy:
+          timeo = datetime.strptime(r.last_deploy_date, "%Y%m%d%H%M%S")
+          deploy_timestamp = timeo.strftime("%Y-%m-%d %H:%M:%S")
+	  db.update('od_deployer', where="id=" + str(r.id), last_deploy_date=deploy_timestamp)
+      
 
 app_ODDeploy = web.application(urls, locals())
 

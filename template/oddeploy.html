@@ -108,7 +108,8 @@ $var site_url: $site_url
 		<tr>
 		<th>Username</th>
 		<th>Version</th>
-		<th>Flavor</th>
+		<th>Flavor list</th>
+		<th>Latest Deploy Date</th>
 		<th>Status</th>
 		<th>Actions</th>
 		</tr>
@@ -127,6 +128,7 @@ $var site_url: $site_url
 				$else:
 					${flavor} 
 			</td>
+			<td>$od_deploy.last_deploy_date</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>
 				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id"  value="Deploy">
