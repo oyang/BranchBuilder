@@ -1,4 +1,4 @@
-$def with (od_deploys, site_url, upgradeStatus, od_users)
+$def with (od_deploys, site_url, upgradeStatus, od_users, deployInfo)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
 	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
@@ -102,6 +102,7 @@ $var site_url: $site_url
 		<th>Username</th>
 		<th>Version</th>
 		<th>Flavor list</th>
+		<th>Build Number</th>
 		<th>Latest Deploy Date</th>
 		<th>Status</th>
 		<th>Actions</th>
@@ -124,6 +125,11 @@ $var site_url: $site_url
 					<a href="http://qatest.sugarcrm.pvt/${insurl}_${last_deploy_date}" target="_blank" >${flavor}</a>
 				$else:
 					${flavor} 
+			</td>
+			<td>
+			$ instanceShort = shortver + od_deploy.deploy_config.split(',')[0].lower()
+			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) :
+				${deployInfo[od_deploy.username][instanceShort]['sugar_build']}
 			</td>
 			<td>$od_deploy.last_deploy_date</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>

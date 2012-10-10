@@ -69,6 +69,7 @@ class ODDeployIndex:
         else:
             upgradeStatus = 0
         
+	deployInfo = DeployInfo().getDeployInfo()
         od_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, a.last_deploy_date, \
                 ifnull(b.status, \"Available\") as status \
                 from od_deployer as a \
@@ -76,7 +77,7 @@ class ODDeployIndex:
                 on a.id=b.task_id \
                 order by b.status desc,  a.username, a.last_deploy_date desc") 
 
-        return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus, appconfig.od_users)
+        return render.oddeploy(od_deploys, appconfig.site_url, upgradeStatus, appconfig.od_users, deployInfo)
 
 class ODDeployUpdate:
     def GET(self):
@@ -368,7 +369,10 @@ class ODFormat:
           timeo = datetime.strptime(r.last_deploy_date, "%Y%m%d%H%M%S")
           deploy_timestamp = timeo.strftime("%Y-%m-%d %H:%M:%S")
 	  db.update('od_deployer', where="id=" + str(r.id), last_deploy_date=deploy_timestamp)
-      
+
+class DeployInfo:
+	def getDeployInfo(self):
+	  return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances.php?json').read())
 
 app_ODDeploy = web.application(urls, locals())
 
