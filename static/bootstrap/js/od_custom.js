@@ -26,6 +26,7 @@ $(document).ready(function(){
 			$.get(
 				'./odcron',
 				function(data){
+
 					var task_id_list = [];
 					var task_status_list = [];
 					for (var x=0; x < data.length; x++) {
@@ -46,6 +47,13 @@ $(document).ready(function(){
 							$('#deploy_status_' + task_id).attr('class', 'Available');						
 						}
 					});
+					var lockStatus = $("#lockStatus").val();
+					if (data.length != 0 && lockStatus == "0"){
+						$("#lockStatus").val("1");
+					}
+					if (data.length == 0  && lockStatus == "1"){
+						window.location.reload(true);
+					}
 				}
 			);
 

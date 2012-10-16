@@ -1,6 +1,7 @@
 $def with (od_deploys, site_url, upgradeStatus, od_users, deployInfo, od_version)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
+	<div style="display:none">
 	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
 	<div class="alert">
 		<strong>Warning!</strong> Currently upgrade feature doesn't work, we're still working hard on it!
@@ -59,7 +60,9 @@ $var site_url: $site_url
 			</tbody>
 		</table>
 	</form>
+	</div>
 	<label><b><u>OnDemand Deployment Configuration</u></b></label>
+		<input type="hidden" id="lockStatus" value="0" />
 		<strong>Find deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
@@ -130,7 +133,7 @@ $var site_url: $site_url
 			</td>
 			<td>
 			$ instanceShort = shortver + od_deploy.deploy_config.split(',')[0].lower()
-			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) :
+			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) and od_deploy.status == 'Available' :
 				${deployInfo[od_deploy.username][instanceShort]['sugar_build']}
 			</td>
 			<td>$od_deploy.last_deploy_date</td>
