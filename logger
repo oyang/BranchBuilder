@@ -101,3 +101,12 @@
 2012-10-05 01:31:40 [After Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent
 2012-10-05 02:10:22 [Before Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,
 2012-10-05 02:10:22 [After Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,pro,com
+2012-10-10 16:58:12 [Delete Action:]1,git@github.com:sugarcrm/Mango.git,toffee_forecasting_v5,6.6.0,Ran Zhou,ent,
+2012-10-18 15:54:19 [Add Action:],git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,ibm_r05_roadrunner,Sadek Baroudi,ent,Available,0
+2012-10-18 15:54:53 [Before Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,ibm_r05_roadrunner,Sadek Baroudi,ent,
+2012-10-18 15:54:53 [After Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,R0.5,Sadek Baroudi,ult
+2012-10-18 15:56:11 [Before Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,R0.5,Sadek Baroudi,ult,
+2012-10-18 15:56:11 [After Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.5,Sadek Baroudi,ult
+2012-10-18 15:56:17 [Before Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.5,Sadek Baroudi,ult,
+2012-10-18 15:56:17 [After Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.0,Sadek Baroudi,ult
+2012-10-18 15:59:52 [Delete Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.0,Sadek Baroudi,ult,

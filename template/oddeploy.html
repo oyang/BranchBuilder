@@ -116,14 +116,20 @@ $var site_url: $site_url
 	<tbody>
 	$for od_deploy in od_deploys:
 		<tr >
+			$ shortver = "".join(od_deploy.version.split('.'))
+			$ instanceShort = shortver + od_deploy.deploy_config.split(',')[0].lower()
+			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) and od_deploy.status == 'Available' :
+				$ sugar_build = deployInfo[od_deploy.username][instanceShort]['sugar_build']
+			$else :
+				$ sugar_build = ''
+
 			<td>${od_users[od_deploy.username]}</td>
 			<td>$od_deploy.version</td>
 			<td>
-			$ shortver = "".join(od_deploy.version.split('.'))
 
 			$for flavor in od_deploy.deploy_config.split(','):
 				$ insurl = od_deploy.username + "_" + shortver + flavor.lower()
-				$if od_deploy.last_deploy_date and od_deploy.status == 'Available':
+				$if od_deploy.last_deploy_date and od_deploy.status == 'Available' and sugar_build != '':
 					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
@@ -131,11 +137,7 @@ $var site_url: $site_url
 				$else:
 					${flavor} 
 			</td>
-			<td>
-			$ instanceShort = shortver + od_deploy.deploy_config.split(',')[0].lower()
-			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) and od_deploy.status == 'Available' :
-				${deployInfo[od_deploy.username][instanceShort]['sugar_build']}
-			</td>
+			<td>${sugar_build}</td>
 			<td>$od_deploy.last_deploy_date</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>

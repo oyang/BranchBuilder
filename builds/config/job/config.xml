@@ -89,10 +89,10 @@ cp -r build /dev/shm/sugarbuild-$version/
 cp -r sugarportal /dev/shm/sugarbuild-$version/
 
 cd /home/build/sugarsvn/Mango/build_clean
-svn revert build_config.php
+svn revert build_config.json
 if [ &quot;$upgrade_package&quot; = &quot;1&quot; ]; then
-  wget http://honey-g/BranchBuilder/buildconfig/buildconfig_get?version=$version -O build_config.php
-  chmod 777 build_config.php
+  wget http://honey-g/BranchBuilder/buildconfig/buildconfig_get?version=$version -O build_config.json
+  chmod 777 build_config.json
 fi
 ./build_sugar_30.php --version $version --branch $branch  --deploy --packages $package_list --upgrades $upgrade_package
 
