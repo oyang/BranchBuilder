@@ -91,31 +91,27 @@ class ODDeployUpdate:
       try: 
         i.id
       except NameError:
-        od_deploys = db.insert('od_deployer', username=i.username, version=i.version, webroot=i.webroot, status=i.status, deploy_config=i.deploy_config)
+        od_deploys = db.insert('od_deployer', username=i.username, version=i.version, status='Available', deploy_config=i.deploy_config)
 	return "{}"
       else:
-        db.update('od_deploy', where="id=" + i.id, user_name=i.user_name, version=i.version, webroot=i.webroot, deploy_config=i.deploy_config)
-        od_deploy = db.select('od_deployer', where="id=" + i.id)[0]
-        return render.ODDeploy_detail(od_deploy, appconfig.site_url)
+        db.update('od_deployer', where="id=" + i.id, username=i.username, version=i.version, deploy_config=i.deploy_config)
+
+        raise web.seeother("/")
 
 class ODDeployGet:
     def GET(self):
       i = web.input()
       try:
         i.id
+        od_deploy = db.select("od_deployer", where="id=" + i.id, what="id, username, version, deploy_config")
+	for x in  od_deploy:
+	   deployString = json.JSONEncoder().encode({"username": x.username, "version": x.version, "deploy_config": x.deploy_config})
       except Exception:
-        od_deploy = db.select("od_deployer", where="version=$version", vars={'version': i.version})
-      except Exception:
-        od_deploy = db.select("od_deployer", where="id=" + i.id)
-      except Exception:
-        od_deploy = db.select("od_deployer", where="username=$username", vars={'username': i.username})
-      else:
-      #Non-exist parameter
         return False
 
-      web.header("Content-type", "text/plain")
+      web.header("Content-type", "application/json")
 
-      return od_deploy[0].od_deploy_content
+      return deployString
 
 class ODDeployDetail:
     def GET(self):
@@ -373,7 +369,7 @@ class ODFormat:
 class DeployInfo:
 	def getDeployInfo(self):
 	  try:
-	    return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances.php?json', None, 30).read())
+	    return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances.php?json', None, 10).read())
 	  except:
 	    return json.loads('{}')
 

@@ -71,7 +71,7 @@ $(document).ready(function(){
 				$.get('/BranchBuilder/getbuild',
 					{"task_id": task_id[1]},
 					function(data){
-						var buildObj = $.parseJSON(data);
+						var buildObj = data;
 						$('#popView-repos').val(buildObj['repos']);
 						$('#popView-branch').val(buildObj['branch']); 
 						$('#popView-version').val(buildObj['version']); 

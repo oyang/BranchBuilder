@@ -1,4 +1,5 @@
 $(document).ready(function(){
+		$('#flavor-help-info').popover({'title': 'Flavors info', 'content': 'Package can be "Ult,Ent,Corp,Pro,CE"'});
 		$('td[name="list_status"]').each(function (i, domEle){
 			if ($(domEle).text() != "Available"){
 				var task_id = $(domEle).attr("id").split("_");
@@ -20,6 +21,54 @@ $(document).ready(function(){
 					}
 				);
 			});
+		});
+		$('input[name="editDeploy"]').each(function(i, domEle){
+			$(domEle).click(function(){
+				var task_id = $(domEle).attr("id").split("-");
+				$.get('/BranchBuilder/ODDeploy/oddeploy_get',
+					{"id": task_id[1]},
+					function(data){
+						var buildObj = data;
+						$('#popView-username').val(buildObj['username']);
+						$('#popView-version').val(buildObj['version']); 
+						$('#popView-flavor').val(buildObj['flavor']); 
+						$('#popView-flavor_list').val(buildObj['deploy_config']);
+
+						//Set selectAction as editBuild
+						$('#popView-selectAction').val('editDeploy');
+
+						//Update the popup view title and build ID
+						$('#popView-title').text('Edit deploy -- Deploy ID ' + task_id[1]);
+						$('#popView-selectDeployID').val(task_id[1]);
+					}
+				);
+			});	
+		});
+		$('#popView-Save').click(function(){
+			//Check form validate firstly
+			/*
+			if (! $('#popView-actionDeployForm').valid()){
+				return false;
+			}
+			*/
+
+			if ($('#popView-selectAction').val() == 'editDeploy'){
+				$.post('/BranchBuilder/ODDeploy/oddeploy_update', 
+
+					{
+					 "id": $('#popView-selectDeployID').val(), 
+					 "username": $('#popView-username').val(),
+					 "version": $('#popView-version').val(), 
+					 "deploy_config": $('#popView-flavor_list').val(),
+					 },
+
+					 function(data){
+						$("#popupViewDeploy").modal("hide");
+
+						location.reload();
+					 }
+				);
+			}
 		});
 		
 		setInterval(function(){
@@ -59,6 +108,7 @@ $(document).ready(function(){
 
 		}, 5000);
 
+		/*
 		setInterval(function(){
 			$.get(
 				'./odsicron',
@@ -73,6 +123,7 @@ $(document).ready(function(){
 				}
 			);
 		}, 5000);
+		*/
 
 		$('input[name="reupgrade"]').each(function(i, domEle){
 			$(domEle).click(function(){
