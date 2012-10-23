@@ -34,7 +34,7 @@ class TaskBuilder:
 		self.j = Jenkins(jenkinsURL)
 		self.jobName = ""
 		#with open("config.xml") as file:
-		with open("./builds/config/job/deployConfig.xml") as file:
+		with open("./builds/config/job/config.xml") as file:
 			self.templateConfig = file.read()
 		self.template = Template(unicode(self.templateConfig))
 
