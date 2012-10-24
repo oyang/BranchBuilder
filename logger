@@ -110,3 +110,15 @@
 2012-10-18 15:56:17 [Before Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.5,Sadek Baroudi,ult,
 2012-10-18 15:56:17 [After Update Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.0,Sadek Baroudi,ult
 2012-10-18 15:59:52 [Delete Action:]35,git@github.com:sugareps/Mango.git,ibm_r05_roadrunner,6.4.0,Sadek Baroudi,ult,
+2012-10-19 23:20:04 [Before Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,pro,com,
+2012-10-19 23:20:04 [After Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent
+2012-10-19 23:45:35 [Before Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,
+2012-10-19 23:45:35 [After Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,pro,com
+2012-10-22 14:13:42 [Before Update Action:]30,git@github.com:sugarcrm/Mango.git,sugar7,6.7.0,Steven Parsley,ent,
+2012-10-22 14:13:42 [After Update Action:]30,git@github.com:sugarcrm/Mango.git,sugar7,6.7.0,Steven Parsley,ent,pro,corp,ult
+2012-10-22 20:47:44 [Add Action:],git@github.com:lamhuynh/Mango.git,toffee_updated_tour,6.6.0,Lam Huynh,ent,Available,0
+2012-10-23 00:09:41 [Before Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent,pro,com,
+2012-10-23 00:09:41 [After Update Action:]32,git@github.com:sugarcrm/Mango.git,nutmeg,6.7.0,Collin Lee,ent
+2012-10-23 12:54:13 [Add Action:],git@github.com:sugarcrm/Mango.git,toffee_shared_team,7.0.0,Mazen Louis,ent,Available,0
+2012-10-23 15:35:29 [Delete Action:]36,git@github.com:sugarcrm/Mango.git,toffee_shared_team,7.0.0,Mazen Louis,ent,
+2012-10-23 20:31:44 [Add Action:],git@github.com:lamhuynh/Mango.git,toffee_portal_tour_v2,6.6.0,Lam Huynh,ent,Available,0

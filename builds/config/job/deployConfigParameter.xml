@@ -50,7 +50,7 @@ ssh eyang@qatest-web1.sjc.sugarcrm.pvt "cd ~/deployer; php ~/deployer/main.php \
 -s qatest.sugarcrm.pvt \
 -d  /var/www/qatest/qatest.sugarcrm.pvt/www \
 -v $version \
--f $deploy_config \
+-f \"$deploy_config\" \
 -t $deploy_timestamp \
 -h qatest-db1  \
 -u qatest  \

@@ -177,7 +177,7 @@ class GetBuild:
 		if selectedBuilds:
 			for x in  selectedBuilds:
 				buildString = json.JSONEncoder().encode({"repos": x.repos, "branch": x.branch, "version": x.version, "author": x.author, "package_list": x.package_list, "upgrade_package": x.upgrade_package})
-			web.header('Content-type', 'text/plain')
+			web.header('Content-type', 'application/json')
 			return buildString
 
 class BuildCron:
