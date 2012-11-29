@@ -133,7 +133,7 @@ $var site_url: $site_url
 					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
-					<a href="http://qatest.sugarcrm.pvt/${insurl}_${last_deploy_date}" target="_blank" >${flavor.strip()}</a>
+					<a href="http://${insurl}_${last_deploy_date}.qatest.sugarcrm.pvt/" target="_blank" >${flavor.strip()}</a>
 				$else:
 					${flavor.strip()} 
 			</td>
