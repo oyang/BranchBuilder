@@ -116,28 +116,34 @@ $var site_url: $site_url
 	<tbody>
 	$for od_deploy in od_deploys:
 		<tr >
-			$ shortver = "".join(od_deploy.version.split('.'))
-			$ instanceShort = shortver + od_deploy.deploy_config.split(',')[0].lower()
-			$if  deployInfo.has_key(od_deploy.username) and deployInfo[od_deploy.username].has_key(instanceShort) and od_deploy.status == 'Available' :
-				$ sugar_build = deployInfo[od_deploy.username][instanceShort]['sugar_build']
-			$else :
-				$ sugar_build = ''
-
 			<td>${od_users[od_deploy.username]['full_name']}</td>
 			<td>$od_deploy.version</td>
 			<td>
 
+			$ build_list = []
 			$for flavor in od_deploy.deploy_config.split(','):
-				$ insurl = od_deploy.username + "_" + shortver + flavor.lower().strip()
-				$if od_deploy.last_deploy_date and od_deploy.status == 'Available' and sugar_build != '':
+				$if od_deploy.last_deploy_date and od_deploy.status == 'Available' :
 					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
-					<a href="http://${insurl}_${last_deploy_date}.qatest.sugarcrm.pvt/" target="_blank" >${flavor.strip()}</a>
+					$for hostname in deployInfo[last_deploy_date].keys():
+						$if hostname.rfind(flavor.lower()) != -1:
+							$ sugar_site_url = deployInfo[last_deploy_date][hostname]['site_url']
+							$ sugar_build = deployInfo[last_deploy_date][hostname]['build']
+							$ build_list.append(sugar_build)
+							$ actual_version = deployInfo[last_deploy_date][hostname]['version'] 
+							$ actual_flavor = deployInfo[last_deploy_date][hostname]['flavor'] 
+							$if od_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
+								$ flavor = flavor + '(u)'
+							$break
+
+					<a href="${sugar_site_url}" target="_blank" >${flavor.strip()}</a>
 				$else:
 					${flavor.strip()} 
 			</td>
-			<td>${sugar_build}</td>
+			<td>
+			${",".join(build_list)}
+			</td>
 			<td>$od_deploy.last_deploy_date</td>
 			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
 			<td>

@@ -369,7 +369,7 @@ class ODFormat:
 class DeployInfo:
 	def getDeployInfo(self):
 	  try:
-	    return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances.php?json', None, 10).read())
+	    return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances2.php?json', None, 10).read())
 	  except:
 	    return json.loads('{}')
 
