@@ -63,7 +63,8 @@ $var site_url: $site_url
 	</div>
 	<label><b><u>OnDemand Deployment Configuration</u></b></label>
 		<input type="hidden" id="lockStatus" value="0" />
-		<strong>Find deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>
+		<strong>Old style deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>; 
+		<strong>All deployed instance list: <a href="http://qatest.sugarcrm.pvt/instances2.php" target="_blank">Instances list</a></strong>
 	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
 		<select name="username">
 		$ userKey = od_users.keys()
@@ -126,18 +127,19 @@ $var site_url: $site_url
 					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
-					$for hostname in deployInfo[last_deploy_date].keys():
-						$if hostname.rfind(flavor.lower()) != -1:
-							$ sugar_site_url = deployInfo[last_deploy_date][hostname]['site_url']
-							$ sugar_build = deployInfo[last_deploy_date][hostname]['build']
-							$ build_list.append(sugar_build)
-							$ actual_version = deployInfo[last_deploy_date][hostname]['version'] 
-							$ actual_flavor = deployInfo[last_deploy_date][hostname]['flavor'] 
-							$if od_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
-								$ flavor = flavor + '(u)'
-							$break
+					$if last_deploy_date in deployInfo.keys():
+						$for hostname in deployInfo[last_deploy_date].keys():
+							$if hostname.rfind(flavor.lower()) != -1:
+								$ sugar_site_url = deployInfo[last_deploy_date][hostname]['site_url']
+								$ sugar_build = deployInfo[last_deploy_date][hostname]['build']
+								$ build_list.append(sugar_build)
+								$ actual_version = deployInfo[last_deploy_date][hostname]['version'] 
+								$ actual_flavor = deployInfo[last_deploy_date][hostname]['flavor'] 
+								$if od_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
+									$ flavor = flavor + '(u)'
+								$break
 
-					<a href="${sugar_site_url}" target="_blank" >${flavor.strip()}</a>
+						<a href="${sugar_site_url}" target="_blank" >${flavor.strip()}</a>
 				$else:
 					${flavor.strip()} 
 			</td>
