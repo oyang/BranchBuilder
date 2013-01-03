@@ -1,79 +1,18 @@
-$def with (od_deploys, site_url, upgradeStatus, od_users, deployInfo, od_version)
+$def with (ci_deploys, site_url, upgradeStatus, ci_users, deployInfo, ci_version)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
-	<div style="display:none">
-	<label><b><u>OnDemand Silent Conversion/Upgrade</u></b></label>
-	<div class="alert">
-		<strong>Warning!</strong> Currently upgrade feature doesn't work, we're still working hard on it!
-	</div>
-	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_si" id="silentUpgradeForm">
-		<table class="table table-condensed">
-			<thead>
-				<tr>
-				<th>Sugar Instance</th>
-				<th>Type</th>
-				<th id="flavorheader">Current Flavor</th>
-				<th id="dynamicheader">To Flavor</th>
-				<th id="versionheader">Version</th>
-				<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr >
-					<td>
-						<input type="text" id="insname" name="insname" placeholder="Sugar instance name">
-					</td>
-					<td>
-						<input type="radio" id="upgradetype1" name="upgradetype" value="conversion"  checked>Convertion
-						</br>
-						<input type="radio" id="upgradetype2" name="upgradetype" value="upgrade" >Upgrade
-					</td>
-					<td>
-						<select id="flavorlist" name="flavorlist">
-							<option value="ce">CE</option>
-							<option value="pro">Pro</option>
-							<option value="ent">Ent</option>
-							<option value="corp">Corp</option>
-						</select>
-					<td>
-						<select id="dynamiclist" name="dynamiclist">
-							<option value="pro">Pro</option>
-							<option value="ent">Ent</option>
-							<option value="corp">Corp</option>
-							<option value="ult">Ult</option>
-						</select>
-					</td>
-					<td>
-						<select id="versionlist" name="versionlist">
-							<option value="6.6.0">6.6.0</option>
-						</select>
-					</td>
-					<td>
-						$if upgradeStatus == 0:
-							<input type="hidden"  name="tester"  value="${upgradeStatus}" >
-							<input type="button" class="btn btn-success" name="reupgrade" id="reupgrade"  value="Upgrade">
-						$else:
-							<input type="hidden"  name="tester"  value="${upgradeStatus}" >
-							<input type="button" class="btn btn-success" name="reupgrade" id="reupgrade"  value="Upgrade" disabled="disabled">
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	</div>
-	<label><b><u>OnDemand Deployment Configuration</u></b></label>
+	<label><b><u>CI Deployment Configuration</u></b></label>
 		<input type="hidden" id="lockStatus" value="0" />
-		<strong>Old style deployed instance list here: <a href="http://qatest.sugarcrm.pvt/instances.php" target="_blank">Instances list</a></strong>; 
 		<strong>All deployed instance list: <a href="http://qatest.sugarcrm.pvt/instances2.php" target="_blank">Instances list</a></strong>
-	<form class="well form-inline" method="post" action ="${site_url}/ODDeploy/oddeploy_add" id="addBuildForm">
+	<form class="well form-inline" method="post" action ="${site_url}/CIDeploy/cideploy_add" id="addBuildForm">
 		<select name="username">
-		$ userKey = od_users.keys()
+		$ userKey = ci_users.keys()
 		$ userKey.sort()
 		$for username in userKey: 
-			<option value="$username">${od_users[username]['full_name']}</option>
+			<option value="$username">${ci_users[username]['full_name']}</option>
 		</select>
 		<select name="version">
-		$for version in od_version: 
+		$for version in ci_version: 
 			<option value="$version">${version}</option>
 		</select>
 		<input name="webroot" type="hidden"  value="qatest-web1.sjc.sugarcrm.pvt" >
@@ -83,6 +22,14 @@ $var site_url: $site_url
 			<option value="qatest-web2.sjc.sugarcrm.pvt">qatest-web2.sjc.sugarcrm.pvt</option>
 		</select>
 		-->
+		<select name="flavor1">
+			<option value="Ult">Ult</option>
+			<option value="Ent" selected="selected">Ent</option>
+			<option value="Corp">Corp</option>
+			<option value="Pro">Pro</option>
+			<option value="CE">CE</option>
+		</select>
+		<!--
 		<label class="checkbox inline">
 			<input type="checkbox" name="flavor1" value="Ult">Ult
 		</label>
@@ -98,6 +45,7 @@ $var site_url: $site_url
 		<label class="checkbox inline">
 			<input type="checkbox" name="flavor5" value="CE">CE
 		</label>
+		-->
 
 		<button id="footer_save"  type="submit" class="btn btn-primary">Add</button>
 	</form>
@@ -107,7 +55,7 @@ $var site_url: $site_url
 		<tr>
 		<th>Username</th>
 		<th>Version</th>
-		<th>Flavor list</th>
+		<th>Flavor</th>
 		<th>Build Number</th>
 		<th>Latest Deploy Date</th>
 		<th>Status</th>
@@ -115,16 +63,16 @@ $var site_url: $site_url
 		</tr>
 	</thead>
 	<tbody>
-	$for od_deploy in od_deploys:
+	$for ci_deploy in ci_deploys:
 		<tr >
-			<td>${od_users[od_deploy.username]['full_name']}</td>
-			<td>$od_deploy.version</td>
+			<td>${ci_users[ci_deploy.username]['full_name']}</td>
+			<td>$ci_deploy.version</td>
 			<td>
 
 			$ build_list = []
-			$for flavor in od_deploy.deploy_config.split(','):
-				$if od_deploy.last_deploy_date and od_deploy.status == 'Available' :
-					$ last_deploy_date = od_deploy.last_deploy_date.replace('-', '')
+			$for flavor in ci_deploy.deploy_config.split(','):
+				$if ci_deploy.last_deploy_date and ci_deploy.status == 'Available' :
+					$ last_deploy_date = ci_deploy.last_deploy_date.replace('-', '')
 					$ last_deploy_date = last_deploy_date.replace(':', '')
 					$ last_deploy_date = last_deploy_date.replace(' ', '')
 					$if last_deploy_date in deployInfo.keys():
@@ -135,7 +83,7 @@ $var site_url: $site_url
 								$ build_list.append(sugar_build)
 								$ actual_version = deployInfo[last_deploy_date][hostname]['version'] 
 								$ actual_flavor = deployInfo[last_deploy_date][hostname]['flavor'] 
-								$if od_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
+								$if ci_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
 									$ flavor = flavor + '(u)'
 								$break
 
@@ -146,12 +94,12 @@ $var site_url: $site_url
 			<td>
 			${",".join(build_list)}
 			</td>
-			<td>$od_deploy.last_deploy_date</td>
-			<td name="list_status" class="${od_deploy.status}" id="deploy_status_${od_deploy.id}">$od_deploy.status</td>
+			<td>$ci_deploy.last_deploy_date</td>
+			<td name="list_status" class="${ci_deploy.status}" id="deploy_status_${ci_deploy.id}">$ci_deploy.status</td>
 			<td>
-				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$od_deploy.id"  value="Deploy">
-				<input type="button" data-toggle="modal" name="editDeploy" class="btn" data-target="#popupViewDeploy" id="editList-$od_deploy.id" value="Edit" >
-				<a class="btn btn-danger" name="remove" href="${site_url}/ODDeploy/oddeploy_remove?id=$od_deploy.id">Remove</a>
+				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$ci_deploy.id"  value="Deploy">
+				<input type="button" data-toggle="modal" name="editDeploy" class="btn" data-target="#popupViewDeploy" id="editList-$ci_deploy.id" value="Edit" >
+				<a class="btn btn-danger" name="remove" href="${site_url}/CIDeploy/cideploy_remove?id=$ci_deploy.id">Remove</a>
 			</td>
 		</tr>
 	</tbody>
@@ -179,9 +127,15 @@ $var site_url: $site_url
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="popView-flavor_list">Flavors:</label>
+						<label class="control-label" for="popView-flavor_list">Flavor:</label>
 						<div class="controls">
-							<input type="text" id="popView-flavor_list" class="required" name="flavor_list" /><a href="#" id="flavor-help-info"><i class="icon-info-sign"></i></a>
+							<select id="popView-flavor_list" name="flavor_list" class="required">
+								<option value="Ult">Ult</option>
+								<option value="Ent">Ent</option>
+								<option value="Corp">Corp</option>
+								<option value="Pro">Pro</option>
+								<option value="CE">CE</option>
+							</select>
 						</div>
 					</div>
 				</fieldset>
@@ -199,4 +153,4 @@ $var site_url: $site_url
 	    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 	    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
 	    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
-	    <script src="/static/bootstrap/js/od_custom.js"></script>
+	    <script src="/static/bootstrap/js/ci_custom.js"></script>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<project>
+<matrix-project>
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
@@ -7,27 +7,17 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>username</name>
-          <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>version</name>
           <description></description>
-          <defaultValue></defaultValue>
+          <defaultValue>6.6.2</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>webroot</name>
+          <name>flavor</name>
           <description></description>
-          <defaultValue></defaultValue>
+          <defaultValue>ent</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>deploy_config</name>
-          <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>deploy_timestamp</name>
+          <name>username</name>
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -41,27 +31,37 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
+  <axes>
+    <hudson.matrix.LabelAxis>
+      <name>label</name>
+      <values>
+        <string>CIDeploy</string>
+      </values>
+    </hudson.matrix.LabelAxis>
+  </axes>
   <builders>
     <hudson.tasks.Shell>
-      <command>
-ssh eyang@qatest-web1.sjc.sugarcrm.pvt "cd ~/deployer; php ~/deployer/main.php \
--e $username \
--r $webroot \
--s qatest.sugarcrm.pvt \
--d  /var/www/qatest/qatest.sugarcrm.pvt/www \
--v $version \
--f \"$deploy_config\" \
--t $deploy_timestamp \
--h qatest-db1  \
--u qatest  \
--p qatest  \
-"
-if [ $? -gt 0 ] ; then
-	exit $?
+      <command>shortVer=`echo $version | sed &apos;s/\.//g&apos;`
+echo &quot;shortVer is $shortVer \n&quot;
+lowerFlavor=`echo $flavor | tr &apos;[A-Z]&apos; &apos;[a-z]&apos; `
+echo &quot;lowerFlavor is $lowerFlavor \n&quot;
+
+if [ &quot;$username&quot; != &quot;&quot; ]; then
+  
+  instanceName=${username}_${lowerFlavor}_${shortVer}
+else
+  instanceName=${lowerFlavor}${shortVer}
 fi
-      </command>
+echo &quot;instanceName is $instanceName&quot;
+
+#ruby /srv/ci-tools/git_update.rb -r sugarcrm/SodaIceBox -b 6_7_0 -p /srv/SodaIceBox 
+cd /srv/AutoUtils/jobs-utils/slave/target 
+ruby deploy.rb --version=&quot;${version}&quot; --flavor=${flavor} --env=ec2-trg-01 --xoverride --noautocomplete --nosprites --savequery --portalenv=&quot;test&quot; --name=&quot;${instanceName}&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers/>
-</project>
+  <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
+    <runSequentially>false</runSequentially>
+  </executionStrategy>
+</matrix-project>
