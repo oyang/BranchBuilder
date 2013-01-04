@@ -21,6 +21,11 @@
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>deploy_timestamp</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -45,10 +50,11 @@
 echo &quot;shortVer is $shortVer \n&quot;
 lowerFlavor=`echo $flavor | tr &apos;[A-Z]&apos; &apos;[a-z]&apos; `
 echo &quot;lowerFlavor is $lowerFlavor \n&quot;
+echo &quot;deploy timestamp is $deploy_timestamp \n&quot;
 
 if [ &quot;$username&quot; != &quot;&quot; ]; then
   
-  instanceName=${username}_${lowerFlavor}_${shortVer}
+  instanceName=${username}_${shortVer}${lowerFlavor}
 else
   instanceName=${lowerFlavor}${shortVer}
 fi
@@ -56,7 +62,11 @@ echo &quot;instanceName is $instanceName&quot;
 
 #ruby /srv/ci-tools/git_update.rb -r sugarcrm/SodaIceBox -b 6_7_0 -p /srv/SodaIceBox 
 cd /srv/AutoUtils/jobs-utils/slave/target 
-ruby deploy.rb --version=&quot;${version}&quot; --flavor=${flavor} --env=ec2-trg-01 --xoverride --noautocomplete --nosprites --savequery --portalenv=&quot;test&quot; --name=&quot;${instanceName}&quot;</command>
+ruby deploy.rb --version=&quot;${version}&quot; --flavor=${lowerFlavor} --env=ec2-trg-01 --xoverride --noautocomplete --nosprites --savequery --portalenv=&quot;test&quot; --name=&quot;${instanceName}&quot;
+
+echo "${deploy_timestamp}" > /var/www/${instanceName}/build_date.log
+
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

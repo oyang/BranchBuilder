@@ -60,12 +60,10 @@ class CIDeployIndex:
         job_list = []
         jobName = "ci_silentupgrade"
         
-        if self.is_running_job(jobName):
-            upgradeStatus = 1
-        else:
-            upgradeStatus = 0
-        
 	deployInfo = DeployInfo().getDeployInfo()
+	print deployInfo
+	print type(deployInfo)
+	print deployInfo.keys()
         ci_deploys = db.query("select a.id, a.username, a.webroot, a.version, a.deploy_config, a.last_deploy_date, \
                 ifnull(b.status, \"Available\") as status \
                 from ci_deployer as a \
@@ -73,7 +71,7 @@ class CIDeployIndex:
                 on a.id=b.task_id \
                 order by b.status desc,  a.username, a.last_deploy_date desc") 
 
-        return render.cideploy(ci_deploys, appconfig.site_url, upgradeStatus, appconfig.ci_users, deployInfo, appconfig.ci_version)
+        return render.cideploy(ci_deploys, appconfig.site_url, appconfig.ci_users, deployInfo, appconfig.ci_version)
 
 class CIDeployUpdate:
     def GET(self):
@@ -314,7 +312,11 @@ class ODFormat:
 class DeployInfo:
 	def getDeployInfo(self):
 	  try:
-	    return json.loads(urllib2.urlopen('http://qatest.sugarcrm.pvt/instances2.php?json', None, 10).read())
+	    jsonData = json.loads(urllib2.urlopen('http://10.25.10.5/instances.php?json', None, 10).read())
+	    if jsonData:
+	      return jsonData 
+    	    else:
+	      raise Exception  
 	  except:
 	    return json.loads('{}')
 

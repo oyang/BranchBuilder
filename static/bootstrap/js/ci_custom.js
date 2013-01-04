@@ -56,7 +56,7 @@ $(document).ready(function(){
 			*/
 
 			if ($('#popView-selectAction').val() == 'editDeploy'){
-				$.post('/BranchBuilder/CIDeploy/cideploy_update', 
+				$.post('./cideploy_update', 
 
 					{
 					 "id": $('#popView-selectDeployID').val(), 

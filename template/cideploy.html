@@ -1,4 +1,4 @@
-$def with (ci_deploys, site_url, upgradeStatus, ci_users, deployInfo, ci_version)
+$def with (ci_deploys, site_url, ci_users, deployInfo, ci_version)
 $var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
 $var site_url: $site_url
 	<label><b><u>CI Deployment Configuration</u></b></label>
@@ -48,6 +48,7 @@ $var site_url: $site_url
 			<td>
 
 			$ build_list = []
+			$ sugar_site_url = ""
 			$for flavor in ci_deploy.deploy_config.split(','):
 				$if ci_deploy.last_deploy_date and ci_deploy.status == 'Available' :
 					$ last_deploy_date = ci_deploy.last_deploy_date.replace('-', '')
@@ -65,6 +66,7 @@ $var site_url: $site_url
 									$ flavor = flavor + '(u)'
 								$break
 
+				$if sugar_site_url:
 						<a href="${sugar_site_url}" target="_blank" >${flavor.strip()}</a>
 				$else:
 					${flavor.strip()} 
