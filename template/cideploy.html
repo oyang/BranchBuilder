@@ -1,0 +1,136 @@
+$def with (ci_deploys, site_url, ci_users, deployInfo, ci_version)
+$var cssfiles: /static/bootstrap/css/bootstrap.css /static/bootstrap/css/custom.css
+$var site_url: $site_url
+	<label><b><u>CI Deployment Configuration</u></b></label>
+		<input type="hidden" id="lockStatus" value="0" />
+		<!--
+		<strong>All deployed instance list: <a href="http://qatest.sugarcrm.pvt/instances2.php" target="_blank">Instances list</a></strong>
+		-->
+	<form class="well form-inline" method="post" action ="${site_url}/CIDeploy/cideploy_add" id="addBuildForm">
+		<select name="username">
+		$ userKey = ci_users.keys()
+		$ userKey.sort()
+		$for username in userKey: 
+			<option value="$username">${ci_users[username]['full_name']}</option>
+		</select>
+		<select name="version">
+		$for version in ci_version: 
+			<option value="$version">${version}</option>
+		</select>
+		<input name="webroot" type="hidden"  value="qatest-web1.sjc.sugarcrm.pvt" >
+		<select name="flavor1">
+			<option value="Ult">Ult</option>
+			<option value="Ent" selected="selected">Ent</option>
+			<option value="Corp">Corp</option>
+			<option value="Pro">Pro</option>
+			<option value="CE">CE</option>
+		</select>
+		<button id="footer_save"  type="submit" class="btn btn-primary">Add</button>
+	</form>
+
+	<table class="table table-condensed">
+	<thead>
+		<tr>
+		<th>Username</th>
+		<th>Version</th>
+		<th>Flavor</th>
+		<th>Build Number</th>
+		<th>Latest Deploy Date</th>
+		<th>Status</th>
+		<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	$for ci_deploy in ci_deploys:
+		<tr >
+			<td>${ci_users[ci_deploy.username]['full_name']}</td>
+			<td>$ci_deploy.version</td>
+			<td>
+
+			$ build_list = []
+			$ sugar_site_url = ""
+			$for flavor in ci_deploy.deploy_config.split(','):
+				$if ci_deploy.last_deploy_date and ci_deploy.status == 'Available' :
+					$ last_deploy_date = ci_deploy.last_deploy_date.replace('-', '')
+					$ last_deploy_date = last_deploy_date.replace(':', '')
+					$ last_deploy_date = last_deploy_date.replace(' ', '')
+					$if last_deploy_date in deployInfo.keys():
+						$for hostname in deployInfo[last_deploy_date].keys():
+							$if hostname.rfind(flavor.lower()) != -1:
+								$ sugar_site_url = deployInfo[last_deploy_date][hostname]['site_url']
+								$ sugar_build = deployInfo[last_deploy_date][hostname]['build']
+								$ build_list.append(sugar_build)
+								$ actual_version = deployInfo[last_deploy_date][hostname]['version'] 
+								$ actual_flavor = deployInfo[last_deploy_date][hostname]['flavor'] 
+								$if ci_deploy.version != actual_version or flavor.lower() != actual_flavor.lower():
+									$ flavor = flavor + '(u)'
+								$break
+
+				$if sugar_site_url:
+						<a href="${sugar_site_url}" target="_blank" >${flavor.strip()}</a>
+				$else:
+					${flavor.strip()} 
+			</td>
+			<td>
+			${",".join(build_list)}
+			</td>
+			<td>$ci_deploy.last_deploy_date</td>
+			<td name="list_status" class="${ci_deploy.status}" id="deploy_status_${ci_deploy.id}">$ci_deploy.status</td>
+			<td>
+				<input type="button" class="btn btn-success" name="redeploy" id="deployList-$ci_deploy.id"  value="Deploy">
+				<input type="button" data-toggle="modal" name="editDeploy" class="btn" data-target="#popupViewDeploy" id="editList-$ci_deploy.id" value="Edit" >
+				<a class="btn btn-danger" name="remove" href="${site_url}/CIDeploy/cideploy_remove?id=$ci_deploy.id">Remove</a>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	<div class="modal hide fade" id="popupViewDeploy" >
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal" >x</a>
+			<h3 id="popView-title">Loading deploy task, please wait or refresh current page!</h3>
+			<input type="hidden" id="popView-selectAction" value="" />
+			<input type="hidden" id="popView-selectDeployID" value="" />
+		</div>
+		<div class="modal-body">
+			<form class="well form-horizontal" method="post" action ="add" id="popView-actionDeployForm">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="popView-user">User:</label>
+						<div class="controls">
+							<input type="text" class="required" id="popView-username" name="username" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-version">version:</label>
+						<div class="controls">
+							<input type="text" id="popView-version"  class="required" name="version" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="popView-flavor_list">Flavor:</label>
+						<div class="controls">
+							<select id="popView-flavor_list" name="flavor_list" class="required">
+								<option value="Ult">Ult</option>
+								<option value="Ent">Ent</option>
+								<option value="Corp">Corp</option>
+								<option value="Pro">Pro</option>
+								<option value="CE">CE</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a class="btn" href="#" data-dismiss="modal">Cancel</a>
+			<a class="btn btn-primary" id="popView-Save" href="#">Save</a>
+		</div>
+	</div>		
+
+	    <script src="/static/bootstrap/js/jquery.min.js"></script>
+	    <script src="/static/bootstrap/js/jquery.validate.min.js"></script>
+	    <script src="/static/bootstrap/js/validate.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+	    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+	    <script src="/static/bootstrap/js/ci_custom.js"></script>
