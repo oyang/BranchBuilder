@@ -20,13 +20,13 @@ $if content.cssfiles:
     <div class="container">
 	<a class="brand" href="/" >BranchBuilder</a>
 	<ul class="nav" >
-		<li class="active">
+		<li id="navHome" class="active">
 			<a href="/" >Home</a>
 		</li>
-		<li >
+		<li id="navJobServer">
 			<a href="http://honey-g:8080" target="_blank" >JobServer</a>
 		</li>
-		<li class="dropdown">
+		<li id="navConfig" class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" name="Config" id="config">Config</a>
 			<ul class="dropdown-menu">
 				<li>
@@ -40,10 +40,10 @@ $if content.cssfiles:
 		<li >
 			<a href="/phpmyadmin" target="_blank" >DBM</a>
 		</li>
-		<li >
+		<li id="navODDeploy">
 			<a href="${content.site_url}/ODDeploy/"  >OD_Deploy</a>
 		</li>
-		<li >
+		<li id="navCIDeploy">
 			<a href="${content.site_url}/CIDeploy/"  >CI_Deploy</a>
 		</li>
 	</ul>
