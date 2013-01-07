@@ -1,4 +1,7 @@
 $(document).ready(function(){
+		$("li.active").removeClass("active");
+		$("#navHome").addClass("active");
+
 		$('#package-help-info').popover({'title': 'Package info', 'content': 'Package can be "ult,ent,corp,pro,com"'});
 		$('td[name="list_status"]').each(function (i, domEle){
 			if ($(domEle).text() != "Available"){

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+		$("li.active").removeClass("active");
+		$("#navODDeploy").addClass("active");
+
 		$('#flavor-help-info').popover({'title': 'Flavors info', 'content': 'Package can be "Ult,Ent,Corp,Pro,CE"'});
 		$('td[name="list_status"]').each(function (i, domEle){
 			if ($(domEle).text() != "Available"){
